@@ -1,3 +1,5 @@
-package PACKAGE_NAME;public class main {
-    //test
+public class main {
+    public static void main(String[] args) {
+        System.out.println("hej");
+    }
 }
