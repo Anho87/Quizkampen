@@ -17,7 +17,7 @@ public class GuiKlass extends JFrame {
         panel.add(namePromt);
         panel.add(userName);
         panel.add(enterNameButton);
-        enterNameButton.addActionListener(new GameActionListener());
+        enterNameButton.addActionListener(new GameActionListener(enterNameButton));
 
 
         pack();
