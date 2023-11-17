@@ -19,11 +19,10 @@ public class GuiKlass extends JFrame {
         panel.add(enterNameButton);
         enterNameButton.addActionListener(new GameActionListener(enterNameButton));
 
-
-        pack();
+        setVisible(true);
+        setSize(100, 200);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        panel.setVisible(true);
 
     }
 }
