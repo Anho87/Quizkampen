@@ -8,35 +8,19 @@ public class GuiKlass extends JFrame {
     JTextArea userName = new JTextArea();
     JButton enterNameButton = new JButton("Klart");
     JButton startButton = new JButton("Starta nytt spel");
-    JPanel panelName = new JPanel();
-
-
-
-
-    JPanel panelGameMenu = new JPanel();
-    JButton randomPlayerButton = new JButton("Slumpad spelare");
-    JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
-
-
+    JPanel panel = new JPanel();
     public GuiKlass(){
 
-       getNameWindow();
-       // getGameMenu();
+        this.add(panel);
+        panel.setLayout(new GridLayout(3,1));
 
-
-    }
-
-    public void getNameWindow(){
-        this.add(panelName);
-        panelName.setLayout(new GridLayout(3,1));
-
-        panelName.add(namePromt);
-        panelName.add(userName);
-        panelName.add(enterNameButton);
+        panel.add(namePromt);
+        panel.add(userName);
+        panel.add(enterNameButton);
         enterNameButton.addActionListener(new GameActionListener());
 
         setVisible(true);
-        setSize(200, 200);
+        setSize(100, 200);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
