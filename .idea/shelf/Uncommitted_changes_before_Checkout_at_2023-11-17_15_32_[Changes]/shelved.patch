@@ -1,0 +1,19 @@
+Index: src/GuiKlass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.*;\r\nimport java.awt.*;\r\n\r\npublic class GuiKlass extends JFrame {\r\n\r\n    String name;\r\n    JLabel namePromt = new JLabel(\"Ange ditt användarnamn\");\r\n    JTextArea userName = new JTextArea();\r\n    JButton enterNameButton = new JButton(\"Klart\");\r\n    JButton startButton = new JButton(\"Starta nytt spel\");\r\n    JPanel panel = new JPanel();\r\n    public GuiKlass(){\r\n\r\n        this.add(panel);\r\n        panel.setLayout(new GridLayout(3,1));\r\n\r\n        panel.add(namePromt);\r\n        panel.add(userName);\r\n        panel.add(enterNameButton);\r\n        enterNameButton.addActionListener(new GameActionListener());\r\n\r\n        setVisible(true);\r\n        setSize(100, 200);\r\n        setLocationRelativeTo(null);\r\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n    }\r\n\r\n    public void getGameMenu(){\r\n        this.add(panelGameMenu);\r\n        panelGameMenu.setLayout(new GridLayout(1,2));\r\n        add(randomPlayerButton);\r\n        randomPlayerButton.setPreferredSize(new Dimension(150, 100));\r\n        add(playAgainstAFriendButton);\r\n        playAgainstAFriendButton.setPreferredSize(new Dimension(150, 100));\r\n\r\n        setVisible(true);\r\n\r\n        setSize(100, 300);\r\n        setLocationRelativeTo(null);\r\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n    }\r\n\r\n    public void getCategories(){\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/GuiKlass.java b/src/GuiKlass.java
+--- a/src/GuiKlass.java	(revision 8f97dacd2604707c6094d5f2d3213de50b769e5e)
++++ b/src/GuiKlass.java	(date 1700231577742)
+@@ -17,7 +17,7 @@
+         panel.add(namePromt);
+         panel.add(userName);
+         panel.add(enterNameButton);
+-        enterNameButton.addActionListener(new GameActionListener());
++        enterNameButton.addActionListener(new GameActionListener(enterNameButton));
+ 
+         setVisible(true);
+         setSize(100, 200);
