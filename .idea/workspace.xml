@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="getQuizWindow() method added, ++,">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="getQuizWindow() method added, ++," />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/-questionWindow" />
+        <entry key="$PROJECT_DIR$" value="feature/questions-sport-movies" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,6 +69,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
       </list>
@@ -113,6 +113,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gui methods" />
     <MESSAGE value="getQuizWindow() method added, ++," />
-    <option name="LAST_COMMIT_MESSAGE" value="getQuizWindow() method added, ++," />
+    <MESSAGE value="added text files" />
+    <MESSAGE value="added text files." />
+    <option name="LAST_COMMIT_MESSAGE" value="added text files." />
   </component>
 </project>
