@@ -14,10 +14,15 @@ public class Client {
             BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
         ){
 
-            String message;
-            while((message = userInput.readLine()) != null){
-                out.println(message);
+            String answer;
+            String serverOutPut;
+            
+            while((serverOutPut = in.readLine()) != null){
+                System.out.println(serverOutPut);
+                answer  = userInput.readLine();
+                out.println(answer);
             }
+            
 
         }catch (UnknownHostException e){
             e.printStackTrace();

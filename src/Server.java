@@ -6,6 +6,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
+
+    Protocol protocol = new Protocol();
     Server(){
         
         try(ServerSocket serverSocket = new ServerSocket(44444);
@@ -13,10 +15,12 @@ public class Server {
             PrintWriter out = new PrintWriter(sock.getOutputStream(),true);
             BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()))
         ){
-
+            
+            String inputFromUser;
+            out.println(protocol.askQuestion(""));
             while(true){
-                String input = in.readLine();
-                System.out.println(input);
+                inputFromUser = in.readLine();
+                out.println(protocol.askQuestion(inputFromUser));
             }
 
 
