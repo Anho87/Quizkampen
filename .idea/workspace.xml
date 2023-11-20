@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="gui methods" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="getQuizWindow() method added, ++,">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,11 +78,19 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1700477041205</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL−00003" summary="getQuizWindow() method added, ++,">
+      <option name="closed" value="true" />
+      <created>1700484607838</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1700484607838</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gui methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="gui methods" />
+    <MESSAGE value="getQuizWindow() method added, ++," />
+    <option name="LAST_COMMIT_MESSAGE" value="getQuizWindow() method added, ++," />
   </component>
 </project>
