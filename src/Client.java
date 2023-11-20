@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Client {
+    
     Client(){
         try(Socket socket = new Socket("127.0.0.1", 44444);
 
@@ -16,6 +17,7 @@ public class Client {
 
             String answer;
             String serverOutPut;
+            GuiClass guiClass = new GuiClass();
             
             while((serverOutPut = in.readLine()) != null){
                 System.out.println(serverOutPut);
