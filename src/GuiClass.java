@@ -33,6 +33,12 @@ public class GuiClass extends JFrame {
         if (userName == null || userName.trim().isEmpty()) {
             userName = "Okänd Användare";
         }
+        updateFrameTitles();
+    }
+    private void updateFrameTitles() {
+        startFrame.setTitle("Quizkampen - " + userName);
+        gameMenuFrame.setTitle("Spelmeny - " + userName);
+        categoriesFrame.setTitle("Kategorier - " + userName);
     }
 
     public void getGameMenu() {
@@ -78,10 +84,15 @@ public class GuiClass extends JFrame {
         categoriesFrame.setVisible(true);
     }
 
+    public void getQuizWindow(){
+
+    }
+
     public GuiClass(){
         getUserName();
         getStartWindow();
         getGameMenu();
         getCategories();
+        getQuizWindow();
     }
 }
