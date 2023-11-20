@@ -123,14 +123,14 @@ public class GuiClass extends JFrame {
         answerPanel.add(answer3);
         answerPanel.add(answer4);
 
-        setupAnswerButtons();
+        checkAnswer();
 
         quizFrame.setLocationRelativeTo(null);
         quizFrame.setSize(300, 500);
         quizFrame.setVisible(true);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    private void setupAnswerButtons() {
+    private void checkAnswer() {
         ActionListener answerListener = e -> {
             JButton clickedButton = (JButton) e.getSource();
             if (clickedButton.getText().equals(correctAnswer)) {
