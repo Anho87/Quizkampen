@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-17__13_57__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-17__13_57__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-17__13_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-17__13_58__Changes_.xml" afterDir="false" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="gui methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
     </list>
@@ -75,7 +72,14 @@
       <option name="presentableId" value="LOCAL−00001" />
       <updated>1700475016054</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL−00002" summary="gui methods">
+      <option name="closed" value="true" />
+      <created>1700477041205</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1700477041205</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
