@@ -1,0 +1,112 @@
+Index: src/GuiKlass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.*;\r\nimport java.awt.*;\r\n\r\npublic class GuiKlass extends JFrame {\r\n\r\n    String name;\r\n    JLabel namePromt = new JLabel(\"Ange ditt användarnamn\");\r\n    JTextArea userName = new JTextArea();\r\n    JButton enterNameButton = new JButton(\"Klart\");\r\n    JButton startButton = new JButton(\"Starta nytt spel\");\r\n    JPanel panel = new JPanel();\r\n    public GuiKlass(){\r\n\r\n        this.add(panel);\r\n        panel.setLayout(new GridLayout(3,1));\r\n\r\n        panel.add(namePromt);\r\n        panel.add(userName);\r\n        panel.add(enterNameButton);\r\n        enterNameButton.addActionListener(new GameActionListener());\r\n\r\n        setVisible(true);\r\n        setSize(100, 200);\r\n        setLocationRelativeTo(null);\r\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/GuiKlass.java b/src/GuiKlass.java
+--- a/src/GuiKlass.java	
++++ b/src/GuiKlass.java	
+@@ -23,6 +23,54 @@
+         setSize(100, 200);
+         setLocationRelativeTo(null);
+         setDefaultCloseOperation(EXIT_ON_CLOSE);
++        import javax.swing.*;
++import java.awt.*;
++
++        public class GuiKlass extends JFrame {
++
++            String name;
++            JLabel namePromt = new JLabel("Ange ditt användarnamn");
++            JTextArea userName = new JTextArea();
++            JButton enterNameButton = new JButton("Klart");
++            JButton startButton = new JButton("Starta nytt spel");
++            JPanel panel = new JPanel();
++            public GuiKlass(){
++
++                this.add(panel);
++                panel.setLayout(new GridLayout(3,1));
++
++                panel.add(namePromt);
++                panel.add(userName);
++                panel.add(enterNameButton);
++                enterNameButton.addActionListener(new GameActionListener());
++
++                setVisible(true);
++                setSize(100, 200);
++                setLocationRelativeTo(null);
++                setDefaultCloseOperation(EXIT_ON_CLOSE);
++            }
++
++            public void getGameMenu(){
++                this.add(panelGameMenu);
++                panelGameMenu.setLayout(new GridLayout(1,2));
++                add(randomPlayerButton);
++                randomPlayerButton.setPreferredSize(new Dimension(150, 100));
++                add(playAgainstAFriendButton);
++                playAgainstAFriendButton.setPreferredSize(new Dimension(150, 100));
++
++                setVisible(true);
++
++                setSize(100, 300);
++                setLocationRelativeTo(null);
++                setDefaultCloseOperation(EXIT_ON_CLOSE);
++            }
++
++            public void getCategories(){
++
++
++            }
++        }
++
+ 
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d467bdaa-28b2-48b5-90ae-c22479a2b845\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/GuiKlass.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GuiKlass.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Main.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 1\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YIVe31Q5GX5rbm8XGgU4TMQaFJ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d467bdaa-28b2-48b5-90ae-c22479a2b845\" name=\"Changes\" comment=\"\" />\r\n      <created>1700213174275</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700213174275</updated>\r\n      <workItem from=\"1700213175465\" duration=\"2000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,10 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/GuiKlass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiKlass.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -49,7 +47,24 @@
+       <option name="presentableId" value="Default" />
+       <updated>1700213174275</updated>
+       <workItem from="1700213175465" duration="2000" />
++      <workItem from="1700233289001" duration="161000" />
++      <workItem from="1700233500755" duration="4000" />
++      <workItem from="1700233513918" duration="9000" />
+     </task>
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+ </project>
+\ No newline at end of file
