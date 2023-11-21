@@ -1,10 +1,10 @@
 Vilken sport har 42 så kallade Laws eller Lagar?
-Cricket, Hästpolo, Vattenpolo, Rugby
+Cricket:Hästpolo:Vattenpolo:Rugby
 Vad hette tungviktsboxaren som 1997 fick sitt öra avbitet i en match mot Mike Tyson?
-Evander Holyfield, Roy Jones, Trevor Berbick, Greg Page
+Evander Holyfield:Roy Jones:Trevor Berbick:Greg Page
 Vilket år grundades Svenska Fotbollsförbundet?
-1904, 1897, 1908, 1922
+1904:1897:1908:1922
 Vem var första skandinav att simma över engelska kanalen?
-Sally Bauer, Matthew Webb, Gertrude Ederle, Charles Chapman
-Vilken kampsport har en namn som betyder Den följsamma vägen?
-Judo, Taijiquan, Jujutsu, Capoeira
+Sally Bauer:Matthew Webb:Gertrude Ederle:Charles Chapman
+Vilken kampsport har ett namn som betyder Den följsamma vägen?
+Judo:Taijiquan:Jujutsu:Capoeira
