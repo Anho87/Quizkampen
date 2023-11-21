@@ -1,11 +1,25 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.EnumMap;
 
 public class GuiClass extends JFrame {
 
+    ArrayList <Category> randomCats = showCategoryOptions();
     String userName;
+    ArrayList<Category> categories = new ArrayList<>();
+    Path pathToCategory_kroppknopp = FileSystems.getDefault().getPath("src", "kropp&knopp.txt");
+    Path pathToCategory_djurnatur = FileSystems.getDefault().getPath("src", "djur&natur.txt");
+    Category category_kroppknopp = new Category("Kropp & knopp");
+    Category category_djurnatur = new Category("Djur & natur");
+    Category category_film = new Category("Film");
+    Category category_sport = new Category("Sport");
+    Category chosenCategory;
+    QuestionWithAnswers currentQuestionWithAnswers;
 
     private JFrame startFrame = new JFrame("Quizkampen - " + userName);
     private JPanel startPanel = new JPanel(new BorderLayout());
@@ -24,9 +38,10 @@ public class GuiClass extends JFrame {
     private JPanel categoriesPanel = new JPanel(new BorderLayout());
     private JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
     private JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
-    private JButton categoryButton1 = new JButton("Kategori 1");
-    private JButton categoryButton2 = new JButton("Kategori 2");
-    private JButton categoryButton3 = new JButton("Kategori 3");
+    /*private JButton category_kroppKnopp = new JButton("Kropp och Knopp");
+    private JButton category_djurNatur = new JButton("Djur och Natur");
+    private JButton category_film = new JButton("Film");
+    private JButton category_sport = new JButton("Sport");*/
 
 
     private JFrame quizFrame = new JFrame("Quiz - " + userName);
@@ -35,13 +50,13 @@ public class GuiClass extends JFrame {
     private int questionNr;
     private String correctAnswer = "Terminator";
     private JLabel questionNumber = new JLabel("Fråga " + questionNr);
-    private JLabel question = new JLabel("I vilken film yttras orden 'I'll be back'?");
+    private JLabel question;
     private JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
-    private JButton answer1 = new JButton("Terminator");
-    private JButton answer2 = new JButton("När Harry mötte Sally");
-    private JButton answer3 = new JButton("Hitta Nemo");
-    private JButton answer4 = new JButton("Gladiator");
+    private JButton answer1;
+    private JButton answer2;
+    private JButton answer3;
+    private JButton answer4;
 
 
     private void getUserName() {
@@ -80,27 +95,42 @@ public class GuiClass extends JFrame {
         startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void getCategories(){
+    public void chooseCategory(){
         categoriesFrame.add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);
 
         categoriesButtonPanel.setLayout(new BoxLayout(categoriesButtonPanel, BoxLayout.Y_AXIS));
 
-        categoriesButtonPanel.add(categoryButton1);
-        categoryButton1.setAlignmentX(Component.CENTER_ALIGNMENT);
-        categoriesButtonPanel.add(categoryButton2);
-        categoryButton2.setAlignmentX(Component.CENTER_ALIGNMENT);
-        categoriesButtonPanel.add(categoryButton3);
-        categoryButton3.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+        categoriesButtonPanel.add(randomCats.get(0).getCategoryButton());
+        randomCats.get(0).getCategoryButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+        categoriesButtonPanel.add(randomCats.get(1).getCategoryButton());
+        randomCats.get(1).getCategoryButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+        categoriesButtonPanel.add(randomCats.get(2).getCategoryButton());
+        randomCats.get(2).getCategoryButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+        ActionListener buttonClickListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JButton clickedButton = (JButton) e.getSource();
+                chosenCategory = (Category) clickedButton.getClientProperty("chosenCategory");
+            }
+        };
         categoriesFrame.setSize(300, 500);
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setVisible(true);
+
     }
 
     public void getQuizWindow(){
+        int random = (int) (Math.random() * chosenCategory.allQuestions.size());
+        currentQuestionWithAnswers = chosenCategory.allQuestions.get(random);
+        question = new JLabel(currentQuestionWithAnswers.getQuestion());
+        answer1 = currentQuestionWithAnswers.getCorrectAnswer();
+        answer2 = currentQuestionWithAnswers.getIncorrectAnswers().get(0);
+        answer3 = currentQuestionWithAnswers.getIncorrectAnswers().get(1);
+        answer4 = currentQuestionWithAnswers.getIncorrectAnswers().get(2);
+
         quizFrame.add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
         quizPanel.add(questionNumber, BorderLayout.NORTH);
@@ -133,9 +163,9 @@ public class GuiClass extends JFrame {
     private void checkAnswer() {
         ActionListener answerListener = e -> {
             JButton clickedButton = (JButton) e.getSource();
-            if (clickedButton.getText().equals(correctAnswer)) {
+            if (clickedButton == currentQuestionWithAnswers.getCorrectAnswer()) {
                 clickedButton.setBackground(Color.GREEN);
-                result.setText("Du svarde rätt!");
+                result.setText("Du svarade rätt!");
 
             } else {
                 clickedButton.setBackground(Color.RED);
@@ -153,7 +183,23 @@ public class GuiClass extends JFrame {
         answer3.addActionListener(answerListener);
         answer4.addActionListener(answerListener);
     }
-
+    public ArrayList<Category> showCategoryOptions () {
+        int randomInt1 = (int) (Math.random() * categories.size());
+        int randomInt2 = (int) (Math.random() * categories.size());
+        while (randomInt1 == randomInt2) {
+            randomInt2 = (int) (Math.random() * categories.size());
+        }
+        int randomInt3 = (int) (Math.random() * categories.size());
+        while (randomInt3 == randomInt1 || randomInt3 == randomInt2) {
+            randomInt3 = (int) (Math.random() * categories.size());
+        }
+        Category cat1 = categories.get(randomInt1);
+        Category cat2 = categories.get(randomInt2);
+        Category cat3 = categories.get(randomInt3);
+        ArrayList<Category> cats = new ArrayList<>();
+        cats.add(cat1);cats.add(cat2);cats.add(cat3);
+        return cats;
+    }
     public GuiClass(){
        /* getUserName();
         getStartWindow();
