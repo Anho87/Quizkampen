@@ -135,32 +135,59 @@ public class GuiClass extends JFrame {
         JMenu changeColorMenu = new JMenu("Change color");
         JMenu quitMenu = new JMenu("Quit");
 
-        JMenuItem redItem = new JMenuItem("Red");
-        JMenuItem greenItem = new JMenuItem("Green");
-        JMenuItem blueItem = new JMenuItem("Blue");
+        JMenuItem changeBodyColorItem = new JMenuItem("Change body color");
+        JMenuItem changeTextColorItem = new JMenuItem("Change text color");
 
-        changeColorMenu.add(redItem);
-        changeColorMenu.add(greenItem);
-        changeColorMenu.add(blueItem);
+        changeColorMenu.add(changeBodyColorItem);
+        changeColorMenu.add(changeTextColorItem);
 
-        redItem.addActionListener(new ActionListener() {
+        JMenuItem closeChatItem = new JMenuItem("Close");
+        JMenuItem openChatItem = new JMenuItem("Open");
+
+        chatMenu.add(closeChatItem);
+        chatMenu.add(openChatItem);
+
+        JMenuItem exitGameItem = new JMenuItem("Exit Game");
+
+        quitMenu.add(exitGameItem);
+
+        changeBodyColorItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quizPanel.setBackground(Color.RED);
+                JColorChooser colorChooser = new JColorChooser();
+                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
+
+                questionAndResultPanel.setBackground(color);
+                //answerPanel.setBackground(color);
+                quizPanel.setBackground(color);
+
+
             }
         });
 
-        greenItem.addActionListener(new ActionListener() {
+        changeTextColorItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quizPanel.setBackground(Color.GREEN);
+                JColorChooser colorChooser = new JColorChooser();
+                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
+                question.setForeground(color);
+                answer1.setForeground(color);
+                answer2.setForeground(color);
+                answer3.setForeground(color);
+                answer4.setForeground(color);
+                questionNumber.setForeground(color);
+                questionAndResultPanel.setForeground(color);
+                result.setForeground(color);
+
+
             }
         });
 
-        blueItem.addActionListener(new ActionListener() {
+        exitGameItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quizPanel.setBackground(Color.BLUE);
+                getStartWindow();
+                quizFrame.dispose();
             }
         });
 
@@ -207,7 +234,7 @@ public class GuiClass extends JFrame {
     public static void main(String[] args) {
         GuiClass g = new GuiClass();
         g.getUserName();
-       g.getStartWindow();
-       // g.getQuizWindow();
+       //g.getStartWindow();
+        g.getQuizWindow();
     }
 }
