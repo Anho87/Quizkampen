@@ -136,10 +136,23 @@ public class GuiClass extends JFrame {
         JMenu changeColorMenu = new JMenu("Change color");
         JMenu quitMenu = new JMenu("Quit");
 
-        JMenuItem changeColorItem = new JMenuItem("Change color");
+        JMenuItem changeBodyColorItem = new JMenuItem("Change body color");
+        JMenuItem changeTextColorItem = new JMenuItem("Change text color");
 
-        changeColorMenu.add(changeColorItem);
-        changeColorItem.addActionListener(new ActionListener() {
+        changeColorMenu.add(changeBodyColorItem);
+        changeColorMenu.add(changeTextColorItem);
+
+        JMenuItem closeChatItem = new JMenuItem("Close");
+        JMenuItem openChatItem = new JMenuItem("Open");
+
+        chatMenu.add(closeChatItem);
+        chatMenu.add(openChatItem);
+
+        JMenuItem exitGameItem = new JMenuItem("Exit Game");
+
+        quitMenu.add(exitGameItem);
+
+        changeBodyColorItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JColorChooser colorChooser = new JColorChooser();
@@ -153,7 +166,31 @@ public class GuiClass extends JFrame {
             }
         });
 
+        changeTextColorItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JColorChooser colorChooser = new JColorChooser();
+                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
+                question.setForeground(color);
+                answer1.setForeground(color);
+                answer2.setForeground(color);
+                answer3.setForeground(color);
+                answer4.setForeground(color);
+                questionNumber.setForeground(color);
+                questionAndResultPanel.setForeground(color);
+                result.setForeground(color);
 
+
+            }
+        });
+
+        exitGameItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getStartWindow();
+                quizFrame.dispose();
+            }
+        });
 
         menuBar.add(chatMenu);
         menuBar.add(changeColorMenu);
@@ -197,7 +234,7 @@ public class GuiClass extends JFrame {
     }
     public static void main(String[] args) {
         GuiClass g = new GuiClass();
-        //g.getUserName();
+        g.getUserName();
        //g.getStartWindow();
         g.getQuizWindow();
     }
