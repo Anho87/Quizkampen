@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GuiClass extends JFrame {
@@ -62,8 +63,8 @@ public class GuiClass extends JFrame {
         gameMenuButtonPanel.add(randomPlayerButton);
         gameMenuButtonPanel.add(playAgainstAFriendButton);
 
-        gameMenuFrame.setLocationRelativeTo(null);
         gameMenuFrame.setSize(300, 500);
+        gameMenuFrame.setLocationRelativeTo(null);
         gameMenuFrame.setVisible(true);
         gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -72,9 +73,11 @@ public class GuiClass extends JFrame {
         startFrame.add(startPanel);
         startPanel.add(startButtonPanel, BorderLayout.SOUTH);
         startButtonPanel.add(newGameButton);
+        GuiClass g = this;
+        newGameButton.addActionListener(new GameActionListener(newGameButton,g,startFrame));
 
-        startFrame.setLocationRelativeTo(null);
         startFrame.setSize(300, 500);
+        startFrame.setLocationRelativeTo(null);
         startFrame.setVisible(true);
         startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -124,8 +127,49 @@ public class GuiClass extends JFrame {
 
         checkAnswer();
 
-        quizFrame.setLocationRelativeTo(null);
         quizFrame.setSize(300, 500);
+        quizFrame.setLocationRelativeTo(null);
+
+        JMenuBar menuBar = new JMenuBar();
+        JMenu chatMenu = new JMenu("Chat");
+        JMenu changeColorMenu = new JMenu("Change color");
+        JMenu quitMenu = new JMenu("Quit");
+
+        JMenuItem redItem = new JMenuItem("Red");
+        JMenuItem greenItem = new JMenuItem("Green");
+        JMenuItem blueItem = new JMenuItem("Blue");
+
+        changeColorMenu.add(redItem);
+        changeColorMenu.add(greenItem);
+        changeColorMenu.add(blueItem);
+
+        redItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quizPanel.setBackground(Color.RED);
+            }
+        });
+
+        greenItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quizPanel.setBackground(Color.GREEN);
+            }
+        });
+
+        blueItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quizPanel.setBackground(Color.BLUE);
+            }
+        });
+
+        menuBar.add(chatMenu);
+        menuBar.add(changeColorMenu);
+        menuBar.add(quitMenu);
+
+        quizFrame.setJMenuBar(menuBar);
+
         quizFrame.setVisible(true);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -154,10 +198,16 @@ public class GuiClass extends JFrame {
     }
 
     public GuiClass(){
-       /* getUserName();
-        getStartWindow();
-        getGameMenu();
-        getCategories();*/
-        getQuizWindow();
+//        getUserName();
+  //     getStartWindow();
+        //getQuizWindow();
+        //getGameMenu();
+        //getCategories();
+    }
+    public static void main(String[] args) {
+        GuiClass g = new GuiClass();
+        g.getUserName();
+       g.getStartWindow();
+       // g.getQuizWindow();
     }
 }
