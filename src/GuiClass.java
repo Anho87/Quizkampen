@@ -136,34 +136,24 @@ public class GuiClass extends JFrame {
         JMenu changeColorMenu = new JMenu("Change color");
         JMenu quitMenu = new JMenu("Quit");
 
-        JMenuItem redItem = new JMenuItem("Red");
-        JMenuItem greenItem = new JMenuItem("Green");
-        JMenuItem blueItem = new JMenuItem("Blue");
+        JMenuItem changeColorItem = new JMenuItem("Change color");
 
-        changeColorMenu.add(redItem);
-        changeColorMenu.add(greenItem);
-        changeColorMenu.add(blueItem);
-
-        redItem.addActionListener(new ActionListener() {
+        changeColorMenu.add(changeColorItem);
+        changeColorItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quizPanel.setBackground(Color.RED);
+                JColorChooser colorChooser = new JColorChooser();
+                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
+
+                questionAndResultPanel.setBackground(color);
+                //answerPanel.setBackground(color);
+                quizPanel.setBackground(color);
+
+
             }
         });
 
-        greenItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                quizPanel.setBackground(Color.GREEN);
-            }
-        });
 
-        blueItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                quizPanel.setBackground(Color.BLUE);
-            }
-        });
 
         menuBar.add(chatMenu);
         menuBar.add(changeColorMenu);
@@ -207,8 +197,8 @@ public class GuiClass extends JFrame {
     }
     public static void main(String[] args) {
         GuiClass g = new GuiClass();
-        g.getUserName();
-       g.getStartWindow();
-       // g.getQuizWindow();
+        //g.getUserName();
+       //g.getStartWindow();
+        g.getQuizWindow();
     }
 }
