@@ -4,19 +4,21 @@ import java.awt.event.ActionListener;
 
 public class GameActionListener implements ActionListener {
 
-    private JButton enterNameButton;
-    public GameActionListener(JButton enterNameButton){
-        this.enterNameButton = enterNameButton;
+    private JButton newGameButton;
+    private GuiClass player;
+    private JFrame startFrame;
+
+    public GameActionListener(JButton newGameButton, GuiClass player, JFrame startFrame) {
+        this.newGameButton = newGameButton;
+        this.player = player;
+        this.startFrame = startFrame;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == enterNameButton){
-            System.out.println("Enter Name Button Has been pressed!");
-            //Set Name in GuiKlass
-            //Open Menu
-
+        if (e.getSource() == newGameButton) {
+            player.getGameMenu();
+            startFrame.dispose();
         }
-
     }
 }
