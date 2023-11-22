@@ -17,14 +17,15 @@ public class Protocol {
     QuestionWithAnswers questionWithAnswers;
     List<QuestionWithAnswers> questionWithAnswersList = new ArrayList<>();
     
+    
 
-    public String askQuestion(String answerFromClient) {
+    public Object askQuestion(String answerFromClient) {
         if(state == WAITING){
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(answerFromClient);
             if (numberOfPlayers == 2){
-                numberOfPlayers = 0;
-                return "BothPlayersFinishedAnsweringQuestions";
+                //numberOfPlayers = 0;
+                return stringBuilder;
             }
         }
         if (state == ASKQUESTION) {
@@ -33,7 +34,7 @@ public class Protocol {
         } else if (state == CHECKANSWER) {
             if (answerFromClient.equalsIgnoreCase(game.category_sport.allQuestions.get(questionCounter).getCorrectAnswer())) {
                 if(questionCounter == game.category_sport.allQuestions.size()){
-                    state = INITIAL;
+                    state = WAITING;
                     return "Correct";
                 }else{
                     state = ASKQUESTION;
@@ -41,7 +42,7 @@ public class Protocol {
                     return "Correct";
                 }
             } else {
-                if(questionCounter == game.category_sport.allQuestions.size() - 1 ){
+                if(questionCounter == game.category_sport.allQuestions.size()){
                     state = WAITING;
                     numberOfPlayers++;
                     return "Wrong";

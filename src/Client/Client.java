@@ -4,10 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -15,32 +12,35 @@ public class Client implements ActionListener {
     String ip = "127.0.0.1";
     int inPort = 44444;
     GuiClass guiClass;
-    PrintWriter out;
-    BufferedReader in;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
     private  JButton sourceButton = null;
     Color originalButtonColor;
     int questionsAnwered = 0;
     int score = 0;
     Client(){
+        setup();
         try {
             Socket socket = new Socket(ip, inPort);
-            out = new PrintWriter(socket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            
-            String serverOutPut;
+            out = new ObjectOutputStream(socket.getOutputStream());
+            in = new ObjectInputStream(socket.getInputStream());
+
+            Object serverOutPut;
+            String serverOutPutToString;
             String[] questionsAndAnswerArray;
-            setup();
-            while((serverOutPut = in.readLine()) != null){
+
+            while ((serverOutPut = in.readObject()) != null) {
+                serverOutPutToString = (String) serverOutPut;
                 if (questionsAnwered == 5){
-                    out.println(guiClass.getName() + score);
+                    out.writeObject(guiClass.getName() + score);
                 }
-                if(serverOutPut.equalsIgnoreCase("BothPlayersFinishedAnsweringQuestions")){
+                if(serverOutPut instanceof StringBuilder){
                     JOptionPane.showMessageDialog(null,serverOutPut);
                 }
-                if(serverOutPut.equalsIgnoreCase("Correct")){
+                if(serverOutPutToString.equalsIgnoreCase("Correct")){
                     score++;
                     sourceButton.setBackground(Color.GREEN);
-                } else if (serverOutPut.equalsIgnoreCase("Wrong")) {
+                } else if (serverOutPutToString.equalsIgnoreCase("Wrong")) {
                     sourceButton.setBackground(Color.RED);
                 } else {
                     questionsAnwered++;
@@ -48,7 +48,7 @@ public class Client implements ActionListener {
                     guiClass.answer2.setBackground(originalButtonColor);
                     guiClass.answer3.setBackground(originalButtonColor);
                     guiClass.answer4.setBackground(originalButtonColor);
-                    questionsAndAnswerArray =  serverOutPut.split(":");
+                    questionsAndAnswerArray =  serverOutPutToString.split(":");
                     guiClass.setQuestion(questionsAndAnswerArray[0]);
                     guiClass.setAnswer1(questionsAndAnswerArray[1]);
                     guiClass.setAnswer2(questionsAndAnswerArray[2]);
@@ -61,6 +61,8 @@ public class Client implements ActionListener {
             e.printStackTrace();
         } catch(IOException e){
             e.printStackTrace();
+        }catch(ClassNotFoundException e){
+            throw new RuntimeException(e);
         }
     }
 
@@ -80,21 +82,25 @@ public class Client implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == guiClass.answer1){
-            sourceButton = guiClass.answer1;
-            out.println(guiClass.answer1.getText());
-        }else if(e.getSource() == guiClass.answer2){
-            sourceButton = guiClass.answer2;
-            out.println(guiClass.answer2.getText());
-        }else if(e.getSource() == guiClass.answer3){
-            sourceButton = guiClass.answer3;
-            out.println(guiClass.answer3.getText());
-        }else if(e.getSource() == guiClass.answer4){
-            sourceButton = guiClass.answer4;
-            out.println(guiClass.answer4.getText());
-        } else if (e.getSource()== guiClass.newGameButton) {
-            guiClass.getQuizWindow();
-            guiClass.startFrame.dispose();
+        try{
+            if(e.getSource() == guiClass.answer1){
+                sourceButton = guiClass.answer1;
+                out.writeObject(guiClass.answer1.getText());
+            }else if(e.getSource() == guiClass.answer2){
+                sourceButton = guiClass.answer2;
+                out.writeObject(guiClass.answer2.getText());
+            }else if(e.getSource() == guiClass.answer3){
+                sourceButton = guiClass.answer3;
+                out.writeObject(guiClass.answer3.getText());
+            }else if(e.getSource() == guiClass.answer4){
+                sourceButton = guiClass.answer4;
+                out.writeObject(guiClass.answer4.getText());
+            } else if (e.getSource()== guiClass.newGameButton) {
+                guiClass.getQuizWindow();
+                guiClass.startFrame.dispose();
+            }
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
 

@@ -1,9 +1,7 @@
 package Server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import javax.print.DocFlavor;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -19,16 +17,21 @@ public class Server extends Thread{
     }
     public void run(){
 
-        try (PrintWriter out = new PrintWriter(socket.getOutputStream(), true); 
-             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));){
+        try (
+                ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+                ObjectInputStream in = new ObjectInputStream(socket.getInputStream())
+        ){
             
             multiWriter.addWriter(out);
-            String protocolOutPut = "";
-            String inputFromUser;
+            Object protocolOutPut;
+            Object inputFromUser;
 
-            while((inputFromUser = in.readLine()) != null){
-                protocolOutPut = protocol.askQuestion(inputFromUser);
-                out.println(protocolOutPut);
+            while((inputFromUser = in.readObject()) != null){
+                protocolOutPut = protocol.askQuestion((String) inputFromUser);
+                if(protocolOutPut instanceof StringBuilder){
+                    multiWriter.print(protocolOutPut);
+                }
+                out.writeObject(protocolOutPut);
             }
         }
         catch (Exception e){

@@ -7,10 +7,10 @@ import java.net.Socket;
 public class ServerListener {
 
     private static MultiWriter multiWriter = new MultiWriter();
-    private int port = 44444;
+    private static int port = 44444;
 
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(44444);) {
+        try (ServerSocket serverSocket = new ServerSocket(port);) {
             while (true) {
                 final Socket socketToClient = serverSocket.accept();
                 Server server = new Server(socketToClient, multiWriter);

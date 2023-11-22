@@ -52,10 +52,10 @@ public class GuiClass extends JFrame {
         }
         updateFrameTitles();
     }
-
     private void updateFrameTitles() {
         startFrame.setTitle("Quizkampen - " + userName);
         gameMenuFrame.setTitle("Spelmeny - " + userName);
+        quizFrame.setTitle("Quizkampen - " + userName);
         categoriesFrame.setTitle("Kategorier - " + userName);
     }
 
@@ -105,7 +105,6 @@ public class GuiClass extends JFrame {
     }*/
 
     public void getQuizWindow() {
-        setTitle("Quizkampen - " + userName);
         quizFrame.add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
         quizPanel.add(questionNumber, BorderLayout.NORTH);
