@@ -1,3 +1,5 @@
+package Client;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,41 +9,40 @@ public class GuiClass extends JFrame {
 
     String userName;
 
-    private JFrame startFrame = new JFrame("Quizkampen - " + userName);
-    private JPanel startPanel = new JPanel(new BorderLayout());
-    private JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));
-    private JButton newGameButton = new JButton("Starta nytt spel");
+    protected JFrame startFrame = new JFrame("Quizkampen - " + userName);
+    protected JPanel startPanel = new JPanel(new BorderLayout());
+    protected JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));
+    protected JButton newGameButton = new JButton("Starta nytt spel");
 
 
-    private JFrame gameMenuFrame = new JFrame("Spelmeny - " + userName);
-    private JPanel gameMenuPanel = new JPanel(new BorderLayout());
-    private JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));
-    private JButton randomPlayerButton = new JButton("Slumpa spelare");
-    private JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
+    protected JFrame gameMenuFrame = new JFrame("Spelmeny - " + userName);
+    protected JPanel gameMenuPanel = new JPanel(new BorderLayout());
+    protected JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));
+    protected JButton randomPlayerButton = new JButton("Slumpa spelare");
+    protected JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
 
 
-    private JFrame categoriesFrame = new JFrame("Kategorier - " + userName);
-    private JPanel categoriesPanel = new JPanel(new BorderLayout());
-    private JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
-    private JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
-    private JButton categoryButton1 = new JButton("Kategori 1");
-    private JButton categoryButton2 = new JButton("Kategori 2");
-    private JButton categoryButton3 = new JButton("Kategori 3");
+    protected JFrame categoriesFrame = new JFrame("Kategorier - " + userName);
+    protected JPanel categoriesPanel = new JPanel(new BorderLayout());
+    protected JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
+    protected JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
+    protected JButton categoryButton1 = new JButton("Kategori 1");
+    protected JButton categoryButton2 = new JButton("Kategori 2");
+    protected JButton categoryButton3 = new JButton("Kategori 3");
 
 
-    private JFrame quizFrame = new JFrame("Quiz - " + userName);
-    private JPanel quizPanel = new JPanel();
+    protected JFrame quizFrame = new JFrame("Quiz - " + userName);
+    protected JPanel quizPanel = new JPanel();
     JPanel questionAndResultPanel = new JPanel();
-    private int questionNr;
-    private String correctAnswer = "Terminator";
-    private JLabel questionNumber = new JLabel("Fråga " + questionNr);
-    private JLabel question = new JLabel("I vilken film yttras orden 'I'll be back'?");
-    private JLabel result = new JLabel();
-    private JPanel answerPanel = new JPanel();
-    private JButton answer1 = new JButton("Terminator");
-    private JButton answer2 = new JButton("När Harry mötte Sally");
-    private JButton answer3 = new JButton("Hitta Nemo");
-    private JButton answer4 = new JButton("Gladiator");
+    protected int questionNr;
+    protected JLabel questionNumber = new JLabel("Fråga " + questionNr);
+    protected JLabel question = new JLabel();
+    protected JLabel result = new JLabel();
+    protected JPanel answerPanel = new JPanel();
+    protected JButton answer1 = new JButton();
+    protected JButton answer2 = new JButton();
+    protected JButton answer3 = new JButton();
+    protected JButton answer4 = new JButton();
 
 
     private void getUserName() {
@@ -51,6 +52,7 @@ public class GuiClass extends JFrame {
         }
         updateFrameTitles();
     }
+
     private void updateFrameTitles() {
         startFrame.setTitle("Quizkampen - " + userName);
         gameMenuFrame.setTitle("Spelmeny - " + userName);
@@ -69,12 +71,12 @@ public class GuiClass extends JFrame {
         gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void getStartWindow(){
+    public void getStartWindow() {
         startFrame.add(startPanel);
         startPanel.add(startButtonPanel, BorderLayout.SOUTH);
         startButtonPanel.add(newGameButton);
         GuiClass g = this;
-        newGameButton.addActionListener(new GameActionListener(newGameButton,g,startFrame));
+        //newGameButton.addActionListener(new GameActionListener(newGameButton, g, startFrame));
 
         startFrame.setSize(300, 500);
         startFrame.setLocationRelativeTo(null);
@@ -82,7 +84,7 @@ public class GuiClass extends JFrame {
         startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void getCategories(){
+   /* public void getCategories() {
         categoriesFrame.add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);
@@ -100,9 +102,10 @@ public class GuiClass extends JFrame {
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setVisible(true);
-    }
+    }*/
 
-    public void getQuizWindow(){
+    public void getQuizWindow() {
+        setTitle("Quizkampen - " + userName);
         quizFrame.add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
         quizPanel.add(questionNumber, BorderLayout.NORTH);
@@ -125,7 +128,7 @@ public class GuiClass extends JFrame {
         answerPanel.add(answer3);
         answerPanel.add(answer4);
 
-        checkAnswer();
+        //checkAnswer();
 
         quizFrame.setSize(300, 500);
         quizFrame.setLocationRelativeTo(null);
@@ -173,7 +176,7 @@ public class GuiClass extends JFrame {
         quizFrame.setVisible(true);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    private void checkAnswer() {
+  /*  private void checkAnswer() {
         ActionListener answerListener = e -> {
             JButton clickedButton = (JButton) e.getSource();
             if (clickedButton.getText().equals(correctAnswer)) {
@@ -195,19 +198,40 @@ public class GuiClass extends JFrame {
         answer2.addActionListener(answerListener);
         answer3.addActionListener(answerListener);
         answer4.addActionListener(answerListener);
-    }
+    }*/
 
-    public GuiClass(){
-//        getUserName();
-  //     getStartWindow();
-        //getQuizWindow();
-        //getGameMenu();
+    public GuiClass() {
+        getUserName();
+        getStartWindow();
+       // getQuizWindow();
+        // getGameMenu();
         //getCategories();
     }
+
+    public void setQuestion(String question) {
+        this.question.setText(question);
+    }
+
+    public void setAnswer1(String answer) {
+        this.answer1.setText(answer);
+    }
+
+    public void setAnswer2(String answer) {
+        this.answer2.setText(answer);
+    }
+
+    public void setAnswer3(String answer) {
+        this.answer3.setText(answer);
+    }
+
+    public void setAnswer4(String answer) {
+        this.answer4.setText(answer);
+    }
+
     public static void main(String[] args) {
         GuiClass g = new GuiClass();
-        g.getUserName();
-       g.getStartWindow();
-       // g.getQuizWindow();
+        // g.getUserName();
+        //g.getStartWindow();
+        // g.getQuizWindow();
     }
 }

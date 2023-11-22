@@ -1,3 +1,5 @@
+package Server;
+
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
@@ -16,7 +18,7 @@ public class Game {
     Category category_sport = new Category("Sport");
     ArrayList<Category> categories = new ArrayList<>();
 
-    public Game() throws IOException {
+    public Game() {
         categories.add(category_kroppknopp);
         categories.add(category_djurnatur);
         categories.add(category_film);
@@ -26,25 +28,19 @@ public class Game {
         addQuestionsToCategory(category_djurnatur, pathToCategory_djurnatur);
         addQuestionsToCategory(category_film, pathToCategory_film);
         addQuestionsToCategory(category_sport, pathToCategory_sport);
-
-        //test
-        System.out.println(category_djurnatur.allQuestions.get(0).getQuestion());
-        System.out.println(category_djurnatur.allQuestions.get(0).getCorrectAnswer());
-        System.out.println(category_film.allQuestions.get(0).getIncorrectAnswers());
-        System.out.println(category_sport.allQuestions.get(0).getIncorrectAnswers());
-
-
     }
 
-    public void addQuestionsToCategory (Category category, Path path) throws IOException {
-        Scanner scan = new Scanner(path);
-        while (scan.hasNextLine()) {
-            String q = scan.nextLine();
-            String an = scan.nextLine();
-            String[] a = an.split(":");
-            category.allQuestions.add(new QuestionWithAnswers(q, a[0], a[1], a[2], a[3]));
+    public void addQuestionsToCategory (Category category, Path path)  {
+        try(Scanner scan = new Scanner(path);){
+            while (scan.hasNextLine()) {
+                String q = scan.nextLine();
+                String an = scan.nextLine();
+                String[] a = an.split(":");
+                category.allQuestions.add(new QuestionWithAnswers(q, a[0], a[1], a[2], a[3]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
     }
     public void showCategoryOptions () {
         int randomInt1 = (int) (Math.random() * categories.size());
@@ -60,6 +56,7 @@ public class Game {
         Category cat2 = categories.get(randomInt2);
         Category cat3 = categories.get(randomInt3);
     }
+  
 
     public static void main(String[] args) throws IOException {
         Game g = new Game();
