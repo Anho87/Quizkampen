@@ -2,13 +2,9 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-
-
     Path pathToCategory_kroppknopp = FileSystems.getDefault().getPath("src", "kropp&knopp.txt");
     Path pathToCategory_djurnatur = FileSystems.getDefault().getPath("src", "djur&natur.txt");
     Path pathToCategory_film = FileSystems.getDefault().getPath("src", "movieQuestions.txt");
@@ -21,21 +17,21 @@ public class Game {
     ArrayList<Category> categories = new ArrayList<>();
 
     public Game() throws IOException {
-        categories.add(new Category("Kropp & knopp"));
-        categories.add(new Category("Djur & natur"));
-        categories.add(new Category("Film"));
-        categories.add(new Category("Sport"));
+        categories.add(category_kroppknopp);
+        categories.add(category_djurnatur);
+        categories.add(category_film);
+        categories.add(category_sport);
 
-        addQuestionsToCategory(categories.get(0), pathToCategory_kroppknopp);
-        addQuestionsToCategory(categories.get(1), pathToCategory_djurnatur);
-        addQuestionsToCategory(categories.get(2), pathToCategory_film);
-        addQuestionsToCategory(categories.get(3), pathToCategory_sport);
+        addQuestionsToCategory(category_kroppknopp, pathToCategory_kroppknopp);
+        addQuestionsToCategory(category_djurnatur, pathToCategory_djurnatur);
+        addQuestionsToCategory(category_film, pathToCategory_film);
+        addQuestionsToCategory(category_sport, pathToCategory_sport);
 
         //test
-       /* System.out.println(category_djurnatur.allQuestions.get(0).getQuestion());
+        System.out.println(category_djurnatur.allQuestions.get(0).getQuestion());
         System.out.println(category_djurnatur.allQuestions.get(0).getCorrectAnswer());
         System.out.println(category_film.allQuestions.get(0).getIncorrectAnswers());
-        System.out.println(category_sport.allQuestions.get(0).getIncorrectAnswers());*/
+        System.out.println(category_sport.allQuestions.get(0).getIncorrectAnswers());
 
 
     }
@@ -64,29 +60,8 @@ public class Game {
         Category cat2 = categories.get(randomInt2);
         Category cat3 = categories.get(randomInt3);
     }
-    public List<Category> getRandomCategories() {
-        Collections.shuffle(categories);
-        return categories.subList(0, Math.min(categories.size(), 3));
-    }
 
     public static void main(String[] args) throws IOException {
-        try {
-            Game game = new Game();
-
-            // Testa att få slumpmässiga kategorier
-            List<Category> randomCategories = game.getRandomCategories();
-            System.out.println("Slumpade kategorier:");
-            for (Category cat : randomCategories) {
-                System.out.println(cat.getName());
-                // Testa att skriva ut några frågor för varje kategori om sådana finns
-            }
-
-            // Ytterligare tester kan läggas till här...
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Game g = new Game();
     }
 }
-
-
