@@ -2,10 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.Scanner;
 
 public class GuiClass extends JFrame {
 
@@ -14,6 +16,8 @@ public class GuiClass extends JFrame {
     ArrayList<Category> categories = new ArrayList<>();
     Path pathToCategory_kroppknopp = FileSystems.getDefault().getPath("src", "kropp&knopp.txt");
     Path pathToCategory_djurnatur = FileSystems.getDefault().getPath("src", "djur&natur.txt");
+    Path pathToCategory_film = FileSystems.getDefault().getPath("src", "film.txt");
+    Path pathToCategory_sport = FileSystems.getDefault().getPath("src", "sport.txt");
     Category category_kroppknopp = new Category("Kropp & knopp");
     Category category_djurnatur = new Category("Djur & natur");
     Category category_film = new Category("Film");
@@ -200,7 +204,26 @@ public class GuiClass extends JFrame {
         cats.add(cat1);cats.add(cat2);cats.add(cat3);
         return cats;
     }
-    public GuiClass(){
+    public void addQuestionsToCategory (Category category, Path path) throws IOException {
+        Scanner scan = new Scanner(path);
+        while (scan.hasNextLine()) {
+            String q = scan.nextLine();
+            String an = scan.nextLine();
+            String[] a = an.split(":");
+            category.allQuestions.add(new QuestionWithAnswers(q, a[0], a[1], a[2], a[3]));
+        }
+
+    }
+    public GuiClass() throws IOException {
+        categories.add(category_djurnatur);
+        categories.add(category_film);
+        categories.add(category_kroppknopp);
+        categories.add(category_sport);
+        addQuestionsToCategory(category_djurnatur, pathToCategory_djurnatur);
+        addQuestionsToCategory(category_film, pathToCategory_film);
+        addQuestionsToCategory(category_kroppknopp, pathToCategory_kroppknopp);
+        addQuestionsToCategory(category_sport, pathToCategory_sport);
+
        /* getUserName();
         getStartWindow();
         getGameMenu();

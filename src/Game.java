@@ -15,8 +15,7 @@ public class Game {
         categories.add(category_kroppknopp);
         categories.add(category_djurnatur);
 
-        addQuestionsToCategory(category_kroppknopp, pathToCategory_kroppknopp);
-        addQuestionsToCategory(category_djurnatur, pathToCategory_djurnatur);
+
 
         //test
         System.out.println(category_djurnatur.allQuestions.get(0).getQuestion());
@@ -24,34 +23,5 @@ public class Game {
         System.out.println(category_djurnatur.allQuestions.get(0).getIncorrectAnswers());
 
 
-    }
-
-    public void addQuestionsToCategory (Category category, Path path) throws IOException {
-        Scanner scan = new Scanner(path);
-        while (scan.hasNextLine()) {
-            String q = scan.nextLine();
-            String an = scan.nextLine();
-            String[] a = an.split(":");
-            category.allQuestions.add(new QuestionWithAnswers(q, a[0], a[1], a[2], a[3]));
-        }
-
-    }
-    public void showCategoryOptions () {
-        int randomInt1 = (int) (Math.random() * categories.size());
-        int randomInt2 = (int) (Math.random() * categories.size());
-        while (randomInt1 == randomInt2) {
-            randomInt2 = (int) (Math.random() * categories.size());
-        }
-        int randomInt3 = (int) (Math.random() * categories.size());
-        while (randomInt3 == randomInt1 || randomInt3 == randomInt2) {
-            randomInt3 = (int) (Math.random() * categories.size());
-        }
-        Category cat1 = categories.get(randomInt1);
-        Category cat2 = categories.get(randomInt2);
-        Category cat3 = categories.get(randomInt3);
-    }
-
-    public static void main(String[] args) throws IOException {
-        Game g = new Game();
     }
 }
