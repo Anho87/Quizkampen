@@ -18,10 +18,14 @@ public class GuiClass extends JFrame {
     Path pathToCategory_djurnatur = FileSystems.getDefault().getPath("src", "djur&natur.txt");
     Path pathToCategory_film = FileSystems.getDefault().getPath("src", "film.txt");
     Path pathToCategory_sport = FileSystems.getDefault().getPath("src", "sport.txt");
+    Path pathToCategory_ilabbet = FileSystems.getDefault().getPath("src", "ilabbet.txt");
+    Path pathToCategory_bockerord = FileSystems.getDefault().getPath("src", "bocker&ord.txt");
     Category category_kroppknopp = new Category("Kropp & knopp");
     Category category_djurnatur = new Category("Djur & natur");
     Category category_film = new Category("Film");
     Category category_sport = new Category("Sport");
+    Category category_ilabbet = new Category("I labbet");
+    Category category_bockerord = new Category("Böcker & ord");
     Category chosenCategory;
     QuestionWithAnswers currentQuestionWithAnswers;
 
@@ -219,15 +223,23 @@ public class GuiClass extends JFrame {
         categories.add(category_film);
         categories.add(category_kroppknopp);
         categories.add(category_sport);
+        categories.add(category_ilabbet);
+        categories.add(category_bockerord);
         addQuestionsToCategory(category_djurnatur, pathToCategory_djurnatur);
         addQuestionsToCategory(category_film, pathToCategory_film);
         addQuestionsToCategory(category_kroppknopp, pathToCategory_kroppknopp);
         addQuestionsToCategory(category_sport, pathToCategory_sport);
+        addQuestionsToCategory(category_ilabbet, pathToCategory_ilabbet);
+        addQuestionsToCategory(category_bockerord, pathToCategory_bockerord);
 
        /* getUserName();
         getStartWindow();
         getGameMenu();
         getCategories();*/
         getQuizWindow();
+    }
+
+    public static void main(String[] args) throws IOException {
+        GuiClass gc = new GuiClass();
     }
 }
