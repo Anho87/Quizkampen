@@ -1,82 +1,73 @@
-package Client;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class GuiClass extends JFrame {
 
-    String userName;
+    private String userName;
+    private String opponentUserName;
 
-    protected JFrame startFrame = new JFrame("Quizkampen - " + userName);
-    protected JPanel startPanel = new JPanel(new BorderLayout());
-    protected JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));
-    protected JButton newGameButton = new JButton("Starta nytt spel");
-
-
-    protected JFrame gameMenuFrame = new JFrame("Spelmeny - " + userName);
-    protected JPanel gameMenuPanel = new JPanel(new BorderLayout());
-    protected JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));
-    protected JButton randomPlayerButton = new JButton("Slumpa spelare");
-    protected JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
+    private JFrame startFrame = new JFrame("Quizkampen - " + userName);
+    private JPanel startPanel = new JPanel(new BorderLayout());
+    private JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));
+    private JButton newGameButton = new JButton("Starta nytt spel");
 
 
-    protected JFrame categoriesFrame = new JFrame("Kategorier - " + userName);
-    protected JPanel categoriesPanel = new JPanel(new BorderLayout());
-    protected JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
-    protected JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
-    protected JButton categoryButton1 = new JButton("Kategori 1");
-    protected JButton categoryButton2 = new JButton("Kategori 2");
-    protected JButton categoryButton3 = new JButton("Kategori 3");
+    private JFrame gameMenuFrame = new JFrame("Spelmeny - " + userName);
+    private JPanel gameMenuPanel = new JPanel(new BorderLayout());
+    private JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));
+    private JButton randomPlayerButton = new JButton("Slumpa spelare");
+    private JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
 
 
-    protected JFrame quizFrame = new JFrame("Quiz - " + userName);
-    protected JPanel quizPanel = new JPanel();
+    private JFrame categoriesFrame = new JFrame("Kategorier - " + userName);
+    private JPanel categoriesPanel = new JPanel(new BorderLayout());
+    private JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
+    private JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
+    private JButton categoryButton1 = new JButton("Kategori 1");
+    private JButton categoryButton2 = new JButton("Kategori 2");
+    private JButton categoryButton3 = new JButton("Kategori 3");
+
+
+    private JFrame quizFrame = new JFrame("Quiz - " + userName);
+    private JPanel quizPanel = new JPanel();
     JPanel questionAndResultPanel = new JPanel();
-    protected int questionNr;
-    protected JLabel questionNumber = new JLabel("Fråga " + questionNr);
-    protected JLabel question = new JLabel();
-    protected JLabel result = new JLabel();
-    protected JPanel answerPanel = new JPanel();
-    protected JButton answer1 = new JButton();
-    protected JButton answer2 = new JButton();
-    protected JButton answer3 = new JButton();
-    protected JButton answer4 = new JButton();
+    private int questionNr;
+    private String correctAnswer = "Terminator";
+    private JLabel questionNumber = new JLabel("Fråga " + questionNr);
+    private JLabel question = new JLabel("I vilken film yttras orden 'I'll be back'?");
+    private JLabel result = new JLabel();
+    private JPanel answerPanel = new JPanel();
+    private JButton answer1 = new JButton("Terminator");
+    private JButton answer2 = new JButton("När Harry mötte Sally");
+    private JButton answer3 = new JButton("Hitta Nemo");
+    private JButton answer4 = new JButton("Gladiator");
+    private ArrayList<JButton> answerButtons = new ArrayList<>();
 
 
-    private void getUserName() {
+
+    public String setUserName() {
         userName = JOptionPane.showInputDialog(null, "Ange ditt användarnamn: ");
         if (userName == null || userName.trim().isEmpty()) {
             userName = "Okänd Användare";
         }
         updateFrameTitles();
+        return userName;
     }
     private void updateFrameTitles() {
         startFrame.setTitle("Quizkampen - " + userName);
         gameMenuFrame.setTitle("Spelmeny - " + userName);
-        quizFrame.setTitle("Quizkampen - " + userName);
         categoriesFrame.setTitle("Kategorier - " + userName);
     }
 
-    public void getGameMenu() {
-        gameMenuFrame.add(gameMenuPanel);
-        gameMenuPanel.add(gameMenuButtonPanel, BorderLayout.SOUTH);
-        gameMenuButtonPanel.add(randomPlayerButton);
-        gameMenuButtonPanel.add(playAgainstAFriendButton);
-
-        gameMenuFrame.setSize(300, 500);
-        gameMenuFrame.setLocationRelativeTo(null);
-        gameMenuFrame.setVisible(true);
-        gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    public void getStartWindow() {
+    public void getStartWindow(){
         startFrame.add(startPanel);
         startPanel.add(startButtonPanel, BorderLayout.SOUTH);
         startButtonPanel.add(newGameButton);
-        GuiClass g = this;
-        //newGameButton.addActionListener(new GameActionListener(newGameButton, g, startFrame));
+        newGameButton.addActionListener(e -> getGameMenu());
 
         startFrame.setSize(300, 500);
         startFrame.setLocationRelativeTo(null);
@@ -84,13 +75,29 @@ public class GuiClass extends JFrame {
         startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-   /* public void getCategories() {
+    public void getGameMenu() {
+        gameMenuFrame.add(gameMenuPanel);
+        gameMenuPanel.add(gameMenuButtonPanel, BorderLayout.SOUTH);
+        gameMenuButtonPanel.add(randomPlayerButton);
+        gameMenuButtonPanel.add(playAgainstAFriendButton);
+        playAgainstAFriendButton.addActionListener(e -> getCategories());
+
+        gameMenuFrame.setSize(300, 500);
+        gameMenuFrame.setLocationRelativeTo(null);
+        gameMenuFrame.setVisible(true);
+        gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public String getCategories(String cat1, String cat2, String cat3 ){
         categoriesFrame.add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);
 
         categoriesButtonPanel.setLayout(new BoxLayout(categoriesButtonPanel, BoxLayout.Y_AXIS));
 
+        categoryButton1.setText(cat1);
+        categoryButton2.setText(cat2);
+        categoryButton3.setText(cat3);
         categoriesButtonPanel.add(categoryButton1);
         categoryButton1.setAlignmentX(Component.CENTER_ALIGNMENT);
         categoriesButtonPanel.add(categoryButton2);
@@ -98,13 +105,21 @@ public class GuiClass extends JFrame {
         categoriesButtonPanel.add(categoryButton3);
         categoryButton3.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        AtomicReference<String> result = new AtomicReference<>("");
+
+        categoryButton1.addActionListener(e -> result.set(cat1));
+        categoryButton2.addActionListener(e -> result.set(cat2));
+        categoryButton3.addActionListener(e -> result.set(cat3));
+
         categoriesFrame.setSize(300, 500);
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setVisible(true);
-    }*/
+        return result.get();
+    }
 
-    public void getQuizWindow() {
+    public boolean getQuizWindow(String questionText, String correctAnswer, String [] inCorrectAnswers){
+        question.setText(questionText);
         quizFrame.add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
         quizPanel.add(questionNumber, BorderLayout.NORTH);
@@ -122,12 +137,20 @@ public class GuiClass extends JFrame {
         quizPanel.add(answerPanel, BorderLayout.SOUTH);
 
         answerPanel.setLayout(new GridLayout(2, 2, 10, 10));
-        answerPanel.add(answer1);
-        answerPanel.add(answer2);
-        answerPanel.add(answer3);
-        answerPanel.add(answer4);
+        answerButtons.add(answer1);answerButtons.add(answer2);answerButtons.add(answer3);answerButtons.add(answer4);
+        int randomInt1 = (int) Math.random() * 4;
 
-        //checkAnswer();
+        for (int i = 0; i < 4; i++) {
+            if (i == randomInt1) {
+                answerButtons.get(i).setText(correctAnswer);
+            }
+            else {
+                answerButtons.get(i).setText(inCorrectAnswers[i]);
+            }
+        }
+        for (JButton button : answerButtons) {
+            answerPanel.add(button);
+        }
 
         quizFrame.setSize(300, 500);
         quizFrame.setLocationRelativeTo(null);
@@ -137,32 +160,59 @@ public class GuiClass extends JFrame {
         JMenu changeColorMenu = new JMenu("Change color");
         JMenu quitMenu = new JMenu("Quit");
 
-        JMenuItem redItem = new JMenuItem("Red");
-        JMenuItem greenItem = new JMenuItem("Green");
-        JMenuItem blueItem = new JMenuItem("Blue");
+        JMenuItem changeBodyColorItem = new JMenuItem("Change body color");
+        JMenuItem changeTextColorItem = new JMenuItem("Change text color");
 
-        changeColorMenu.add(redItem);
-        changeColorMenu.add(greenItem);
-        changeColorMenu.add(blueItem);
+        changeColorMenu.add(changeBodyColorItem);
+        changeColorMenu.add(changeTextColorItem);
 
-        redItem.addActionListener(new ActionListener() {
+        JMenuItem closeChatItem = new JMenuItem("Close");
+        JMenuItem openChatItem = new JMenuItem("Open");
+
+        chatMenu.add(closeChatItem);
+        chatMenu.add(openChatItem);
+
+        JMenuItem exitGameItem = new JMenuItem("Exit Game");
+
+        quitMenu.add(exitGameItem);
+
+        changeBodyColorItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quizPanel.setBackground(Color.RED);
+                JColorChooser colorChooser = new JColorChooser();
+                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
+
+                questionAndResultPanel.setBackground(color);
+                //answerPanel.setBackground(color);
+                quizPanel.setBackground(color);
+
+
             }
         });
 
-        greenItem.addActionListener(new ActionListener() {
+        changeTextColorItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quizPanel.setBackground(Color.GREEN);
+                JColorChooser colorChooser = new JColorChooser();
+                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
+                question.setForeground(color);
+                answer1.setForeground(color);
+                answer2.setForeground(color);
+                answer3.setForeground(color);
+                answer4.setForeground(color);
+                questionNumber.setForeground(color);
+                questionAndResultPanel.setForeground(color);
+                result.setForeground(color);
+
+
             }
         });
 
-        blueItem.addActionListener(new ActionListener() {
+        exitGameItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                quizPanel.setBackground(Color.BLUE);
+                getStartWindow();
+                quizFrame.dispose();
             }
         });
 
@@ -174,19 +224,21 @@ public class GuiClass extends JFrame {
 
         quizFrame.setVisible(true);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        return checkAnswer(correctAnswer);
     }
-  /*  private void checkAnswer() {
+    private boolean checkAnswer(String theCorrectAnswer) {
         ActionListener answerListener = e -> {
             JButton clickedButton = (JButton) e.getSource();
-            if (clickedButton.getText().equals(correctAnswer)) {
+            if (clickedButton.getText().equals(theCorrectAnswer)) {
                 clickedButton.setBackground(Color.GREEN);
-                result.setText("Du svarde rätt!");
+                result.setText("Du svarade rätt!");
+                return true;
 
             } else {
                 clickedButton.setBackground(Color.RED);
                 result.setText("Du svarade fel.");
+                return false;
             }
-
             answer1.setEnabled(false);
             answer2.setEnabled(false);
             answer3.setEnabled(false);
@@ -197,40 +249,19 @@ public class GuiClass extends JFrame {
         answer2.addActionListener(answerListener);
         answer3.addActionListener(answerListener);
         answer4.addActionListener(answerListener);
-    }*/
-
-    public GuiClass() {
-        getUserName();
-        getStartWindow();
-       // getQuizWindow();
-        // getGameMenu();
-        //getCategories();
+    }
+    public void setOpponentUserName (String opponentUserName) {
+        this.opponentUserName = opponentUserName;
     }
 
-    public void setQuestion(String question) {
-        this.question.setText(question);
-    }
+    public GuiClass(){
+        //getStartWindow();
+        String [] incorranswers = {"fel", "fel", "fel"};
+        getQuizWindow("fråga", "rätt svar", incorranswers);
 
-    public void setAnswer1(String answer) {
-        this.answer1.setText(answer);
     }
-
-    public void setAnswer2(String answer) {
-        this.answer2.setText(answer);
-    }
-
-    public void setAnswer3(String answer) {
-        this.answer3.setText(answer);
-    }
-
-    public void setAnswer4(String answer) {
-        this.answer4.setText(answer);
-    }
-
     public static void main(String[] args) {
         GuiClass g = new GuiClass();
-        // g.getUserName();
-        //g.getStartWindow();
-        // g.getQuizWindow();
+        ;
     }
 }
