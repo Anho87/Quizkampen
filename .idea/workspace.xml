@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="ogjorde misstag" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="ogjorde misstag2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +108,7 @@
       <updated>1700213174275</updated>
       <workItem from="1700213175465" duration="2000" />
       <workItem from="1700643479999" duration="19443000" />
-      <workItem from="1700745174837" duration="339000" />
+      <workItem from="1700745174837" duration="569000" />
     </task>
     <task id="LOCAL−00001" summary="gui methods">
       <option name="closed" value="true" />
@@ -145,7 +145,14 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1700745512820</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="ogjorde misstag2">
+      <option name="closed" value="true" />
+      <created>1700745585180</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1700745585180</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +174,7 @@
     <MESSAGE value="gui methods." />
     <MESSAGE value=".." />
     <MESSAGE value="ogjorde misstag" />
-    <option name="LAST_COMMIT_MESSAGE" value="ogjorde misstag" />
+    <MESSAGE value="ogjorde misstag2" />
+    <option name="LAST_COMMIT_MESSAGE" value="ogjorde misstag2" />
   </component>
 </project>
