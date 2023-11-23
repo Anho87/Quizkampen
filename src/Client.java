@@ -9,10 +9,12 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class Client  { //implements ActionListener
+public class Client implements ActionListener { 
     GuiClass guiClass = new GuiClass();
-    InetAddress ip = InetAddress.getLocalHost();
+    String ip = "127.0.0.1";
     int port = 55555;
+    ArrayList<JButton> answerButtonsList = new ArrayList<>();
+    ArrayList<JButton> categoryButtonsList = new ArrayList<>();
     Socket sock = new Socket(ip, port);
     PrintWriter outToServer = new PrintWriter(sock.getOutputStream(), true);
     BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
@@ -21,30 +23,22 @@ public class Client  { //implements ActionListener
     String chosenCategory;
 
     public Client() throws IOException {
-        //listor skapas av svarsknappar och kategoriknappar för att kunna loopa
         thisPlayer = guiClass.setUserName();
         outToServer.println(thisPlayer);
-        //guiClass.waitingForPlayer();
-        /*answerButtonsList.add(gameGui.answer1);
-        answerButtonsList.add(gameGui.answer2);
-        answerButtonsList.add(gameGui.answer3);
-        answerButtonsList.add(gameGui.answer4);
-        categoryButtonsList.add(gameGui.category1);
-        categoryButtonsList.add(gameGui.category2);
-        categoryButtonsList.add(gameGui.category3);
-        categoryButtonsList.add(gameGui.category4);
-        //action listeners kopplas till knapparna
-        gameGui.answer1.addActionListener(this);
-        gameGui.answer2.addActionListener(this);
-        gameGui.answer3.addActionListener(this);
-        gameGui.answer4.addActionListener(this);
-        gameGui.category1.addActionListener(this);
-        gameGui.category2.addActionListener(this);
-        gameGui.category3.addActionListener(this);
-        gameGui.category4.addActionListener(this);
-        gameGui.nameField.addActionListener(this);
-        gameGui.vidare.addActionListener(this);*/
-
+        categoryButtonsList.add(guiClass.categoryButton1);
+        categoryButtonsList.add(guiClass.categoryButton2);
+        categoryButtonsList.add(guiClass.categoryButton3);
+        answerButtonsList.add(guiClass.answer1);
+        answerButtonsList.add(guiClass.answer2);
+        answerButtonsList.add(guiClass.answer3);
+        answerButtonsList.add(guiClass.answer4);
+        guiClass.categoryButton1.addActionListener(this);
+        guiClass.categoryButton2.addActionListener(this);
+        guiClass.categoryButton3.addActionListener(this);
+        guiClass.answer1.addActionListener(this);
+        guiClass.answer2.addActionListener(this);
+        guiClass.answer3.addActionListener(this);
+        guiClass.answer4.addActionListener(this);
     }
 
     public void game() throws Exception {
@@ -58,29 +52,45 @@ public class Client  { //implements ActionListener
             String actionToDo = in.readLine();
             if (actionToDo.equals("CHOOSE_CATEGORY")) {
                 String cat1 = in.readLine();String cat2 = in.readLine(); String cat3 = in.readLine();
-                chosenCategory = guiClass.getCategories(cat1, cat2, cat3);
-                outToServer.println(chosenCategory);
+                guiClass.getCategories(cat1, cat2, cat3);
+                
             }
             else if (actionToDo.equals("GET_QUESTIONS")) {
                 String question = in.readLine();
                 String correctAnswer = in.readLine();
                 String incorrectAnswers = in.readLine();
                 String [] incorrectAnswersAsArray = incorrectAnswers.split(":");
-                boolean answeredCorrectly = guiClass.getQuizWindow(question, correctAnswer, incorrectAnswersAsArray);
-                if (answeredCorrectly) {
+                guiClass.getQuizWindow(question, correctAnswer, incorrectAnswersAsArray);
+                /*if (answeredCorrectly) {
                     outToServer.println("Rätt");
                 }
                 else {
                     outToServer.println("Fel");
-                }
+                }*/
 
             }
-            else if (){
+            /*else if (){
 
+            }*/
+
+
+
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       /* if (e.getSource() == answerButtonsList) {
+            if (rättSvar.contains(jButton.getText())) {
+                
+            } else {
+                
             }
-
-
-
+        }*/
+        for (JButton jButton : categoryButtonsList) {
+            if (e.getSource() == jButton) {
+                outToServer.println(jButton.getText());
+            }
         }
     }
     public static void main (String[] args) throws Exception {
@@ -89,5 +99,5 @@ public class Client  { //implements ActionListener
     }
 
 
-
+  
 }

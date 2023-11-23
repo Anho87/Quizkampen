@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="ogjorde misstag2" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="removed 2 classes">
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Astrid2" />
+        <entry key="$PROJECT_DIR$" value="developmentBranch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,14 +54,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.GuiClass">
-    <configuration name="Client (3)" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Client" />
-      <module name="Quizkampen" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Client (4)">
     <configuration name="Client (4)" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="Quizkampen" />
@@ -88,13 +83,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerListener" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ServerListener" />
+      <module name="Quizkampen" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Client (4)" />
+      <item itemvalue="Application.Client (5)" />
+      <item itemvalue="Application.GuiClass" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.ServerListener" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client (4)" />
+        <item itemvalue="Application.ServerListener" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.GuiClass" />
         <item itemvalue="Application.Client (5)" />
-        <item itemvalue="Application.Client (4)" />
-        <item itemvalue="Application.Client (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -175,6 +184,7 @@
     <MESSAGE value=".." />
     <MESSAGE value="ogjorde misstag" />
     <MESSAGE value="ogjorde misstag2" />
-    <option name="LAST_COMMIT_MESSAGE" value="ogjorde misstag2" />
+    <MESSAGE value="xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="xml" />
   </component>
 </project>

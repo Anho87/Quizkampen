@@ -1,7 +1,12 @@
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class QuestionWithAnswers {
+public class QuestionWithAnswers implements Serializable {
     private String question;
     private String correctAnswer;private String answer2;private String answer3;private String answer4;
     private ArrayList<String> incorrectAnswers = new ArrayList<>();
@@ -31,4 +36,16 @@ public class QuestionWithAnswers {
         Collections.shuffle(incorrectAnswers);
     }
 
+    @Override
+    public String toString() {
+        List<String> questionsAndAnswerList = new ArrayList<>();
+        questionsAndAnswerList.add(correctAnswer);
+        questionsAndAnswerList.add(answer2);
+        questionsAndAnswerList.add(answer3);
+        questionsAndAnswerList.add(answer4);
+        Collections.shuffle(questionsAndAnswerList);
+        return  question + ":" + 
+                questionsAndAnswerList.get(0) + ":" +  questionsAndAnswerList.get(1) + ":" + 
+                questionsAndAnswerList.get(2) + ":" + questionsAndAnswerList.get(3);
+    }
 }
