@@ -111,7 +111,6 @@ public class GuiClass extends JFrame {
     }
 
     public void getCategories(String cat1, String cat2, String cat3 ){
-        add(categoriesFrame);
         categoriesFrame.add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);
