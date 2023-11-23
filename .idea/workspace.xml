@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-11-20_15_26__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-11-20_15_26__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/MultiWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Protocol.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/QuestionWithAnswers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/QuestionWithAnswers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

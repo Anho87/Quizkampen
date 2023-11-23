@@ -7,39 +7,48 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server extends Thread{
+public class Server extends Thread {
 
 
     Socket playerOneSocket;
     Socket playerTwoSocket;
-    
-    public Server(Socket playerOne,Socket playerTwo){
+    PrintWriter outPlayer1;
+    PrintWriter outPlayer2;
+    BufferedReader inPlayer1;
+    BufferedReader inPlayer2;
+    boolean gameActive = false;
+
+    public Server(Socket playerOne, Socket playerTwo) {
         playerOneSocket = playerOne;
         playerTwoSocket = playerTwo;
-        
-    }
-    public void run(){
-
-        try (
-                ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-                ObjectInputStream in = new ObjectInputStream(socket.getInputStream())
-        ){
-            
-            multiWriter.addWriter(out);
-            Object protocolOutPut;
-            Object inputFromUser;
-
-            while((inputFromUser = in.readObject()) != null){
-                protocolOutPut = protocol.askQuestion((String) inputFromUser);
-                if(protocolOutPut instanceof StringBuilder){
-                    //System.out.println(protocolOutPut);
-                    multiWriter.print(protocolOutPut);
-                }
-                out.writeObject(protocolOutPut);
-            }
-        }
-        catch (Exception e){
+        try {
+            outPlayer1 = new PrintWriter(playerOneSocket.getOutputStream(), true);
+            outPlayer2 = new PrintWriter(playerTwoSocket.getOutputStream(), true);
+            inPlayer1 = new BufferedReader(new InputStreamReader(playerOneSocket.getInputStream()));
+            inPlayer2 = new BufferedReader(new InputStreamReader(playerTwoSocket.getInputStream()));
+        } catch (IOException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    public void run() {
+        try {
+            String player1UserName = inPlayer1.readLine();
+            String player2UserName = inPlayer2.readLine();
+            outPlayer1.println("Välkommen " + player1UserName + ". Du kommer att spela mot " + player2UserName + "!");
+            outPlayer2.println("Välkommen " + player2UserName + ". Du kommer att spela mot " + player1UserName + "!");
+            outPlayer1.println(player2UserName);
+            outPlayer2.println(player1UserName);
+            gameActive = true;
+            
+            while (gameActive){
+                
+            }
+
+
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
 }
