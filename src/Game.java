@@ -7,31 +7,21 @@ import java.util.Scanner;
 public class Game {
     Path pathToCategory_kroppknopp = FileSystems.getDefault().getPath("src", "kropp&knopp.txt");
     Path pathToCategory_djurnatur = FileSystems.getDefault().getPath("src", "djur&natur.txt");
-    Path pathToCategory_film = FileSystems.getDefault().getPath("src", "movieQuestions.txt");
-    Path pathToCategory_sport = FileSystems.getDefault().getPath("src", "sportQuestions.txt");
-
     Category category_kroppknopp = new Category("Kropp & knopp");
     Category category_djurnatur = new Category("Djur & natur");
-    Category category_film = new Category("Film");
-    Category category_sport = new Category("Sport");
     ArrayList<Category> categories = new ArrayList<>();
 
     public Game() throws IOException {
         categories.add(category_kroppknopp);
         categories.add(category_djurnatur);
-        categories.add(category_film);
-        categories.add(category_sport);
 
         addQuestionsToCategory(category_kroppknopp, pathToCategory_kroppknopp);
         addQuestionsToCategory(category_djurnatur, pathToCategory_djurnatur);
-        addQuestionsToCategory(category_film, pathToCategory_film);
-        addQuestionsToCategory(category_sport, pathToCategory_sport);
 
         //test
         System.out.println(category_djurnatur.allQuestions.get(0).getQuestion());
         System.out.println(category_djurnatur.allQuestions.get(0).getCorrectAnswer());
-        System.out.println(category_film.allQuestions.get(0).getIncorrectAnswers());
-        System.out.println(category_sport.allQuestions.get(0).getIncorrectAnswers());
+        System.out.println(category_djurnatur.allQuestions.get(0).getIncorrectAnswers());
 
 
     }
