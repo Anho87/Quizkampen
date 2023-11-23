@@ -7,29 +7,29 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class GuiClass extends JFrame {
 
-    private String userName;
-    private String opponentUserName;
+     String userName;
+     String opponentUserName;
 
-    private JFrame startFrame = new JFrame("Quizkampen - " + userName);
-    private JPanel startPanel = new JPanel(new BorderLayout());
-    private JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));
-    private JButton newGameButton = new JButton("Starta nytt spel");
-
-
-    private JFrame gameMenuFrame = new JFrame("Spelmeny - " + userName);
-    private JPanel gameMenuPanel = new JPanel(new BorderLayout());
-    private JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));
-    private JButton randomPlayerButton = new JButton("Slumpa spelare");
-    private JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
+     JFrame startFrame = new JFrame("Quizkampen - " + userName);
+     JPanel startPanel = new JPanel(new BorderLayout());
+     JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));
+     JButton newGameButton = new JButton("Starta nytt spel");
 
 
-    private JFrame categoriesFrame = new JFrame("Kategorier - " + userName);
-    private JPanel categoriesPanel = new JPanel(new BorderLayout());
-    private JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
-    private JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
-    private JButton categoryButton1 = new JButton("Kategori 1");
-    private JButton categoryButton2 = new JButton("Kategori 2");
-    private JButton categoryButton3 = new JButton("Kategori 3");
+     JFrame gameMenuFrame = new JFrame("Spelmeny - " + userName);
+     JPanel gameMenuPanel = new JPanel(new BorderLayout());
+     JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));
+     JButton randomPlayerButton = new JButton("Slumpa spelare");
+     JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
+
+
+     JFrame categoriesFrame = new JFrame("Kategorier - " + userName);
+     JPanel categoriesPanel = new JPanel(new BorderLayout());
+     JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
+     JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
+     JButton categoryButton1 = new JButton("Kategori 1");
+     JButton categoryButton2 = new JButton("Kategori 2");
+     JButton categoryButton3 = new JButton("Kategori 3");
 
 
     private JFrame quizFrame = new JFrame("Quiz - " + userName);
@@ -41,10 +41,10 @@ public class GuiClass extends JFrame {
     private JLabel question = new JLabel("I vilken film yttras orden 'I'll be back'?");
     private JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
-    private JButton answer1 = new JButton("Terminator");
-    private JButton answer2 = new JButton("När Harry mötte Sally");
-    private JButton answer3 = new JButton("Hitta Nemo");
-    private JButton answer4 = new JButton("Gladiator");
+     JButton answer1 = new JButton("Terminator");
+    JButton answer2 = new JButton("När Harry mötte Sally");
+     JButton answer3 = new JButton("Hitta Nemo");
+     JButton answer4 = new JButton("Gladiator");
     private ArrayList<JButton> answerButtons = new ArrayList<>();
 
 
@@ -80,7 +80,7 @@ public class GuiClass extends JFrame {
         gameMenuPanel.add(gameMenuButtonPanel, BorderLayout.SOUTH);
         gameMenuButtonPanel.add(randomPlayerButton);
         gameMenuButtonPanel.add(playAgainstAFriendButton);
-        playAgainstAFriendButton.addActionListener(e -> getCategories());
+        //playAgainstAFriendButton.addActionListener(e -> getCategories());
 
         gameMenuFrame.setSize(300, 500);
         gameMenuFrame.setLocationRelativeTo(null);
@@ -88,7 +88,8 @@ public class GuiClass extends JFrame {
         gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public String getCategories(String cat1, String cat2, String cat3 ){
+    public void getCategories(String cat1, String cat2, String cat3 ){
+        add(categoriesFrame);
         categoriesFrame.add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);
@@ -105,20 +106,23 @@ public class GuiClass extends JFrame {
         categoriesButtonPanel.add(categoryButton3);
         categoryButton3.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        AtomicReference<String> result = new AtomicReference<>("");
+        /*AtomicReference<String> result = new AtomicReference<>("");
 
         categoryButton1.addActionListener(e -> result.set(cat1));
         categoryButton2.addActionListener(e -> result.set(cat2));
-        categoryButton3.addActionListener(e -> result.set(cat3));
+        categoryButton3.addActionListener(e -> result.set(cat3));*/
 
         categoriesFrame.setSize(300, 500);
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setVisible(true);
-        return result.get();
+        System.out.println("here should categoryFrame display itself");
+        categoriesFrame.revalidate();
+        categoriesFrame.repaint();
+        
     }
 
-    public boolean getQuizWindow(String questionText, String correctAnswer, String [] inCorrectAnswers){
+    public void getQuizWindow(String questionText, String correctAnswer, String [] inCorrectAnswers){
         question.setText(questionText);
         quizFrame.add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
@@ -139,13 +143,14 @@ public class GuiClass extends JFrame {
         answerPanel.setLayout(new GridLayout(2, 2, 10, 10));
         answerButtons.add(answer1);answerButtons.add(answer2);answerButtons.add(answer3);answerButtons.add(answer4);
         int randomInt1 = (int) Math.random() * 4;
-
+        int j = 0;
         for (int i = 0; i < 4; i++) {
             if (i == randomInt1) {
                 answerButtons.get(i).setText(correctAnswer);
             }
             else {
-                answerButtons.get(i).setText(inCorrectAnswers[i]);
+                answerButtons.get(i).setText(inCorrectAnswers[j]);
+                j++;
             }
         }
         for (JButton button : answerButtons) {
@@ -155,7 +160,7 @@ public class GuiClass extends JFrame {
         quizFrame.setSize(300, 500);
         quizFrame.setLocationRelativeTo(null);
 
-        JMenuBar menuBar = new JMenuBar();
+       /* JMenuBar menuBar = new JMenuBar();
         JMenu chatMenu = new JMenu("Chat");
         JMenu changeColorMenu = new JMenu("Change color");
         JMenu quitMenu = new JMenu("Quit");
@@ -224,9 +229,9 @@ public class GuiClass extends JFrame {
 
         quizFrame.setVisible(true);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        return checkAnswer(correctAnswer);
+        return checkAnswer(correctAnswer);*/
     }
-    private boolean checkAnswer(String theCorrectAnswer) {
+   /* private void checkAnswer(String theCorrectAnswer) {
         ActionListener answerListener = e -> {
             JButton clickedButton = (JButton) e.getSource();
             if (clickedButton.getText().equals(theCorrectAnswer)) {
@@ -244,24 +249,16 @@ public class GuiClass extends JFrame {
             answer3.setEnabled(false);
             answer4.setEnabled(false);
         };
-
-        answer1.addActionListener(answerListener);
-        answer2.addActionListener(answerListener);
-        answer3.addActionListener(answerListener);
-        answer4.addActionListener(answerListener);
-    }
+    }*/
     public void setOpponentUserName (String opponentUserName) {
         this.opponentUserName = opponentUserName;
     }
 
     public GuiClass(){
         //getStartWindow();
-        String [] incorranswers = {"fel", "fel", "fel"};
-        getQuizWindow("fråga", "rätt svar", incorranswers);
-
     }
     public static void main(String[] args) {
         GuiClass g = new GuiClass();
-        ;
+        
     }
 }

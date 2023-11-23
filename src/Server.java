@@ -59,34 +59,38 @@ public class Server extends Thread {
             outPlayer1.println(player2UserName);
             outPlayer2.println(player1UserName);
             gameActive = true;
+            System.out.println("name collected "+player1UserName+" "+player2UserName+" "+gameActive);
 
-            while(gameActive) {
+            while (gameActive) {
                 showCategoryOptions(outPlayer1);
-
                 String chosenCategory = inPlayer1.readLine();
-
+                System.out.println(chosenCategory);
                 getQuestions(outPlayer1, chosenCategory);
 
 
             }
         } catch (IOException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
 
-    private String showCategoryOptions (PrintWriter writer) {
+    private void showCategoryOptions(PrintWriter writer) {
+        System.out.println("first in showCatOpt, serverside");
         int randomInt1 = (int) (Math.random() * categories.size());
         int randomInt2 = (int) (Math.random() * categories.size());
-        while (randomInt1 == randomInt2) {
+        if (randomInt1 == randomInt2) {
             randomInt2 = (int) (Math.random() * categories.size());
         }
         int randomInt3 = (int) (Math.random() * categories.size());
-        while (randomInt3 == randomInt1 || randomInt3 == randomInt2) {
+        if (randomInt3 == randomInt1 || randomInt3 == randomInt2) {
             randomInt3 = (int) (Math.random() * categories.size());
         }
         Category cat1 = categories.get(randomInt1);
         Category cat2 = categories.get(randomInt2);
         Category cat3 = categories.get(randomInt3);
+
+        System.out.println("in showCatOpt, serverside");
 
         writer.println("CHOOSE_CATEGORY");
         writer.println(cat1.getCategoryName());
@@ -94,6 +98,7 @@ public class Server extends Thread {
         writer.println(cat3.getCategoryName());
 
     }
+
     private void getQuestions(PrintWriter writer, String chosenCategory) {
         Category actualCategory = empty_category;
         for (Category category : categories) {
@@ -105,7 +110,7 @@ public class Server extends Thread {
         int randomInt = (int) (Math.random() * actualCategory.allQuestions.size());
         String question = actualCategory.allQuestions.get(randomInt).getQuestion();
         String correctAnswer = actualCategory.allQuestions.get(randomInt).getCorrectAnswer();
-        ArrayList <String> inCorrectAnswers = actualCategory.allQuestions.get(randomInt).getIncorrectAnswers();
+        ArrayList<String> inCorrectAnswers = actualCategory.allQuestions.get(randomInt).getIncorrectAnswers();
         String inCorrectAnswersAsString = inCorrectAnswers.get(0) + ":" + inCorrectAnswers.get(1) + ":" + inCorrectAnswers.get(2);
         writer.println("GET_QUESTIONS");
         writer.println(question);
