@@ -24,3 +24,5 @@ I vilken svensk stad ligger vetenskapscentret Universeum?
 Göteborg:Stockholm:Malmö:Visby
 Vilket ämne ger växterna dess gröna färg?
 Klorofyll:Karoten:Kloroplast:Koldioxid
+Vilken av följande dinosaurier var störst?
+Brachiosaurus:Tyrannosaurus rex:Allosaurus:Compsognatus

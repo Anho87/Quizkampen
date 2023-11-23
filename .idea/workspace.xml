@@ -4,12 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="La till klasser Game, Category och QuestionWithAnswers">
-      <change afterPath="$PROJECT_DIR$/src/bocker&amp;ord.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ilabbet.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="La till kategorierna i labbet och böcker&amp;ord samt fler frågor i djur&amp;natur och kropp&amp;knopp">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_11_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_11_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_11__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17__Changes_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/testClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/testClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/testServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bocker&amp;ord.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/bocker&amp;ord.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/djur&amp;natur.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/djur&amp;natur.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kropp&amp;knopp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/kropp&amp;knopp.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,20 +55,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Astrid&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Astrid",
+    "last_opened_file_path": "C:/Users/Astrid Rosen/Desktop/Java Nackademin/HT23/OOP/Sprint4/ovningsuppgifter",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
@@ -121,7 +133,14 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1700554778514</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="La till kategorierna i labbet och böcker&amp;ord samt fler frågor i djur&amp;natur och kropp&amp;knopp">
+      <option name="closed" value="true" />
+      <created>1700648781998</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1700648781999</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +150,7 @@
     <MESSAGE value="gui methods" />
     <MESSAGE value="La till kropp&amp;knopp.txt + djur&amp;natur.txt" />
     <MESSAGE value="La till klasser Game, Category och QuestionWithAnswers" />
-    <option name="LAST_COMMIT_MESSAGE" value="La till klasser Game, Category och QuestionWithAnswers" />
+    <MESSAGE value="La till kategorierna i labbet och böcker&amp;ord samt fler frågor i djur&amp;natur och kropp&amp;knopp" />
+    <option name="LAST_COMMIT_MESSAGE" value="La till kategorierna i labbet och böcker&amp;ord samt fler frågor i djur&amp;natur och kropp&amp;knopp" />
   </component>
 </project>
