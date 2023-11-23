@@ -57,29 +57,29 @@ public class GuiClass extends JFrame {
         categoriesFrame.setTitle("Kategorier - " + userName);
     }
 
-    public void getGameMenu() {
-        gameMenuFrame.add(gameMenuPanel);
-        gameMenuPanel.add(gameMenuButtonPanel, BorderLayout.SOUTH);
-        gameMenuButtonPanel.add(randomPlayerButton);
-        gameMenuButtonPanel.add(playAgainstAFriendButton);
-
-        gameMenuFrame.setSize(300, 500);
-        gameMenuFrame.setLocationRelativeTo(null);
-        gameMenuFrame.setVisible(true);
-        gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
     public void getStartWindow(){
         startFrame.add(startPanel);
         startPanel.add(startButtonPanel, BorderLayout.SOUTH);
         startButtonPanel.add(newGameButton);
-        GuiClass g = this;
-        newGameButton.addActionListener(new GameActionListener(newGameButton,g,startFrame));
+        newGameButton.addActionListener(e -> getGameMenu());
 
         startFrame.setSize(300, 500);
         startFrame.setLocationRelativeTo(null);
         startFrame.setVisible(true);
         startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void getGameMenu() {
+        gameMenuFrame.add(gameMenuPanel);
+        gameMenuPanel.add(gameMenuButtonPanel, BorderLayout.SOUTH);
+        gameMenuButtonPanel.add(randomPlayerButton);
+        gameMenuButtonPanel.add(playAgainstAFriendButton);
+        playAgainstAFriendButton.addActionListener(e -> getCategories());
+
+        gameMenuFrame.setSize(300, 500);
+        gameMenuFrame.setLocationRelativeTo(null);
+        gameMenuFrame.setVisible(true);
+        gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void getCategories(){
@@ -95,6 +95,10 @@ public class GuiClass extends JFrame {
         categoryButton2.setAlignmentX(Component.CENTER_ALIGNMENT);
         categoriesButtonPanel.add(categoryButton3);
         categoryButton3.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        categoryButton1.addActionListener(e -> getQuizWindow());
+        categoryButton2.addActionListener(e -> getQuizWindow());
+        categoryButton3.addActionListener(e -> getQuizWindow());
 
         categoriesFrame.setSize(300, 500);
         categoriesFrame.setLocationRelativeTo(null);
@@ -225,16 +229,12 @@ public class GuiClass extends JFrame {
     }
 
     public GuiClass(){
-//        getUserName();
-  //     getStartWindow();
-        //getQuizWindow();
-        //getGameMenu();
-        //getCategories();
+        getUserName();
+        getStartWindow();
+
     }
     public static void main(String[] args) {
         GuiClass g = new GuiClass();
-        g.getUserName();
-       //g.getStartWindow();
-        g.getQuizWindow();
+     ;
     }
 }
