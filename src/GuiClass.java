@@ -2,11 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.EnumMap;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class GuiClass extends JFrame {
 
-    String userName;
+    private String userName;
+    private String opponentUserName;
 
     private JFrame startFrame = new JFrame("Quizkampen - " + userName);
     private JPanel startPanel = new JPanel(new BorderLayout());
@@ -43,67 +45,11 @@ public class GuiClass extends JFrame {
     private JButton answer2 = new JButton("När Harry mötte Sally");
     private JButton answer3 = new JButton("Hitta Nemo");
     private JButton answer4 = new JButton("Gladiator");
-
-    private JFrame waitingForPlayerFrame = new JFrame("Waiting for player...");
-    private JPanel waitingForPlayer1Panel = new JPanel(new BorderLayout());
-    private JPanel waitingForPlayer2Panel = new JPanel(new BorderLayout());
-    private JPanel waitingForPlayerResultPanel = new JPanel(new BorderLayout());
-    private JTextArea waitingForPlayerResultTextArea = new JTextArea();
-    private JTextArea waitingForPlayer1TextArea = new JTextArea();
-    private JTextArea waitingForPlayer2TextArea = new JTextArea();
-    private JButton waitingForPlayerButton = new JButton("Din Tur");
-
-    private void waitingForPlayer() {
-
-        waitingForPlayer1Panel.setBackground(Color.RED);
-        waitingForPlayer2Panel.setBackground(Color.BLUE);
-        waitingForPlayerResultPanel.setBackground(Color.GREEN);
+    private ArrayList<JButton> answerButtons = new ArrayList<>();
 
 
-        waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.EAST);
-        waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
-        waitingForPlayer1Panel.setPreferredSize(new Dimension(150, 400));
-        waitingForPlayer1TextArea.setText("Game 1: - x x\n\nGame 2: - x x");
 
-        waitingForPlayerFrame.add(waitingForPlayer2Panel, BorderLayout.WEST);
-        waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
-        waitingForPlayer2Panel.setPreferredSize(new Dimension(150, 400));
-        waitingForPlayer2TextArea.setText("Game 1: x - -\n\nGame 2: - x -");
-
-        waitingForPlayerFrame.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
-        waitingForPlayerResultPanel.setPreferredSize(new Dimension(300, 100));
-        waitingForPlayerResultPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-        waitingForPlayerResultPanel.add(waitingForPlayerResultTextArea);
-        waitingForPlayerResultTextArea.setText("Player 1 Has Won!!!");
-
-        waitingForPlayerResultPanel.add(waitingForPlayerButton);
-        waitingForPlayerButton.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        waitingForPlayerButton.setPreferredSize(new Dimension(100, 60));
-
-        waitingForPlayer1TextArea.setEditable(false);
-        waitingForPlayer2TextArea.setEditable(false);
-        waitingForPlayerResultTextArea.setEditable(false);
-
-
-        waitingForPlayerFrame.setSize(300, 500);
-        waitingForPlayerFrame.setLocationRelativeTo(null);
-        waitingForPlayerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        waitingForPlayerFrame.setVisible(true);
-
-    }
-
-
-    private JFrame chatFrame = new JFrame("Chat - " + userName);
-    private JPanel chatPanel = new JPanel(new BorderLayout());
-    private JPanel inputPanel = new JPanel(new BorderLayout());
-    private JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-    private JTextArea chatTextArea = new JTextArea();
-    private JTextField chatInputField = new JTextField();
-    private JButton sendChatButton = new JButton("Send");
-
-
-    private String setUserName() {
+    public String setUserName() {
         userName = JOptionPane.showInputDialog(null, "Ange ditt användarnamn: ");
         if (userName == null || userName.trim().isEmpty()) {
             userName = "Okänd Användare";
@@ -111,7 +57,6 @@ public class GuiClass extends JFrame {
         updateFrameTitles();
         return userName;
     }
-
     private void updateFrameTitles() {
         startFrame.setTitle("Quizkampen - " + userName);
         gameMenuFrame.setTitle("Spelmeny - " + userName);
@@ -143,13 +88,16 @@ public class GuiClass extends JFrame {
         gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void getCategories(){
+    public String getCategories(String cat1, String cat2, String cat3 ){
         categoriesFrame.add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);
 
         categoriesButtonPanel.setLayout(new BoxLayout(categoriesButtonPanel, BoxLayout.Y_AXIS));
 
+        categoryButton1.setText(cat1);
+        categoryButton2.setText(cat2);
+        categoryButton3.setText(cat3);
         categoriesButtonPanel.add(categoryButton1);
         categoryButton1.setAlignmentX(Component.CENTER_ALIGNMENT);
         categoriesButtonPanel.add(categoryButton2);
@@ -157,17 +105,21 @@ public class GuiClass extends JFrame {
         categoriesButtonPanel.add(categoryButton3);
         categoryButton3.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        categoryButton1.addActionListener(e -> getQuizWindow());
-        categoryButton2.addActionListener(e -> getQuizWindow());
-        categoryButton3.addActionListener(e -> getQuizWindow());
+        AtomicReference<String> result = new AtomicReference<>("");
+
+        categoryButton1.addActionListener(e -> result.set(cat1));
+        categoryButton2.addActionListener(e -> result.set(cat2));
+        categoryButton3.addActionListener(e -> result.set(cat3));
 
         categoriesFrame.setSize(300, 500);
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setVisible(true);
+        return result.get();
     }
 
-    public void getQuizWindow() {
+    public boolean getQuizWindow(String questionText, String correctAnswer, String [] inCorrectAnswers){
+        question.setText(questionText);
         quizFrame.add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
         quizPanel.add(questionNumber, BorderLayout.NORTH);
@@ -185,12 +137,20 @@ public class GuiClass extends JFrame {
         quizPanel.add(answerPanel, BorderLayout.SOUTH);
 
         answerPanel.setLayout(new GridLayout(2, 2, 10, 10));
-        answerPanel.add(answer1);
-        answerPanel.add(answer2);
-        answerPanel.add(answer3);
-        answerPanel.add(answer4);
+        answerButtons.add(answer1);answerButtons.add(answer2);answerButtons.add(answer3);answerButtons.add(answer4);
+        int randomInt1 = (int) Math.random() * 4;
 
-        checkAnswer();
+        for (int i = 0; i < 4; i++) {
+            if (i == randomInt1) {
+                answerButtons.get(i).setText(correctAnswer);
+            }
+            else {
+                answerButtons.get(i).setText(inCorrectAnswers[i]);
+            }
+        }
+        for (JButton button : answerButtons) {
+            answerPanel.add(button);
+        }
 
         quizFrame.setSize(300, 500);
         quizFrame.setLocationRelativeTo(null);
@@ -216,25 +176,11 @@ public class GuiClass extends JFrame {
 
         quitMenu.add(exitGameItem);
 
-        openChatItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getChat();
-            }
-        });
-
-        closeChatItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                chatFrame.dispose();
-            }
-        });
-
         changeBodyColorItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JColorChooser colorChooser = new JColorChooser();
-                Color color = JColorChooser.showDialog(null, "Choose a color", Color.black);
+                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
 
                 questionAndResultPanel.setBackground(color);
                 //answerPanel.setBackground(color);
@@ -248,7 +194,7 @@ public class GuiClass extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JColorChooser colorChooser = new JColorChooser();
-                Color color = JColorChooser.showDialog(null, "Choose a color", Color.black);
+                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
                 question.setForeground(color);
                 answer1.setForeground(color);
                 answer2.setForeground(color);
@@ -278,20 +224,21 @@ public class GuiClass extends JFrame {
 
         quizFrame.setVisible(true);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        return checkAnswer(correctAnswer);
     }
-
-    private void checkAnswer() {
+    private boolean checkAnswer(String theCorrectAnswer) {
         ActionListener answerListener = e -> {
             JButton clickedButton = (JButton) e.getSource();
-            if (clickedButton.getText().equals(correctAnswer)) {
+            if (clickedButton.getText().equals(theCorrectAnswer)) {
                 clickedButton.setBackground(Color.GREEN);
-                result.setText("Du svarde rätt!");
+                result.setText("Du svarade rätt!");
+                return true;
 
             } else {
                 clickedButton.setBackground(Color.RED);
                 result.setText("Du svarade fel.");
+                return false;
             }
-
             answer1.setEnabled(false);
             answer2.setEnabled(false);
             answer3.setEnabled(false);
@@ -303,55 +250,18 @@ public class GuiClass extends JFrame {
         answer3.addActionListener(answerListener);
         answer4.addActionListener(answerListener);
     }
-
-
-    private void getChat() {
-        chatTextArea.setEditable(false);
-
-        JScrollPane chatScrollPane = new JScrollPane(chatTextArea);
-        chatScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-        buttonPanel.add(sendChatButton);
-
-        inputPanel.add(chatInputField, BorderLayout.CENTER);
-        inputPanel.add(buttonPanel, BorderLayout.EAST);
-
-        chatPanel.setLayout(new BorderLayout());
-        chatPanel.add(chatScrollPane, BorderLayout.CENTER);
-        chatPanel.add(inputPanel, BorderLayout.SOUTH);
-
-        sendChatButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //sendMessage();
-            }
-        });
-
-        sendChatButton.setPreferredSize(new Dimension(80, 35));
-
-        chatFrame.add(chatPanel);
-        chatFrame.setSize(250, 250);
-        chatFrame.setLocationRelativeTo(null);
-        chatFrame.setVisible(true);
+    public void setOpponentUserName (String opponentUserName) {
+        this.opponentUserName = opponentUserName;
     }
 
+    public GuiClass(){
+        //getStartWindow();
+        String [] incorranswers = {"fel", "fel", "fel"};
+        getQuizWindow("fråga", "rätt svar", incorranswers);
 
-    public GuiClass() {
-//        getUserName();
-        //     getStartWindow();
-        //getQuizWindow();
-        //getGameMenu();
-        //getCategories();
     }
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-
-            GuiClass g = new GuiClass();
-            //g.getUserName();
-            //g.getStartWindow();
-            //g.getQuizWindow();
-            g.waitingForPlayer();
-        });
+        GuiClass g = new GuiClass();
+        ;
     }
 }
