@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class Client implements ActionListener {
     String ip = "127.0.0.1";
@@ -14,11 +15,13 @@ public class Client implements ActionListener {
     GuiClass guiClass;
     private ObjectInputStream in;
     private ObjectOutputStream out;
-    private  JButton sourceButton = null;
+    private JButton sourceButton = null;
     Color originalButtonColor;
-    int questionsAnwered = 0;
+    int questionsAnswered = 0;
     int score = 0;
-    Client(){
+    String clickedButton = "";
+
+    Client() {
         setup();
         try {
             Socket socket = new Socket(ip, inPort);
@@ -27,15 +30,24 @@ public class Client implements ActionListener {
 
             Object serverOutPut;
             String serverOutPutToString;
-            String[] questionsAndAnswerArray;
+            //String[] questionsAndAnswerList;
 
             while ((serverOutPut = in.readObject()) != null) {
-                serverOutPutToString = (String) serverOutPut;
-                if (questionsAnwered == 5){
-                    out.writeObject(guiClass.getName() + score);
+                System.out.println(serverOutPut);
+                if (serverOutPut instanceof StringBuilder) {
+                    guiClass.quizFrame.dispose();
+                    JOptionPane.showMessageDialog(null, serverOutPut);
                 }
-                if(serverOutPut instanceof StringBuilder){
-                    JOptionPane.showMessageDialog(null,serverOutPut);
+                if (serverOutPut instanceof String) {
+                    serverOutPutToString = (String) serverOutPut;
+                    String[] questionsAndAnswerList = serverOutPutToString.split(",");
+                    String answers = answerQuestions(questionsAndAnswerList);
+                    out.writeObject(answers);
+                }
+                
+                
+               /* if (questionsAnswered == 5){
+                    out.writeObject(guiClass.userName + score);
                 }
                 if(serverOutPutToString.equalsIgnoreCase("Correct")){
                     score++;
@@ -43,32 +55,40 @@ public class Client implements ActionListener {
                 } else if (serverOutPutToString.equalsIgnoreCase("Wrong")) {
                     sourceButton.setBackground(Color.RED);
                 } else {
-                    questionsAnwered++;
+                    //System.out.println(questionsAnswered);
+                    questionsAnswered++;
                     guiClass.answer1.setBackground(originalButtonColor);
                     guiClass.answer2.setBackground(originalButtonColor);
                     guiClass.answer3.setBackground(originalButtonColor);
                     guiClass.answer4.setBackground(originalButtonColor);
-                    questionsAndAnswerArray =  serverOutPutToString.split(":");
-                    guiClass.setQuestion(questionsAndAnswerArray[0]);
-                    guiClass.setAnswer1(questionsAndAnswerArray[1]);
-                    guiClass.setAnswer2(questionsAndAnswerArray[2]);
-                    guiClass.setAnswer3(questionsAndAnswerArray[3]);
-                    guiClass.setAnswer4(questionsAndAnswerArray[4]);
-                }
+                    questionsAndAnswerList =  serverOutPutToString.split(":");
+                    guiClass.setQuestion(questionsAndAnswerList[0]);
+                    guiClass.setAnswer1(questionsAndAnswerList[1]);
+                    guiClass.setAnswer2(questionsAndAnswerList[2]);
+                    guiClass.setAnswer3(questionsAndAnswerList[3]);
+                    guiClass.setAnswer4(questionsAndAnswerList[4]);
+                }*/
             }
-            
-        }catch (UnknownHostException e){
+
+        } catch (UnknownHostException e) {
             e.printStackTrace();
-        } catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        }catch(ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
+    public String answerQuestions(String[] s) {
+        StringBuilder stringBuilder = new StringBuilder();
+        
+        return stringBuilder.toString();
+    }
+   
 
     private void setup() {
         guiClass = new GuiClass();
-        originalButtonColor = guiClass.answer1.getBackground();
+        JButton button = new JButton();
+        originalButtonColor = button.getBackground();
         addActionListener();
     }
 
@@ -79,23 +99,19 @@ public class Client implements ActionListener {
         guiClass.answer4.addActionListener(this);
         guiClass.newGameButton.addActionListener(this);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        try{
-            if(e.getSource() == guiClass.answer1){
-                sourceButton = guiClass.answer1;
-                out.writeObject(guiClass.answer1.getText());
-            }else if(e.getSource() == guiClass.answer2){
-                sourceButton = guiClass.answer2;
-                out.writeObject(guiClass.answer2.getText());
-            }else if(e.getSource() == guiClass.answer3){
-                sourceButton = guiClass.answer3;
-                out.writeObject(guiClass.answer3.getText());
-            }else if(e.getSource() == guiClass.answer4){
-                sourceButton = guiClass.answer4;
-                out.writeObject(guiClass.answer4.getText());
-            } else if (e.getSource()== guiClass.newGameButton) {
+        try {
+            if (e.getSource() == guiClass.answer1) {
+                
+            } else if (e.getSource() == guiClass.answer2) {
+               
+            } else if (e.getSource() == guiClass.answer3) {
+                
+            } else if (e.getSource() == guiClass.answer4) {
+                
+            } else if (e.getSource() == guiClass.newGameButton) {
+                out.writeObject("start game");
                 guiClass.getQuizWindow();
                 guiClass.startFrame.dispose();
             }
