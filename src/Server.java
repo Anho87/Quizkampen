@@ -48,6 +48,7 @@ public class Server extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }//In och utström skapas mellan spelarna och servern
+        categories.add(category_kroppknopp);categories.add(category_djurnatur);categories.add(category_film);categories.add(category_sport);
     }
 
     public void run() {
