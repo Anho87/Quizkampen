@@ -1,0 +1,147 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d467bdaa-28b2-48b5-90ae-c22479a2b845\" name=\"Changes\" comment=\"..\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/GuiClass.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/GuiClass.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Merge.Settings\">\r\n    <option name=\"BRANCH\" value=\"devBranch\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"developmentBranch\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 1\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YIVe31Q5GX5rbm8XGgU4TMQaFJ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;developmentBranch&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\" selected=\"Application.GuiClass\">\r\n    <configuration name=\"Client\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Client\" />\r\n      <module name=\"Quizkampen\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"GuiClass\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"GuiClass\" />\r\n      <module name=\"Quizkampen\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Server\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Server\" />\r\n      <module name=\"Quizkampen\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.GuiClass\" />\r\n        <item itemvalue=\"Application.Server\" />\r\n        <item itemvalue=\"Application.Client\" />\r\n        <item itemvalue=\"Application.Server\" />\r\n        <item itemvalue=\"Application.Client\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d467bdaa-28b2-48b5-90ae-c22479a2b845\" name=\"Changes\" comment=\"\" />\r\n      <created>1700213174275</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700213174275</updated>\r\n      <workItem from=\"1700213175465\" duration=\"2000\" />\r\n      <workItem from=\"1700643479999\" duration=\"19443000\" />\r\n    </task>\r\n    <task id=\"LOCAL−00001\" summary=\"gui methods\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700475016054</created>\r\n      <option name=\"number\" value=\"LOCAL−00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL−00001\" />\r\n      <updated>1700475016054</updated>\r\n    </task>\r\n    <task id=\"LOCAL−00002\" summary=\"gui methods\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700477041205</created>\r\n      <option name=\"number\" value=\"LOCAL−00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL−00002\" />\r\n      <updated>1700477041205</updated>\r\n    </task>\r\n    <task id=\"LOCAL−00003\" summary=\"gui methods.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700640830855</created>\r\n      <option name=\"number\" value=\"LOCAL−00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL−00003\" />\r\n      <updated>1700640830855</updated>\r\n    </task>\r\n    <task id=\"LOCAL−00004\" summary=\"..\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700644207082</created>\r\n      <option name=\"number\" value=\"LOCAL−00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL−00004\" />\r\n      <updated>1700644207082</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"gui methods\" />\r\n    <MESSAGE value=\"gui methods.\" />\r\n    <MESSAGE value=\"..\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"..\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7e62e873a15805e920410f681a1d3f13b4592632)
++++ b/.idea/workspace.xml	(date 1700739743074)
+@@ -6,7 +6,8 @@
+   <component name="ChangeListManager">
+     <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="..">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -22,12 +23,12 @@
+     </option>
+   </component>
+   <component name="Git.Merge.Settings">
+-    <option name="BRANCH" value="devBranch" />
++    <option name="BRANCH" value="feature/adding-additional-actionlisteners" />
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="developmentBranch" />
++        <entry key="$PROJECT_DIR$" value="feature/addingClientHandeler" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -79,11 +80,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.GuiClass" />
+         <item itemvalue="Application.Server" />
++        <item itemvalue="Application.GuiClass" />
+         <item itemvalue="Application.Client" />
+-        <item itemvalue="Application.Server" />
+         <item itemvalue="Application.Client" />
++        <item itemvalue="Application.Server" />
+       </list>
+     </recent_temporary>
+   </component>
+Index: src/Server.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.BufferedReader;\r\nimport java.io.IOException;\r\nimport java.io.InputStreamReader;\r\nimport java.io.PrintWriter;\r\nimport java.net.ServerSocket;\r\nimport java.net.Socket;\r\n\r\npublic class Server {\r\n\r\n    Protocol protocol = new Protocol();\r\n    Server(){\r\n        \r\n        try(ServerSocket serverSocket = new ServerSocket(44444);\r\n            Socket sock =  serverSocket.accept();\r\n            PrintWriter out = new PrintWriter(sock.getOutputStream(),true);\r\n            BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()))\r\n        ){\r\n            \r\n            String inputFromUser;\r\n            out.println(protocol.askQuestion(\"\"));\r\n            while(true){\r\n                inputFromUser = in.readLine();\r\n                out.println(protocol.askQuestion(inputFromUser));\r\n            }\r\n\r\n\r\n        }catch (IOException e){\r\n            e.printStackTrace();\r\n\r\n        }\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        new Server();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Server.java b/src/Server.java
+--- a/src/Server.java	(revision 7e62e873a15805e920410f681a1d3f13b4592632)
++++ b/src/Server.java	(date 1700738374424)
+@@ -1,36 +1,16 @@
+-import java.io.BufferedReader;
+ import java.io.IOException;
+-import java.io.InputStreamReader;
+-import java.io.PrintWriter;
+ import java.net.ServerSocket;
+-import java.net.Socket;
+ 
+ public class Server {
++    public static void main(String[] args) throws IOException {
++        ServerSocket serverSocket = new ServerSocket(44444);
+ 
+-    Protocol protocol = new Protocol();
+-    Server(){
+-        
+-        try(ServerSocket serverSocket = new ServerSocket(44444);
+-            Socket sock =  serverSocket.accept();
+-            PrintWriter out = new PrintWriter(sock.getOutputStream(),true);
+-            BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()))
+-        ){
+-            
+-            String inputFromUser;
+-            out.println(protocol.askQuestion(""));
+-            while(true){
+-                inputFromUser = in.readLine();
+-                out.println(protocol.askQuestion(inputFromUser));
++        try {
++            while (true) {
++                new Thread(new ClientHandler(serverSocket.accept())).start();
+             }
+-
+-
+-        }catch (IOException e){
+-            e.printStackTrace();
+-
++        } finally {
++            serverSocket.close();
+         }
+     }
+-
+-    public static void main(String[] args) {
+-        new Server();
+-    }
+ }
+Index: src/Client.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.BufferedReader;\r\nimport java.io.IOException;\r\nimport java.io.InputStreamReader;\r\nimport java.io.PrintWriter;\r\nimport java.net.Socket;\r\nimport java.net.UnknownHostException;\r\n\r\npublic class Client {\r\n    \r\n    Client(){\r\n        try(Socket socket = new Socket(\"127.0.0.1\", 44444);\r\n\r\n            PrintWriter out = new PrintWriter(socket.getOutputStream(),true);\r\n            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));\r\n            BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));\r\n        ){\r\n\r\n            String answer;\r\n            String serverOutPut;\r\n            GuiClass guiClass = new GuiClass();\r\n            \r\n            while((serverOutPut = in.readLine()) != null){\r\n                System.out.println(serverOutPut);\r\n                answer  = userInput.readLine();\r\n                out.println(answer);\r\n            }\r\n            \r\n\r\n        }catch (UnknownHostException e){\r\n            e.printStackTrace();\r\n        } catch(IOException e){\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        new Client();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Client.java b/src/Client.java
+--- a/src/Client.java	(revision 7e62e873a15805e920410f681a1d3f13b4592632)
++++ b/src/Client.java	(date 1700739743050)
+@@ -6,7 +6,7 @@
+ import java.net.UnknownHostException;
+ 
+ public class Client {
+-    
++
+     Client(){
+         try(Socket socket = new Socket("127.0.0.1", 44444);
+ 
+@@ -18,13 +18,13 @@
+             String answer;
+             String serverOutPut;
+             GuiClass guiClass = new GuiClass();
+-            
++
+             while((serverOutPut = in.readLine()) != null){
+                 System.out.println(serverOutPut);
+                 answer  = userInput.readLine();
+                 out.println(answer);
+             }
+-            
++
+ 
+         }catch (UnknownHostException e){
+             e.printStackTrace();
+@@ -34,6 +34,7 @@
+     }
+ 
+     public static void main(String[] args) {
+-        new Client();
++
++
+     }
+ }

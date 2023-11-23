@@ -1,0 +1,227 @@
+Index: src/GuiClass.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\n\r\npublic class GuiClass extends JFrame {\r\n\r\n    String userName;\r\n\r\n    private JFrame startFrame = new JFrame(\"Quizkampen - \" + userName);\r\n    private JPanel startPanel = new JPanel(new BorderLayout());\r\n    private JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));\r\n    private JButton newGameButton = new JButton(\"Starta nytt spel\");\r\n\r\n\r\n    private JFrame gameMenuFrame = new JFrame(\"Spelmeny - \" + userName);\r\n    private JPanel gameMenuPanel = new JPanel(new BorderLayout());\r\n    private JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));\r\n    private JButton randomPlayerButton = new JButton(\"Slumpa spelare\");\r\n    private JButton playAgainstAFriendButton = new JButton(\"Spela mot en vän\");\r\n\r\n\r\n    private JFrame categoriesFrame = new JFrame(\"Kategorier - \" + userName);\r\n    private JPanel categoriesPanel = new JPanel(new BorderLayout());\r\n    private JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));\r\n    private JLabel categoriesLabel = new JLabel(\"Kategorier\", SwingConstants.CENTER);\r\n    private JButton categoryButton1 = new JButton(\"Kategori 1\");\r\n    private JButton categoryButton2 = new JButton(\"Kategori 2\");\r\n    private JButton categoryButton3 = new JButton(\"Kategori 3\");\r\n\r\n\r\n    private JFrame quizFrame = new JFrame(\"Quiz - \" + userName);\r\n    private JPanel quizPanel = new JPanel();\r\n    JPanel questionAndResultPanel = new JPanel();\r\n    private int questionNr;\r\n    private String correctAnswer = \"Terminator\";\r\n    private JLabel questionNumber = new JLabel(\"Fråga \" + questionNr);\r\n    private JLabel question = new JLabel(\"I vilken film yttras orden 'I'll be back'?\");\r\n    private JLabel result = new JLabel();\r\n    private JPanel answerPanel = new JPanel();\r\n    private JButton answer1 = new JButton(\"Terminator\");\r\n    private JButton answer2 = new JButton(\"När Harry mötte Sally\");\r\n    private JButton answer3 = new JButton(\"Hitta Nemo\");\r\n    private JButton answer4 = new JButton(\"Gladiator\");\r\n\r\n\r\n    private void getUserName() {\r\n        userName = JOptionPane.showInputDialog(null, \"Ange ditt användarnamn: \");\r\n        if (userName == null || userName.trim().isEmpty()) {\r\n            userName = \"Okänd Användare\";\r\n        }\r\n        updateFrameTitles();\r\n    }\r\n    private void updateFrameTitles() {\r\n        startFrame.setTitle(\"Quizkampen - \" + userName);\r\n        gameMenuFrame.setTitle(\"Spelmeny - \" + userName);\r\n        categoriesFrame.setTitle(\"Kategorier - \" + userName);\r\n    }\r\n\r\n    public void getGameMenu() {\r\n        gameMenuFrame.add(gameMenuPanel);\r\n        gameMenuPanel.add(gameMenuButtonPanel, BorderLayout.SOUTH);\r\n        gameMenuButtonPanel.add(randomPlayerButton);\r\n        gameMenuButtonPanel.add(playAgainstAFriendButton);\r\n\r\n        gameMenuFrame.setSize(300, 500);\r\n        gameMenuFrame.setLocationRelativeTo(null);\r\n        gameMenuFrame.setVisible(true);\r\n        gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n    }\r\n\r\n    public void getStartWindow(){\r\n        startFrame.add(startPanel);\r\n        startPanel.add(startButtonPanel, BorderLayout.SOUTH);\r\n        startButtonPanel.add(newGameButton);\r\n        GuiClass g = this;\r\n        newGameButton.addActionListener(new GameActionListener(newGameButton,g,startFrame));\r\n\r\n        startFrame.setSize(300, 500);\r\n        startFrame.setLocationRelativeTo(null);\r\n        startFrame.setVisible(true);\r\n        startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n    }\r\n\r\n    public void getCategories(){\r\n        categoriesFrame.add(categoriesPanel);\r\n        categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);\r\n        categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);\r\n\r\n        categoriesButtonPanel.setLayout(new BoxLayout(categoriesButtonPanel, BoxLayout.Y_AXIS));\r\n\r\n        categoriesButtonPanel.add(categoryButton1);\r\n        categoryButton1.setAlignmentX(Component.CENTER_ALIGNMENT);\r\n        categoriesButtonPanel.add(categoryButton2);\r\n        categoryButton2.setAlignmentX(Component.CENTER_ALIGNMENT);\r\n        categoriesButtonPanel.add(categoryButton3);\r\n        categoryButton3.setAlignmentX(Component.CENTER_ALIGNMENT);\r\n\r\n        categoriesFrame.setSize(300, 500);\r\n        categoriesFrame.setLocationRelativeTo(null);\r\n        categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n        categoriesFrame.setVisible(true);\r\n    }\r\n\r\n    public void getQuizWindow(){\r\n        quizFrame.add(quizPanel);\r\n        quizPanel.setLayout(new BorderLayout());\r\n        quizPanel.add(questionNumber, BorderLayout.NORTH);\r\n        quizPanel.add(questionAndResultPanel, BorderLayout.CENTER);\r\n\r\n        questionAndResultPanel.setLayout(new BorderLayout());\r\n        questionAndResultPanel.add(question, BorderLayout.NORTH);\r\n        questionAndResultPanel.add(result, BorderLayout.CENTER);\r\n\r\n        question.setBorder(BorderFactory.createEmptyBorder(50, 0, 0, 0));\r\n        question.setHorizontalAlignment(JLabel.CENTER);\r\n        result.setHorizontalAlignment(JLabel.CENTER);\r\n        result.setText(\"\");\r\n\r\n        quizPanel.add(answerPanel, BorderLayout.SOUTH);\r\n\r\n        answerPanel.setLayout(new GridLayout(2, 2, 10, 10));\r\n        answerPanel.add(answer1);\r\n        answerPanel.add(answer2);\r\n        answerPanel.add(answer3);\r\n        answerPanel.add(answer4);\r\n\r\n        checkAnswer();\r\n\r\n        quizFrame.setSize(300, 500);\r\n        quizFrame.setLocationRelativeTo(null);\r\n\r\n        JMenuBar menuBar = new JMenuBar();\r\n        JMenu chatMenu = new JMenu(\"Chat\");\r\n        JMenu changeColorMenu = new JMenu(\"Change color\");\r\n        JMenu quitMenu = new JMenu(\"Quit\");\r\n\r\n        JMenuItem redItem = new JMenuItem(\"Red\");\r\n        JMenuItem greenItem = new JMenuItem(\"Green\");\r\n        JMenuItem blueItem = new JMenuItem(\"Blue\");\r\n\r\n        changeColorMenu.add(redItem);\r\n        changeColorMenu.add(greenItem);\r\n        changeColorMenu.add(blueItem);\r\n\r\n        redItem.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                quizPanel.setBackground(Color.RED);\r\n            }\r\n        });\r\n\r\n        greenItem.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                quizPanel.setBackground(Color.GREEN);\r\n            }\r\n        });\r\n\r\n        blueItem.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                quizPanel.setBackground(Color.BLUE);\r\n            }\r\n        });\r\n\r\n        menuBar.add(chatMenu);\r\n        menuBar.add(changeColorMenu);\r\n        menuBar.add(quitMenu);\r\n\r\n        quizFrame.setJMenuBar(menuBar);\r\n\r\n        quizFrame.setVisible(true);\r\n        quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n    }\r\n    private void checkAnswer() {\r\n        ActionListener answerListener = e -> {\r\n            JButton clickedButton = (JButton) e.getSource();\r\n            if (clickedButton.getText().equals(correctAnswer)) {\r\n                clickedButton.setBackground(Color.GREEN);\r\n                result.setText(\"Du svarde rätt!\");\r\n\r\n            } else {\r\n                clickedButton.setBackground(Color.RED);\r\n                result.setText(\"Du svarade fel.\");\r\n            }\r\n\r\n            answer1.setEnabled(false);\r\n            answer2.setEnabled(false);\r\n            answer3.setEnabled(false);\r\n            answer4.setEnabled(false);\r\n        };\r\n\r\n        answer1.addActionListener(answerListener);\r\n        answer2.addActionListener(answerListener);\r\n        answer3.addActionListener(answerListener);\r\n        answer4.addActionListener(answerListener);\r\n    }\r\n\r\n    public GuiClass(){\r\n//        getUserName();\r\n  //     getStartWindow();\r\n        //getQuizWindow();\r\n        //getGameMenu();\r\n        //getCategories();\r\n    }\r\n    public static void main(String[] args) {\r\n        GuiClass g = new GuiClass();\r\n        g.getUserName();\r\n       g.getStartWindow();\r\n       // g.getQuizWindow();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/GuiClass.java b/src/GuiClass.java
+--- a/src/GuiClass.java	
++++ b/src/GuiClass.java	
+@@ -2,9 +2,17 @@
+ import java.awt.*;
+ import java.awt.event.ActionEvent;
+ import java.awt.event.ActionListener;
++import java.io.IOException;
++import java.util.List;
+ 
+ public class GuiClass extends JFrame {
+ 
++    private Game game;
++
++    public GuiClass(Game game) throws HeadlessException {
++        this.game = game;
++    }
++
+     String userName;
+ 
+     private JFrame startFrame = new JFrame("Quizkampen - " + userName);
+@@ -49,8 +57,20 @@
+         if (userName == null || userName.trim().isEmpty()) {
+             userName = "Okänd Användare";
+         }
+-        updateFrameTitles();
+     }
++
++    public void getStartWindow(){
++        startFrame.add(startPanel);
++        startPanel.add(startButtonPanel, BorderLayout.SOUTH);
++        startButtonPanel.add(newGameButton);
++
++        startFrame.setSize(300, 500);
++        startFrame.setLocationRelativeTo(null);
++        newGameButton.addActionListener(e -> getGameMenu());
++        startFrame.setVisible(true);
++        startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
++    }
++
+     private void updateFrameTitles() {
+         startFrame.setTitle("Quizkampen - " + userName);
+         gameMenuFrame.setTitle("Spelmeny - " + userName);
+@@ -65,23 +85,12 @@
+ 
+         gameMenuFrame.setSize(300, 500);
+         gameMenuFrame.setLocationRelativeTo(null);
++
++        randomPlayerButton.addActionListener(e -> getCategories());
+         gameMenuFrame.setVisible(true);
+         gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     }
+ 
+-    public void getStartWindow(){
+-        startFrame.add(startPanel);
+-        startPanel.add(startButtonPanel, BorderLayout.SOUTH);
+-        startButtonPanel.add(newGameButton);
+-        GuiClass g = this;
+-        newGameButton.addActionListener(new GameActionListener(newGameButton,g,startFrame));
+-
+-        startFrame.setSize(300, 500);
+-        startFrame.setLocationRelativeTo(null);
+-        startFrame.setVisible(true);
+-        startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+-    }
+-
+     public void getCategories(){
+         categoriesFrame.add(categoriesPanel);
+         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
+@@ -98,8 +107,12 @@
+ 
+         categoriesFrame.setSize(300, 500);
+         categoriesFrame.setLocationRelativeTo(null);
++        categoryButton1.addActionListener(e -> getQuizWindow());
++        categoryButton2.addActionListener(e -> getQuizWindow());
++        categoryButton3.addActionListener(e -> getQuizWindow());
++        categoriesFrame.setVisible(true);
+         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+-        categoriesFrame.setVisible(true);
++
+     }
+ 
+     public void getQuizWindow(){
+@@ -197,17 +210,23 @@
+         answer4.addActionListener(answerListener);
+     }
+ 
++    public void displayRandomCategories() {
++        List<Category> randomCategories = game.getRandomCategories();
++
++        categoryButton1.setText(randomCategories.get(0).getName());
++        categoryButton2.setText(randomCategories.get(1).getName());
++        categoryButton3.setText(randomCategories.get(2).getName());
++    }
++
++
+     public GuiClass(){
+-//        getUserName();
+-  //     getStartWindow();
+-        //getQuizWindow();
+-        //getGameMenu();
+-        //getCategories();
++        this.game = game;
++        getUserName();
++        updateFrameTitles();
++        getStartWindow();
+     }
+-    public static void main(String[] args) {
+-        GuiClass g = new GuiClass();
+-        g.getUserName();
+-       g.getStartWindow();
+-       // g.getQuizWindow();
++    public static void main(String[] args) throws IOException {
++        Game game = new Game();
++        GuiClass gui = new GuiClass(game);
+     }
+ }
+Index: src/Category.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\n\r\npublic class Category {\r\n    public ArrayList<QuestionWithAnswers> allQuestions = new ArrayList<>();\r\n\r\n    public String categoryName;\r\n\r\n    public Category(String categoryName) {\r\n        this.categoryName = categoryName;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Category.java b/src/Category.java
+--- a/src/Category.java	
++++ b/src/Category.java	
+@@ -9,4 +9,7 @@
+         this.categoryName = categoryName;
+     }
+ 
++    public String getName() {
++        return categoryName;
++    }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d467bdaa-28b2-48b5-90ae-c22479a2b845\" name=\"Changes\" comment=\"txt files added\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Game.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Game.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"Interface\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Merge.Settings\">\r\n    <option name=\"BRANCH\" value=\"devBranchAnna\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"feature/-questionWindow\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 1\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YIVe31Q5GX5rbm8XGgU4TMQaFJ\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;devBranch&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Client\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Client\" />\r\n      <module name=\"Quizkampen\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Server\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Server\" />\r\n      <module name=\"Quizkampen\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.Client\" />\r\n        <item itemvalue=\"Application.Server\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d467bdaa-28b2-48b5-90ae-c22479a2b845\" name=\"Changes\" comment=\"\" />\r\n      <created>1700213174275</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700213174275</updated>\r\n      <workItem from=\"1700213175465\" duration=\"2000\" />\r\n    </task>\r\n    <task id=\"LOCAL−00001\" summary=\"gui methods\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700475016054</created>\r\n      <option name=\"number\" value=\"LOCAL−00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL−00001\" />\r\n      <updated>1700475016054</updated>\r\n    </task>\r\n    <task id=\"LOCAL−00002\" summary=\"gui methods\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700477041205</created>\r\n      <option name=\"number\" value=\"LOCAL−00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL−00002\" />\r\n      <updated>1700477041205</updated>\r\n    </task>\r\n    <task id=\"LOCAL−00003\" summary=\"txt files added\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700556622340</created>\r\n      <option name=\"number\" value=\"LOCAL−00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL−00003\" />\r\n      <updated>1700556622340</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"gui methods\" />\r\n    <MESSAGE value=\"txt files added\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"txt files added\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,9 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="txt files added">
++    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="txt files added in Game">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Category.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -27,7 +29,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="feature/-questionWindow" />
++        <entry key="$PROJECT_DIR$" value="developmentBranch" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -48,6 +50,7 @@
+     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+     &quot;git-widget-placeholder&quot;: &quot;devBranch&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+@@ -72,6 +75,9 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.Server" />
++        <item itemvalue="Application.Client" />
++        <item itemvalue="Application.Server" />
+         <item itemvalue="Application.Client" />
+         <item itemvalue="Application.Server" />
+       </list>
+@@ -86,6 +92,8 @@
+       <option name="presentableId" value="Default" />
+       <updated>1700213174275</updated>
+       <workItem from="1700213175465" duration="2000" />
++      <workItem from="1700569930033" duration="718000" />
++      <workItem from="1700589509459" duration="14000" />
+     </task>
+     <task id="LOCAL−00001" summary="gui methods">
+       <option name="closed" value="true" />
+@@ -108,7 +116,14 @@
+       <option name="presentableId" value="LOCAL−00003" />
+       <updated>1700556622340</updated>
+     </task>
+-    <option name="localTasksCounter" value="4" />
++    <task id="LOCAL−00004" summary="txt files added in Game">
++      <option name="closed" value="true" />
++      <created>1700557280542</created>
++      <option name="number" value="LOCAL−00004" />
++      <option name="presentableId" value="LOCAL−00004" />
++      <updated>1700557280542</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -117,6 +132,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="gui methods" />
+     <MESSAGE value="txt files added" />
+-    <option name="LAST_COMMIT_MESSAGE" value="txt files added" />
++    <MESSAGE value="txt files added in Game" />
++    <option name="LAST_COMMIT_MESSAGE" value="txt files added in Game" />
+   </component>
+ </project>
+\ No newline at end of file
