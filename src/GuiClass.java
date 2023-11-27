@@ -47,7 +47,7 @@ public class GuiClass extends JFrame {
      JButton answer4 = new JButton("Gladiator");
     private ArrayList<JButton> answerButtons = new ArrayList<>();
 
-    JFrame waitingForPlayerFrame = new JFrame("Waiting for player...");
+    JFrame waitingForPlayerFrame = new JFrame(userName);
     JPanel waitingForPlayer1Panel = new JPanel(new BorderLayout());
     JPanel waitingForPlayer2Panel = new JPanel(new BorderLayout());
     JPanel waitingForPlayerResultPanel = new JPanel(new BorderLayout());
