@@ -88,7 +88,6 @@ public class Server extends Thread {
                             scorePlayer2++;
                         }
                         Thread.sleep(2000);
-                        outPlayer2.println("FRAME DISPOSE");
                         questionsInLine.remove(0);
                     }
                     showCategoryOptions(outPlayer2);
