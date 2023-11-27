@@ -7,8 +7,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import static java.awt.Color.green;
-import static java.awt.Color.red;
+import static java.awt.Color.*;
 import static java.lang.Integer.parseInt;
 
 public class Client implements ActionListener {
@@ -74,6 +73,10 @@ public class Client implements ActionListener {
                 guiClass.waitingForPlayerFrame.dispose();
                 guiClass.categoriesFrame.dispose();
                 guiClass.quizFrame.dispose();
+            } else if (fromServer.equals("RESET BUTTONS")) {
+                for (JButton button : answerButtonsList) {
+                    button.setBackground(white);
+                }
             }
 
 
@@ -82,7 +85,6 @@ public class Client implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        clickableButtons();
         for (JButton jButton : categoryButtonsList) {
             if (e.getSource() == jButton) {
                 outToServer.println(jButton.getText());
@@ -94,17 +96,16 @@ public class Client implements ActionListener {
                 button.setBackground(green);
             }
             if (e.getSource() == button) {
-                if ((button.getText().contains(correctAnswer))) {
+                if (button.getText().contains(correctAnswer)) {
                     outToServer.println("true");
                 }
                 else {
                     outToServer.println("false");
                     button.setBackground(red);
                 }
-                unclickableButtons();
-                break;
             }
-            
+
+
         }
     }
 

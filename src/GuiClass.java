@@ -167,7 +167,7 @@ int opponentScore = 0;
 
         answerPanel.setLayout(new GridLayout(2, 2, 10, 10));
         answerButtons.add(answer1);answerButtons.add(answer2);answerButtons.add(answer3);answerButtons.add(answer4);
-        int randomInt1 = (int) Math.random() * 4;
+        int randomInt1 = (int) (Math.random() * 4);
         int j = 0;
         for (int i = 0; i < 4; i++) {
             if (i == randomInt1) {
