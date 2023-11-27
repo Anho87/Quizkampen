@@ -216,16 +216,6 @@ int opponentScore = 0;
         this.opponentUserName = opponentUserName;
     }
 
-    public GuiClass(){
-        //getStartWindow();
-        waitingForPlayer();
-
-    }
-    public static void main(String[] args) {
-        
-        GuiClass g = new GuiClass();
-    }
-
     private void getChat() {
         chatTextArea.setEditable(false);
 
