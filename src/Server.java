@@ -29,9 +29,13 @@ public class Server extends Thread {
 
 
     Settings settings = new Settings();
+    
+    int totalRounds = settings.getRounds();
+    //int questionsPerRound = settings.getQuestions();
 
     int rounds = 3; //settings.getRounds();
     int questionsPerRound = 3; //settings.getQuestions();
+
     String chosenCategory;
     int answeredQuestionsThisRound = 0;
     int roundsPlayed = 0;
