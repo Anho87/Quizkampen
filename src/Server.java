@@ -58,12 +58,16 @@ public class Server extends Thread {
             outPlayer1.println(player2UserName);
             outPlayer2.println(player1UserName);
             gameActive = true;
-            System.out.println("name collected "+player1UserName+" "+player2UserName+" "+gameActive);
             while (gameActive) {
-                showCategoryOptions(outPlayer1);
-                String chosenCategory = inPlayer1.readLine();
-                System.out.println(chosenCategory);
-                getQuestions(outPlayer1, chosenCategory);
+                for (int i = 0; i < 2; i++) {
+                    showCategoryOptions(outPlayer1);
+                    String chosenCategory = inPlayer1.readLine();
+                    getQuestions(outPlayer1, chosenCategory);
+
+                    showCategoryOptions(outPlayer2);
+                    String chosenCategory2 = inPlayer2.readLine();
+                    getQuestions(outPlayer2, chosenCategory2);
+                }
 
 
             }
@@ -74,7 +78,6 @@ public class Server extends Thread {
     }
 
     private void showCategoryOptions(PrintWriter writer) {
-        System.out.println("first in showCatOpt, serverside");
         writer.println("FRAME DISPOSE");
         int randomInt1 = (int) (Math.random() * categories.size());
         int randomInt2 = (int) (Math.random() * categories.size());
@@ -88,8 +91,6 @@ public class Server extends Thread {
         Category cat1 = categories.get(randomInt1);
         Category cat2 = categories.get(randomInt2);
         Category cat3 = categories.get(randomInt3);
-
-        System.out.println("in showCatOpt, serverside");
 
         writer.println("CHOOSE_CATEGORY");
         writer.println(cat1.getCategoryName());

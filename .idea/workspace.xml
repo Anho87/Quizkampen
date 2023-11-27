@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="removed 2 classes">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-23__12_44__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-23__12_44__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-23__12_47__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-23__12_47__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
-    </list>
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="fixade att fråga kommer upp efter vald kategori" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -123,7 +116,7 @@
       <workItem from="1700213175465" duration="2000" />
       <workItem from="1700643479999" duration="19443000" />
       <workItem from="1700745174837" duration="569000" />
-      <workItem from="1701073833487" duration="1955000" />
+      <workItem from="1701073833487" duration="2436000" />
     </task>
     <task id="LOCAL−00001" summary="gui methods">
       <option name="closed" value="true" />
@@ -174,7 +167,14 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1701074019238</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="fixade att fråga kommer upp efter vald kategori">
+      <option name="closed" value="true" />
+      <created>1701076123749</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1701076123749</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +198,7 @@
     <MESSAGE value="ogjorde misstag" />
     <MESSAGE value="ogjorde misstag2" />
     <MESSAGE value="xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="xml" />
+    <MESSAGE value="fixade att fråga kommer upp efter vald kategori" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixade att fråga kommer upp efter vald kategori" />
   </component>
 </project>
