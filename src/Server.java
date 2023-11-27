@@ -47,21 +47,18 @@ public class Server extends Thread {
             inPlayer2 = new BufferedReader(new InputStreamReader(player2Socket.getInputStream()));
         } catch (IOException e) {
             e.printStackTrace();
-        }//In och utström skapas mellan spelarna och servern
+        }
         categories.add(category_kroppknopp);categories.add(category_djurnatur);categories.add(category_film);categories.add(category_sport);
     }
 
     public void run() {
         try {
-            /*Om servern får in användarnamn från båda spelarna så skickas dem till varandra och servern sätter
-            game till active*/
             String player1UserName = inPlayer1.readLine();
             String player2UserName = inPlayer2.readLine();
             outPlayer1.println(player2UserName);
             outPlayer2.println(player1UserName);
             gameActive = true;
             System.out.println("name collected "+player1UserName+" "+player2UserName+" "+gameActive);
-
             while (gameActive) {
                 showCategoryOptions(outPlayer1);
                 String chosenCategory = inPlayer1.readLine();
@@ -78,6 +75,7 @@ public class Server extends Thread {
 
     private void showCategoryOptions(PrintWriter writer) {
         System.out.println("first in showCatOpt, serverside");
+        writer.println("FRAME DISPOSE");
         int randomInt1 = (int) (Math.random() * categories.size());
         int randomInt2 = (int) (Math.random() * categories.size());
         if (randomInt1 == randomInt2) {
