@@ -65,23 +65,12 @@ public class Client implements ActionListener {
                 String incorrectAnswers = in.readLine();
                 String[] incorrectAnswersAsArray = incorrectAnswers.split(":");
                 guiClass.getQuizWindow(question, correctAnswer, incorrectAnswersAsArray);
-                /*if (answeredCorrectly) {
-                    outToServer.println("Rätt");
-                }
-                else {
-                    outToServer.println("Fel");
-                }*/
-
             } else if (fromServer.equals("WAIT")) {
                 guiClass.waitingForPlayer();
             } else if (fromServer.equals("FRAME DISPOSE")) {
                 guiClass.waitingForPlayerFrame.dispose();
                 guiClass.categoriesFrame.dispose();
                 guiClass.quizFrame.dispose();
-                for (JButton button : answerButtonsList) {
-                    button.setBackground(white);
-                }
-
             }
 
 
@@ -110,6 +99,7 @@ public class Client implements ActionListener {
                 }
                 break;
             }
+
 
         }
     }
