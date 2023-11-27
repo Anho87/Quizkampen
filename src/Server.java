@@ -16,10 +16,10 @@ public class Server extends Thread {
     Path pathToCategory_film = FileSystems.getDefault().getPath("src", "movieQuestions.txt");
     Path pathToCategory_sport = FileSystems.getDefault().getPath("src", "sportQuestions.txt");
 
-    Category category_kroppknopp = new Category("Kropp & knopp");
-    Category category_djurnatur = new Category("Djur & natur");
-    Category category_film = new Category("Film");
-    Category category_sport = new Category("Sport");
+    Category category_kroppknopp = new Category("Kropp & knopp", pathToCategory_kroppknopp);
+    Category category_djurnatur = new Category("Djur & natur", pathToCategory_djurnatur);
+    Category category_film = new Category("Film", pathToCategory_film);
+    Category category_sport = new Category("Sport", pathToCategory_sport);
     Category empty_category = new Category("Empty");
     ArrayList<Category> categories = new ArrayList<>();
 
@@ -116,6 +116,6 @@ public class Server extends Thread {
         writer.println(correctAnswer);
         writer.println(inCorrectAnswersAsString);
 
-
     }
+
 }
