@@ -15,11 +15,15 @@ public class Server extends Thread {
     Path pathToCategory_djurnatur = FileSystems.getDefault().getPath("src", "djur&natur.txt");
     Path pathToCategory_film = FileSystems.getDefault().getPath("src", "movieQuestions.txt");
     Path pathToCategory_sport = FileSystems.getDefault().getPath("src", "sportQuestions.txt");
+    Path pathToCategory_ilabbet = FileSystems.getDefault().getPath("src", "ilabbet.txt");
+    Path pathToCategory_bockerord = FileSystems.getDefault().getPath("src", "bocker&ord.txt");
 
     Category category_kroppknopp = new Category("Kropp & knopp", pathToCategory_kroppknopp);
     Category category_djurnatur = new Category("Djur & natur", pathToCategory_djurnatur);
     Category category_film = new Category("Film", pathToCategory_film);
     Category category_sport = new Category("Sport", pathToCategory_sport);
+    Category category_ilabbet = new Category("I labbet", pathToCategory_ilabbet);
+    Category category_bockerord = new Category("Böcker & ord", pathToCategory_bockerord);
     Category empty_category = new Category("Empty");
     ArrayList<Category> categories = new ArrayList<>();
 
@@ -31,8 +35,8 @@ public class Server extends Thread {
     String chosenCategory;
     int answeredQuestionsThisRound = 0;
     int roundsPlayed = 0;
-    int scorePlayer1;
-    int scorePlayer2;
+    static int scorePlayer1;
+    static int scorePlayer2;
     QuestionWithAnswers currentQuestion;
     ArrayList <QuestionWithAnswers> questionsInLine = new ArrayList<>();
 
@@ -49,7 +53,8 @@ public class Server extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        categories.add(category_kroppknopp);categories.add(category_djurnatur);categories.add(category_film);categories.add(category_sport);
+        categories.add(category_kroppknopp);categories.add(category_djurnatur);categories.add(category_film);
+        categories.add(category_sport);categories.add(category_ilabbet);categories.add(category_bockerord);
     }
 
     public void run() {
@@ -162,11 +167,18 @@ public class Server extends Thread {
     }
     public boolean checkResult (String s) {
         if (s.equals("true")) {
+
             return true;
         }
         else {
             return false;
         }
+    }
+    public static int getPlayer1Points(){
+        return scorePlayer1;
+    }
+    public static int getPlayer2Points(){
+        return scorePlayer2;
     }
 
 }
