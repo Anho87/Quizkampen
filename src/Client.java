@@ -73,7 +73,7 @@ public class Client implements ActionListener {
                 guiClass.waitingForPlayer();
             } else if (fromServer.equals("FRAME DISPOSE")) {
                 guiClass.waitingForPlayerFrame.dispose();
-                guiClass.categoriesFrame.dispose();
+                //guiClass.categoriesFrame.dispose();
             }
 
 
