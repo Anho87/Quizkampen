@@ -28,10 +28,11 @@ public class Server extends Thread {
     ArrayList<Category> categories = new ArrayList<>();
 
 
-    /*Settings settings = new Settings();
+    Settings settings = new Settings();
+    int totalRounds = settings.getRounds();
+    int questionsPerRound = settings.getQuestions();
 
-    int rounds = settings.getRounds();
-    int questionsPerRound = settings.getQuestions();*/
+
     String chosenCategory;
     int answeredQuestionsThisRound = 0;
     int roundsPlayed = 0;
@@ -65,10 +66,14 @@ public class Server extends Thread {
             outPlayer2.println(player1UserName);
             gameActive = true;
             while (gameActive) {
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < totalRounds; i++) {
+                    outPlayer1.println("Rond " + (i + 1) + " av " + totalRounds);
+                    outPlayer2.println("Rond " + (i + 1) + " av " + totalRounds);
                     showCategoryOptions(outPlayer1);
                     String chosenCategory = inPlayer1.readLine();
-                    for (int j = 0; j < 3; j++) {
+                    for (int j = 0; j < questionsPerRound; j++) {
+                        outPlayer1.println("Fråga " + (j + 1) + " av " + questionsPerRound);
+                        outPlayer2.println("Fråga " + (j + 1) + " av " + questionsPerRound);
                         showQuestions(setQuestion(outPlayer1, chosenCategory), outPlayer1);
                         if (checkResult(inPlayer1.readLine())) {
                             scorePlayer1++;
