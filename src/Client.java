@@ -82,6 +82,7 @@ public class Client implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        clickableButtons();
         for (JButton jButton : categoryButtonsList) {
             if (e.getSource() == jButton) {
                 outToServer.println(jButton.getText());
@@ -100,9 +101,21 @@ public class Client implements ActionListener {
                     outToServer.println("false");
                     button.setBackground(red);
                 }
+                unclickableButtons();
                 break;
             }
             
+        }
+    }
+
+    public void unclickableButtons(){
+        for (JButton button : answerButtonsList) {
+            button.setEnabled(false);
+        }
+    }
+    public void clickableButtons(){
+        for (JButton button : answerButtonsList) {
+            button.setEnabled(true);
         }
     }
 
