@@ -73,6 +73,7 @@ public class Server extends Thread {
                         if (checkResult(inPlayer1.readLine())) {
                             scorePlayer1++;
                         }
+                        Thread.sleep(2000);
                     }
                     outPlayer1.println("FRAME DISPOSE");
                     outPlayer1.println("WAIT");
@@ -81,6 +82,7 @@ public class Server extends Thread {
                         if (checkResult(inPlayer2.readLine())) {
                             scorePlayer2++;
                         }
+                        Thread.sleep(2000);
                         questionsInLine.remove(0);
                     }
                     showCategoryOptions(outPlayer2);
@@ -90,6 +92,7 @@ public class Server extends Thread {
                         if (checkResult(inPlayer2.readLine())) {
                             scorePlayer2++;
                         }
+                        Thread.sleep(2000);
                     }
                     outPlayer2.println("FRAME DISPOSE");
                     outPlayer2.println("WAIT");
@@ -98,6 +101,7 @@ public class Server extends Thread {
                         if (checkResult(inPlayer1.readLine())) {
                             scorePlayer1++;
                         }
+                        Thread.sleep(2000);
                         questionsInLine.remove(0);
                     }
                     outPlayer1.println("FRAME DISPOSE");
@@ -106,6 +110,8 @@ public class Server extends Thread {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
@@ -162,7 +168,6 @@ public class Server extends Thread {
     }
     public boolean checkResult (String s) {
         if (s.equals("true")) {
-
             return true;
         }
         else {

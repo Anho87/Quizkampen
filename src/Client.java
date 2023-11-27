@@ -98,6 +98,9 @@ public class Client implements ActionListener {
         }
         for (JButton button : answerButtonsList) {
             if (e.getSource() == button) {
+                if (button.getText().contains(correctAnswer)) {
+                    button.setBackground(green);
+                }
                 if ((button.getText().contains(correctAnswer))) {
                     outToServer.println("true");
                 }
@@ -107,9 +110,7 @@ public class Client implements ActionListener {
                 }
                 break;
             }
-            if (button.getText().contains(correctAnswer)) {
-                button.setBackground(green);
-            }
+
         }
     }
 
