@@ -84,6 +84,8 @@ public class Server extends Thread {
                         }
                         //outPlayer1.println("FRAME DISPOSE");
                         outPlayer1.println("WAIT");
+                        outPlayer1.println(scorePlayer1);
+                        outPlayer1.println(scorePlayer2);
                         outPlayer2.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer2);
@@ -107,6 +109,8 @@ public class Server extends Thread {
                         }
                         //outPlayer2.println("FRAME DISPOSE");
                         outPlayer2.println("WAIT");
+                        outPlayer2.println(scorePlayer1);
+                        outPlayer2.println(scorePlayer2);
                         outPlayer1.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer1);
