@@ -25,6 +25,7 @@ public class Client implements ActionListener {
     public Client() throws IOException {
         thisPlayer = guiClass.setUserName();
         outToServer.println(thisPlayer);
+        guiClass.waitingForPlayer();
         categoryButtonsList.add(guiClass.categoryButton1);
         categoryButtonsList.add(guiClass.categoryButton2);
         categoryButtonsList.add(guiClass.categoryButton3);
@@ -49,13 +50,13 @@ public class Client implements ActionListener {
 
         }
         while (true) {
-            String actionToDo = in.readLine();
-            if (actionToDo.equals("CHOOSE_CATEGORY")) {
+            fromServer = in.readLine();
+            if (fromServer.equals("CHOOSE_CATEGORY")) {
                 String cat1 = in.readLine();String cat2 = in.readLine(); String cat3 = in.readLine();
-                guiClass.getCategories(cat1, cat2, cat3);
+                guiClass.getCategories(cat1,cat2,cat3);
                 
             }
-            else if (actionToDo.equals("GET_QUESTIONS")) {
+            else if (fromServer.equals("GET_QUESTIONS")) {
                 String question = in.readLine();
                 String correctAnswer = in.readLine();
                 String incorrectAnswers = in.readLine();
@@ -68,11 +69,11 @@ public class Client implements ActionListener {
                     outToServer.println("Fel");
                 }*/
 
+            } else if (fromServer.equals("WAIT")){
+                guiClass.waitingForPlayer();
+            } else if (fromServer.equals("FRAME DISPOSE")) {
+                guiClass.dispose();
             }
-            /*else if (){
-
-            }*/
-
 
 
         }
@@ -90,6 +91,7 @@ public class Client implements ActionListener {
         for (JButton jButton : categoryButtonsList) {
             if (e.getSource() == jButton) {
                 outToServer.println(jButton.getText());
+                guiClass.waitingForPlayer();
             }
         }
     }

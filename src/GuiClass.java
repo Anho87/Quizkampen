@@ -32,8 +32,8 @@ public class GuiClass extends JFrame {
      JButton categoryButton3 = new JButton("Kategori 3");
 
 
-    private JFrame quizFrame = new JFrame("Quiz - " + userName);
-    private JPanel quizPanel = new JPanel();
+    JFrame quizFrame = new JFrame("Quiz - " + userName);
+    JPanel quizPanel = new JPanel();
     JPanel questionAndResultPanel = new JPanel();
     private int questionNr;
     private String correctAnswer = "Terminator";
@@ -46,6 +46,28 @@ public class GuiClass extends JFrame {
      JButton answer3 = new JButton("Hitta Nemo");
      JButton answer4 = new JButton("Gladiator");
     private ArrayList<JButton> answerButtons = new ArrayList<>();
+
+    JFrame waitingForPlayerFrame = new JFrame(userName);
+    JPanel waitingForPlayer1Panel = new JPanel(new BorderLayout());
+    JPanel waitingForPlayer2Panel = new JPanel(new BorderLayout());
+    JPanel waitingForPlayerResultPanel = new JPanel(new BorderLayout());
+    JTextArea waitingForPlayerResultTextArea = new JTextArea();
+    JTextArea waitingForPlayer1TextArea = new JTextArea();
+    JTextArea waitingForPlayer2TextArea = new JTextArea();
+    JButton waitingForPlayerButton = new JButton("Din Tur");
+    JMenuBar menuBar = new JMenuBar();
+    JMenu chatMenu = new JMenu("Chat");
+    JMenu changeColorMenu = new JMenu("Change color");
+    JMenu quitMenu = new JMenu("Quit");
+    JFrame chatFrame = new JFrame("Chat - " + userName);
+    JPanel chatPanel = new JPanel(new BorderLayout());
+    JPanel inputPanel = new JPanel(new BorderLayout());
+    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+    JTextArea chatTextArea = new JTextArea();
+    JTextField chatInputField = new JTextField();
+    JButton sendChatButton = new JButton("Send");
+
+
 
 
 
@@ -156,79 +178,15 @@ public class GuiClass extends JFrame {
             answerPanel.add(button);
         }
 
+        JMenuBar menuBar = createMenuBar();
+        quizFrame.setJMenuBar(menuBar);
+
         quizFrame.setSize(300, 500);
         quizFrame.setLocationRelativeTo(null);
 
-       /* JMenuBar menuBar = new JMenuBar();
-        JMenu chatMenu = new JMenu("Chat");
-        JMenu changeColorMenu = new JMenu("Change color");
-        JMenu quitMenu = new JMenu("Quit");
-
-        JMenuItem changeBodyColorItem = new JMenuItem("Change body color");
-        JMenuItem changeTextColorItem = new JMenuItem("Change text color");
-
-        changeColorMenu.add(changeBodyColorItem);
-        changeColorMenu.add(changeTextColorItem);
-
-        JMenuItem closeChatItem = new JMenuItem("Close");
-        JMenuItem openChatItem = new JMenuItem("Open");
-
-        chatMenu.add(closeChatItem);
-        chatMenu.add(openChatItem);
-
-        JMenuItem exitGameItem = new JMenuItem("Exit Game");
-
-        quitMenu.add(exitGameItem);
-
-        changeBodyColorItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JColorChooser colorChooser = new JColorChooser();
-                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
-
-                questionAndResultPanel.setBackground(color);
-                //answerPanel.setBackground(color);
-                quizPanel.setBackground(color);
-
-
-            }
-        });
-
-        changeTextColorItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JColorChooser colorChooser = new JColorChooser();
-                Color color =  JColorChooser.showDialog(null,"Choose a color",Color.black);
-                question.setForeground(color);
-                answer1.setForeground(color);
-                answer2.setForeground(color);
-                answer3.setForeground(color);
-                answer4.setForeground(color);
-                questionNumber.setForeground(color);
-                questionAndResultPanel.setForeground(color);
-                result.setForeground(color);
-
-
-            }
-        });
-
-        exitGameItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getStartWindow();
-                quizFrame.dispose();
-            }
-        });
-
-        menuBar.add(chatMenu);
-        menuBar.add(changeColorMenu);
-        menuBar.add(quitMenu);
-
-        quizFrame.setJMenuBar(menuBar);
 
         quizFrame.setVisible(true);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        return checkAnswer(correctAnswer);*/
     }
    /* private void checkAnswer(String theCorrectAnswer) {
         ActionListener answerListener = e -> {
@@ -255,9 +213,164 @@ public class GuiClass extends JFrame {
 
     public GuiClass(){
         //getStartWindow();
+
     }
     public static void main(String[] args) {
-        GuiClass g = new GuiClass();
         
+        GuiClass g = new GuiClass();
+    }
+
+    private void getChat() {
+        chatTextArea.setEditable(false);
+
+        JScrollPane chatScrollPane = new JScrollPane(chatTextArea);
+        chatScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+        buttonPanel.add(sendChatButton);
+
+        inputPanel.add(chatInputField, BorderLayout.CENTER);
+        inputPanel.add(buttonPanel, BorderLayout.EAST);
+
+        chatPanel.setLayout(new BorderLayout());
+        chatPanel.add(chatScrollPane, BorderLayout.CENTER);
+        chatPanel.add(inputPanel, BorderLayout.SOUTH);
+
+        sendChatButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //sendMessage();
+            }
+        });
+
+        sendChatButton.setPreferredSize(new Dimension(80, 35));
+
+        chatFrame.add(chatPanel);
+        chatFrame.setSize(250, 250);
+        chatFrame.setLocationRelativeTo(null);
+        chatFrame.setVisible(true);
+    }
+    private JMenuBar createMenuBar() {
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu chatMenu = new JMenu("Chat");
+        JMenu changeColorMenu = new JMenu("Change color");
+        JMenu quitMenu = new JMenu("Quit");
+
+
+        JMenuItem changeBodyColorItem = new JMenuItem("Change body color");
+        JMenuItem changeTextColorItem = new JMenuItem("Change text color");
+
+        changeColorMenu.add(changeBodyColorItem);
+        changeColorMenu.add(changeTextColorItem);
+
+        JMenuItem closeChatItem = new JMenuItem("Close");
+        JMenuItem openChatItem = new JMenuItem("Open");
+
+        chatMenu.add(closeChatItem);
+        chatMenu.add(openChatItem);
+
+        JMenuItem exitGameItem = new JMenuItem("Exit Game");
+
+        quitMenu.add(exitGameItem);
+
+        openChatItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getChat();
+            }
+        });
+
+        closeChatItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                chatFrame.dispose();
+            }
+        });
+
+        changeBodyColorItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JColorChooser colorChooser = new JColorChooser();
+                Color color = JColorChooser.showDialog(null, "Choose a color", Color.black);
+
+                questionAndResultPanel.setBackground(color);
+                //answerPanel.setBackground(color);
+                quizPanel.setBackground(color);
+
+
+            }
+        });
+
+        changeTextColorItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JColorChooser colorChooser = new JColorChooser();
+                Color color = JColorChooser.showDialog(null, "Choose a color", Color.black);
+                question.setForeground(color);
+                answer1.setForeground(color);
+                answer2.setForeground(color);
+                answer3.setForeground(color);
+                answer4.setForeground(color);
+                questionNumber.setForeground(color);
+                questionAndResultPanel.setForeground(color);
+                result.setForeground(color);
+
+
+            }
+        });
+
+        exitGameItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getStartWindow();
+                quizFrame.dispose();
+            }
+        });
+
+        menuBar.add(chatMenu);
+        menuBar.add(changeColorMenu);
+        menuBar.add(quitMenu);
+
+        return menuBar;
+    }
+    public void waitingForPlayer() {
+
+
+        waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.EAST);
+        waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
+        waitingForPlayer1Panel.setPreferredSize(new Dimension(150, 400));
+        waitingForPlayer1TextArea.setText("Game 1: - x x\n\nGame 2: - x x");
+
+        waitingForPlayerFrame.add(waitingForPlayer2Panel, BorderLayout.WEST);
+        waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
+        waitingForPlayer2Panel.setPreferredSize(new Dimension(150, 400));
+        waitingForPlayer2TextArea.setText("Game 1: x - -\n\nGame 2: - x -");
+
+        waitingForPlayerFrame.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
+        waitingForPlayerResultPanel.setPreferredSize(new Dimension(300, 50));
+        waitingForPlayerResultPanel.setLayout(new GridLayout(1,2));
+
+        waitingForPlayerResultPanel.add(waitingForPlayerResultTextArea);
+        waitingForPlayerResultTextArea.setText("Player 1 is Answering\nQuestions");
+
+        waitingForPlayerResultPanel.add(waitingForPlayerButton);
+        waitingForPlayerButton.setSize(50,30);
+        waitingForPlayerButton.setEnabled(false);
+
+
+
+        waitingForPlayer1TextArea.setEditable(false);
+        waitingForPlayer2TextArea.setEditable(false);
+        waitingForPlayerResultTextArea.setEditable(false);
+
+        JMenuBar menuBar = createMenuBar();
+        waitingForPlayerFrame.setJMenuBar(menuBar);
+
+
+        waitingForPlayerFrame.setSize(300, 500);
+        waitingForPlayerFrame.setLocationRelativeTo(null);
+        waitingForPlayerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        waitingForPlayerFrame.setVisible(true);
+
     }
 }
