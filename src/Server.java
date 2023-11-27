@@ -31,7 +31,7 @@ public class Server extends Thread {
     Settings settings = new Settings();
 
     int rounds = 3; //settings.getRounds();
-    int questionsPerRound = 2; //settings.getQuestions();
+    int questionsPerRound = 3; //settings.getQuestions();
     String chosenCategory;
     int answeredQuestionsThisRound = 0;
     int roundsPlayed = 0;
@@ -65,18 +65,22 @@ public class Server extends Thread {
             outPlayer2.println(player1UserName);
             gameActive = true;
             while (gameActive) {
-                for (int i = 1; i <= rounds; i++) {
-                    if(rounds % 2 != 0){
+                for (int i = 0; i < rounds; i++) {
+                    if(i % 2 == 0){
+                        outPlayer1.println("FRAME DISPOSE");
                         showCategoryOptions(outPlayer1);
                         String chosenCategory = inPlayer1.readLine();
+                        outPlayer1.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(setQuestion(outPlayer1, chosenCategory), outPlayer1);
                             if (checkResult(inPlayer1.readLine())) {
                                 scorePlayer1++;
                             }
+                            outPlayer1.println("FRAME DISPOSE");
                         }
-                        outPlayer1.println("FRAME DISPOSE");
+                        //outPlayer1.println("FRAME DISPOSE");
                         outPlayer1.println("WAIT");
+                        outPlayer2.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer2);
                             if (checkResult(inPlayer2.readLine())) {
@@ -86,16 +90,20 @@ public class Server extends Thread {
                             outPlayer2.println("FRAME DISPOSE");
                         }
                     }else{
+                        outPlayer2.println("FRAME DISPOSE");
                         showCategoryOptions(outPlayer2);
                         String chosenCategory2 = inPlayer2.readLine();
+                        outPlayer2.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(setQuestion(outPlayer2, chosenCategory2), outPlayer2);
                             if (checkResult(inPlayer2.readLine())) {
                                 scorePlayer2++;
                             }
+                            outPlayer2.println("FRAME DISPOSE");
                         }
-                        outPlayer2.println("FRAME DISPOSE");
+                        //outPlayer2.println("FRAME DISPOSE");
                         outPlayer2.println("WAIT");
+                        outPlayer1.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer1);
                             if (checkResult(inPlayer1.readLine())) {
@@ -106,6 +114,10 @@ public class Server extends Thread {
                         }
                     }
                 }
+                outPlayer1.println("FRAME DISPOSE");
+                outPlayer2.println("FRAME DISPOSE");
+                outPlayer1.println("SHOW RESULT");
+                outPlayer2.println("SHOW RESULT");
                 gameActive = false;
             }
         } catch (IOException e) {
@@ -115,7 +127,6 @@ public class Server extends Thread {
     }
 
     private void showCategoryOptions(PrintWriter writer) {
-        writer.println("FRAME DISPOSE");
         int randomInt1 = (int) (Math.random() * categories.size());
         int randomInt2 = (int) (Math.random() * categories.size());
         if (randomInt1 == randomInt2) {
@@ -136,7 +147,6 @@ public class Server extends Thread {
     }
 
     private QuestionWithAnswers setQuestion (PrintWriter writer, String chosenCategory) {
-        writer.println("FRAME DISPOSE");
         Category actualCategory = empty_category;
         for (Category category : categories) {
             if (category.getCategoryName().equals(chosenCategory)) {
@@ -152,7 +162,6 @@ public class Server extends Thread {
     }
 
     private void showQuestions(QuestionWithAnswers qa, PrintWriter writer) {
-        writer.println("FRAME DISPOSE");
         String question = qa.getQuestion();
         String correctAnswer = qa.getCorrectAnswer();
         ArrayList<String> inCorrectAnswers = qa.getIncorrectAnswers();

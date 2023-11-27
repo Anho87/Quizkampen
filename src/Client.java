@@ -66,13 +66,6 @@ public class Client implements ActionListener {
                 String incorrectAnswers = in.readLine();
                 String[] incorrectAnswersAsArray = incorrectAnswers.split(":");
                 guiClass.getQuizWindow(question, correctAnswer, incorrectAnswersAsArray);
-                /*if (answeredCorrectly) {
-                    outToServer.println("Rätt");
-                }
-                else {
-                    outToServer.println("Fel");
-                }*/
-
             } else if (fromServer.equals("WAIT")) {
                 guiClass.waitingForPlayer();
             } else if (fromServer.equals("FRAME DISPOSE")) {
@@ -94,6 +87,9 @@ public class Client implements ActionListener {
             }
         }
         for (JButton button : answerButtonsList) {
+            if (button.getText().contains(correctAnswer)) {
+                button.setBackground(green);
+            }
             if (e.getSource() == button) {
                 if ((button.getText().contains(correctAnswer))) {
                     outToServer.println("true");
@@ -104,9 +100,7 @@ public class Client implements ActionListener {
                 }
                 break;
             }
-            if (button.getText().contains(correctAnswer)) {
-                button.setBackground(green);
-            }
+            
         }
     }
 
