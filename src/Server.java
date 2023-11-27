@@ -99,6 +99,7 @@ public class Server extends Thread {
     }
 
     private void getQuestions(PrintWriter writer, String chosenCategory) {
+        writer.println("FRAME DISPOSE");
         Category actualCategory = empty_category;
         for (Category category : categories) {
             if (category.getCategoryName().equals(chosenCategory)) {
