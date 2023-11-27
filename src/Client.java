@@ -66,6 +66,8 @@ public class Client implements ActionListener {
                 String[] incorrectAnswersAsArray = incorrectAnswers.split(":");
                 guiClass.getQuizWindow(question, correctAnswer, incorrectAnswersAsArray);
             } else if (fromServer.equals("WAIT")) {
+                guiClass.playerScore = Integer.parseInt(in.readLine());
+                guiClass.opponentScore = Integer.parseInt(in.readLine());
                 guiClass.waitingForPlayer();
             } else if (fromServer.equals("FRAME DISPOSE")) {
                 guiClass.waitingForPlayerFrame.dispose();

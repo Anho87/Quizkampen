@@ -67,7 +67,8 @@ public class GuiClass extends JFrame {
     JTextField chatInputField = new JTextField();
     JButton sendChatButton = new JButton("Send");
 
-
+int playerScore = 0;
+int opponentScore = 0;
 
 
 
@@ -346,12 +347,12 @@ public class GuiClass extends JFrame {
         waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
         waitingForPlayer1Panel.setPreferredSize(new Dimension(150, 400));
-        waitingForPlayer1TextArea.setText( userName + "\nAntal korrekta svar: " + Server.getPlayer1Points());
+        waitingForPlayer1TextArea.setText( userName + "\nAntal korrekta svar: " + playerScore);
 
         waitingForPlayerFrame.add(waitingForPlayer2Panel, BorderLayout.EAST);
         waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
         waitingForPlayer2Panel.setPreferredSize(new Dimension(150, 400));
-        waitingForPlayer2TextArea.setText(opponentUserName +"\nAntal korrekta svar: " + Server.getPlayer2Points() );
+        waitingForPlayer2TextArea.setText(opponentUserName +"\nAntal korrekta svar: " + opponentScore );
 
         waitingForPlayerFrame.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
         waitingForPlayerResultPanel.setPreferredSize(new Dimension(300, 50));
@@ -373,7 +374,7 @@ public class GuiClass extends JFrame {
         JMenuBar menuBar = createMenuBar();
         waitingForPlayerFrame.setJMenuBar(menuBar);
 
-        updateGUI();
+        //updateGUI();
         waitingForPlayerFrame.setSize(300, 500);
         waitingForPlayerFrame.setLocationRelativeTo(null);
         waitingForPlayerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
