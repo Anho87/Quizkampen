@@ -212,10 +212,11 @@ public class GuiClass extends JFrame {
     }
 
     public GuiClass(){
-        getStartWindow();
+        //getStartWindow();
 
     }
     public static void main(String[] args) {
+        
         GuiClass g = new GuiClass();
     }
 
@@ -332,7 +333,7 @@ public class GuiClass extends JFrame {
 
         return menuBar;
     }
-    private void waitingForPlayer() {
+    public void waitingForPlayer() {
 
 
         waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.EAST);
