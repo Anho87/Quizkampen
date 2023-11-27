@@ -373,12 +373,18 @@ public class GuiClass extends JFrame {
         JMenuBar menuBar = createMenuBar();
         waitingForPlayerFrame.setJMenuBar(menuBar);
 
-
+        updateGUI();
         waitingForPlayerFrame.setSize(300, 500);
         waitingForPlayerFrame.setLocationRelativeTo(null);
         waitingForPlayerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         waitingForPlayerFrame.setResizable(false);
         waitingForPlayerFrame.setVisible(true);
 
+
+    }
+    public void updateGUI() {
+        waitingForPlayer1TextArea.setText(userName + "\nAntal korrekta svar: " + Server.getPlayer1Points());
+        waitingForPlayer2TextArea.setText(opponentUserName + "\nAntal korrekta svar: " + Server.getPlayer2Points());
+        waitingForPlayerResultTextArea.setText(opponentUserName + " is Answering\nQuestions");
     }
 }
