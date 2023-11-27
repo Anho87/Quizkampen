@@ -217,6 +217,7 @@ public class GuiClass extends JFrame {
 
     public GuiClass(){
         //getStartWindow();
+        waitingForPlayer();
 
     }
     public static void main(String[] args) {
@@ -340,23 +341,24 @@ public class GuiClass extends JFrame {
     }
     public void waitingForPlayer() {
 
+        waitingForPlayerFrame.setTitle(userName);
 
-        waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.EAST);
+        waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
         waitingForPlayer1Panel.setPreferredSize(new Dimension(150, 400));
-        waitingForPlayer1TextArea.setText("Game 1: - x x\n\nGame 2: - x x");
+        waitingForPlayer1TextArea.setText( userName + "\nAntal korrekta svar: " + Server.getPlayer1Points());
 
-        waitingForPlayerFrame.add(waitingForPlayer2Panel, BorderLayout.WEST);
+        waitingForPlayerFrame.add(waitingForPlayer2Panel, BorderLayout.EAST);
         waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
         waitingForPlayer2Panel.setPreferredSize(new Dimension(150, 400));
-        waitingForPlayer2TextArea.setText("Game 1: x - -\n\nGame 2: - x -");
+        waitingForPlayer2TextArea.setText(opponentUserName +"\nAntal korrekta svar: " + Server.getPlayer2Points() );
 
         waitingForPlayerFrame.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
         waitingForPlayerResultPanel.setPreferredSize(new Dimension(300, 50));
         waitingForPlayerResultPanel.setLayout(new GridLayout(1,2));
 
         waitingForPlayerResultPanel.add(waitingForPlayerResultTextArea);
-        waitingForPlayerResultTextArea.setText("Player 1 is Answering\nQuestions");
+        waitingForPlayerResultTextArea.setText(opponentUserName + " is Answering\nQuestions");
 
         waitingForPlayerResultPanel.add(waitingForPlayerButton);
         waitingForPlayerButton.setSize(50,30);

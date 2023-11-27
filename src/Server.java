@@ -31,8 +31,8 @@ public class Server extends Thread {
     String chosenCategory;
     int answeredQuestionsThisRound = 0;
     int roundsPlayed = 0;
-    int scorePlayer1;
-    int scorePlayer2;
+    static int scorePlayer1;
+    static int scorePlayer2;
     QuestionWithAnswers currentQuestion;
     ArrayList <QuestionWithAnswers> questionsInLine = new ArrayList<>();
 
@@ -162,6 +162,12 @@ public class Server extends Thread {
         else {
             return false;
         }
+    }
+    public static int getPlayer1Points(){
+        return scorePlayer1;
+    }
+    public static int getPlayer2Points(){
+        return scorePlayer2;
     }
 
 }
