@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="adding a settings class">
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
-    </list>
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="raderade gamla klasserna Game och GameActionListener" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "andreasBranch",
+    "git-widget-placeholder": "developmentBranch",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -191,7 +187,21 @@
       <option name="presentableId" value="LOCAL−00010" />
       <updated>1701086846897</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL−00011" summary="ändrade så knapparna blir röda/gröna beroende på vilket svar som ges, mm">
+      <option name="closed" value="true" />
+      <created>1701091033520</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1701091033520</updated>
+    </task>
+    <task id="LOCAL−00012" summary="raderade gamla klasserna Game och GameActionListener">
+      <option name="closed" value="true" />
+      <created>1701091109003</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1701091109003</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +229,8 @@
     <MESSAGE value="adding a settings class" />
     <MESSAGE value="for loops" />
     <MESSAGE value="for loops in run in server" />
-    <option name="LAST_COMMIT_MESSAGE" value="for loops in run in server" />
+    <MESSAGE value="ändrade så knapparna blir röda/gröna beroende på vilket svar som ges, mm" />
+    <MESSAGE value="raderade gamla klasserna Game och GameActionListener" />
+    <option name="LAST_COMMIT_MESSAGE" value="raderade gamla klasserna Game och GameActionListener" />
   </component>
 </project>
