@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="La till kategorierna i labbet och böcker&amp;ord samt fler frågor i djur&amp;natur och kropp&amp;knopp">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_11_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_11_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_11__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17_[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17__Changes_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/testServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ServerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bocker&amp;ord.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/bocker&amp;ord.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/djur&amp;natur.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/djur&amp;natur.txt" afterDir="false" />
-    </list>
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="raderade gamla klasserna Game och GameActionListener" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +19,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="devBranchAnna" />
+    <option name="BRANCH" value="andreasBranch" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -61,8 +44,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Astrid",
-    "last_opened_file_path": "C:/Users/Astrid Rosen/Desktop/Java Nackademin/HT23/OOP/Sprint4/ovningsuppgifter",
+    "git-widget-placeholder": "developmentBranch",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,9 +52,23 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Client (4)">
+    <configuration name="Client (4)" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="Quizkampen" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client (5)" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="Quizkampen" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GuiClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GuiClass" />
       <module name="Quizkampen" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -85,13 +81,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerListener" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ServerListener" />
+      <module name="Quizkampen" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Client (4)" />
+      <item itemvalue="Application.Client (5)" />
+      <item itemvalue="Application.GuiClass" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.ServerListener" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client (4)" />
+        <item itemvalue="Application.ServerListener" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Server" />
-        <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.GuiClass" />
+        <item itemvalue="Application.Client (5)" />
       </list>
     </recent_temporary>
   </component>
@@ -104,6 +114,8 @@
       <option name="presentableId" value="Default" />
       <updated>1700213174275</updated>
       <workItem from="1700213175465" duration="2000" />
+      <workItem from="1700643479999" duration="19443000" />
+      <workItem from="1700745174837" duration="569000" />
     </task>
     <task id="LOCAL−00001" summary="gui methods">
       <option name="closed" value="true" />
@@ -119,38 +131,106 @@
       <option name="presentableId" value="LOCAL−00002" />
       <updated>1700477041205</updated>
     </task>
-    <task id="LOCAL−00003" summary="La till kropp&amp;knopp.txt + djur&amp;natur.txt">
+    <task id="LOCAL−00003" summary="gui methods.">
       <option name="closed" value="true" />
-      <created>1700554198389</created>
+      <created>1700640830855</created>
       <option name="number" value="LOCAL−00003" />
       <option name="presentableId" value="LOCAL−00003" />
-      <updated>1700554198389</updated>
+      <updated>1700640830855</updated>
     </task>
-    <task id="LOCAL−00004" summary="La till klasser Game, Category och QuestionWithAnswers">
+    <task id="LOCAL−00004" summary="..">
       <option name="closed" value="true" />
-      <created>1700554778514</created>
+      <created>1700644207082</created>
       <option name="number" value="LOCAL−00004" />
       <option name="presentableId" value="LOCAL−00004" />
-      <updated>1700554778514</updated>
+      <updated>1700644207082</updated>
     </task>
-    <task id="LOCAL−00005" summary="La till kategorierna i labbet och böcker&amp;ord samt fler frågor i djur&amp;natur och kropp&amp;knopp">
+    <task id="LOCAL−00005" summary="ogjorde misstag">
       <option name="closed" value="true" />
-      <created>1700648781998</created>
+      <created>1700745512820</created>
       <option name="number" value="LOCAL−00005" />
       <option name="presentableId" value="LOCAL−00005" />
-      <updated>1700648781999</updated>
+      <updated>1700745512820</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="ogjorde misstag2">
+      <option name="closed" value="true" />
+      <created>1700745585180</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1700745585180</updated>
+    </task>
+    <task id="LOCAL−00007" summary="added properties file">
+      <option name="closed" value="true" />
+      <created>1701075503079</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1701075503079</updated>
+    </task>
+    <task id="LOCAL−00008" summary="adding a settings class">
+      <option name="closed" value="true" />
+      <created>1701077183502</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1701077183502</updated>
+    </task>
+    <task id="LOCAL−00009" summary="for loops">
+      <option name="closed" value="true" />
+      <created>1701086819140</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1701086819140</updated>
+    </task>
+    <task id="LOCAL−00010" summary="for loops in run in server">
+      <option name="closed" value="true" />
+      <created>1701086846897</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1701086846897</updated>
+    </task>
+    <task id="LOCAL−00011" summary="ändrade så knapparna blir röda/gröna beroende på vilket svar som ges, mm">
+      <option name="closed" value="true" />
+      <created>1701091033520</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1701091033520</updated>
+    </task>
+    <task id="LOCAL−00012" summary="raderade gamla klasserna Game och GameActionListener">
+      <option name="closed" value="true" />
+      <created>1701091109003</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1701091109003</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gui methods" />
-    <MESSAGE value="La till kropp&amp;knopp.txt + djur&amp;natur.txt" />
-    <MESSAGE value="La till klasser Game, Category och QuestionWithAnswers" />
-    <MESSAGE value="La till kategorierna i labbet och böcker&amp;ord samt fler frågor i djur&amp;natur och kropp&amp;knopp" />
-    <option name="LAST_COMMIT_MESSAGE" value="La till kategorierna i labbet och böcker&amp;ord samt fler frågor i djur&amp;natur och kropp&amp;knopp" />
+    <MESSAGE value="gui methods." />
+    <MESSAGE value=".." />
+    <MESSAGE value="ogjorde misstag" />
+    <MESSAGE value="ogjorde misstag2" />
+    <MESSAGE value="xml" />
+    <MESSAGE value="added properties file" />
+    <MESSAGE value="adding a settings class" />
+    <MESSAGE value="for loops" />
+    <MESSAGE value="for loops in run in server" />
+    <MESSAGE value="ändrade så knapparna blir röda/gröna beroende på vilket svar som ges, mm" />
+    <MESSAGE value="raderade gamla klasserna Game och GameActionListener" />
+    <option name="LAST_COMMIT_MESSAGE" value="raderade gamla klasserna Game och GameActionListener" />
   </component>
 </project>
