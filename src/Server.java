@@ -100,6 +100,7 @@ public class Server extends Thread {
     }
 
     private void getQuestions(PrintWriter writer, String chosenCategory) {
+        writer.println("FRAME DISPOSE");
         Category actualCategory = empty_category;
         for (Category category : categories) {
             if (category.getCategoryName().equals(chosenCategory)) {
@@ -113,8 +114,11 @@ public class Server extends Thread {
         ArrayList<String> inCorrectAnswers = actualCategory.allQuestions.get(randomInt).getIncorrectAnswers();
         String inCorrectAnswersAsString = inCorrectAnswers.get(0) + ":" + inCorrectAnswers.get(1) + ":" + inCorrectAnswers.get(2);
         writer.println("GET_QUESTIONS");
+        System.out.println(question);
         writer.println(question);
+        System.out.println(correctAnswer);
         writer.println(correctAnswer);
+        System.out.println(inCorrectAnswersAsString);
         writer.println(inCorrectAnswersAsString);
 
     }

@@ -110,7 +110,7 @@ public class GuiClass extends JFrame {
         gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void getCategories(String cat1, String cat2, String cat3 ){
+    public void getCategories(String cat1, String cat2, String cat3){ 
         categoriesFrame.add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);
