@@ -7,6 +7,8 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import static java.awt.Color.green;
+import static java.awt.Color.red;
 import static java.lang.Integer.parseInt;
 
 public class Client implements ActionListener {
@@ -98,8 +100,12 @@ public class Client implements ActionListener {
                 }
                 else {
                     outToServer.println("false");
+                    button.setBackground(red);
                 }
                 break;
+            }
+            if (button.getText().contains(correctAnswer)) {
+                button.setBackground(green);
             }
         }
     }
