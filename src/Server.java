@@ -95,21 +95,19 @@ public class Server extends Thread {
                         if (checkResult(inPlayer2.readLine())) {
                             scorePlayer2++;
                         }
-                        outPlayer2.println("FRAME DISPOSE");
                         Thread.sleep(2000);
+                        outPlayer2.println("FRAME DISPOSE");
                     }
-                    outPlayer2.println("FRAME DISPOSE");
                     outPlayer2.println("WAIT");
                     for (int j = 0; j < 3; j++) {
                         showQuestions(questionsInLine.get(0), outPlayer1);
                         if (checkResult(inPlayer1.readLine())) {
                             scorePlayer1++;
                         }
-                        outPlayer1.println("FRAME DISPOSE");
                         Thread.sleep(2000);
+                        outPlayer1.println("FRAME DISPOSE");
                         questionsInLine.remove(0);
                     }
-                    outPlayer1.println("FRAME DISPOSE");
                     outPlayer1.println("WAIT");
                 }
             }
