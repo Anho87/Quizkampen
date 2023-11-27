@@ -93,6 +93,7 @@ public class GuiClass extends JFrame {
 
         startFrame.setSize(300, 500);
         startFrame.setLocationRelativeTo(null);
+        startFrame.setResizable(false);
         startFrame.setVisible(true);
         startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -106,6 +107,7 @@ public class GuiClass extends JFrame {
 
         gameMenuFrame.setSize(300, 500);
         gameMenuFrame.setLocationRelativeTo(null);
+        gameMenuFrame.setResizable(false);
         gameMenuFrame.setVisible(true);
         gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -136,6 +138,7 @@ public class GuiClass extends JFrame {
         categoriesFrame.setSize(300, 500);
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        categoriesFrame.setResizable(false);
         categoriesFrame.setVisible(true);
         System.out.println("here should categoryFrame display itself");
         categoriesFrame.revalidate();
@@ -186,6 +189,7 @@ public class GuiClass extends JFrame {
 
 
         quizFrame.setVisible(true);
+        quizFrame.setResizable(false);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
    /* private void checkAnswer(String theCorrectAnswer) {
@@ -247,6 +251,7 @@ public class GuiClass extends JFrame {
         chatFrame.add(chatPanel);
         chatFrame.setSize(250, 250);
         chatFrame.setLocationRelativeTo(null);
+        chatFrame.setResizable(false);
         chatFrame.setVisible(true);
     }
     private JMenuBar createMenuBar() {
@@ -370,6 +375,7 @@ public class GuiClass extends JFrame {
         waitingForPlayerFrame.setSize(300, 500);
         waitingForPlayerFrame.setLocationRelativeTo(null);
         waitingForPlayerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        waitingForPlayerFrame.setResizable(false);
         waitingForPlayerFrame.setVisible(true);
 
     }
