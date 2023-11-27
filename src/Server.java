@@ -68,14 +68,15 @@ public class Server extends Thread {
                 for (int i = 0; i < 2; i++) {
                     showCategoryOptions(outPlayer1);
                     String chosenCategory = inPlayer1.readLine();
+                    outPlayer1.println("FRAME DISPOSE");
                     for (int j = 0; j < 3; j++) {
                         showQuestions(setQuestion(outPlayer1, chosenCategory), outPlayer1);
                         if (checkResult(inPlayer1.readLine())) {
                             scorePlayer1++;
                         }
                         Thread.sleep(2000);
+                        outPlayer1.println("FRAME DISPOSE");
                     }
-                    outPlayer1.println("FRAME DISPOSE");
                     outPlayer1.println("WAIT");
                     for (int j = 0; j < 3; j++) {
                         showQuestions(questionsInLine.get(0), outPlayer2);
@@ -83,15 +84,18 @@ public class Server extends Thread {
                             scorePlayer2++;
                         }
                         Thread.sleep(2000);
+                        outPlayer2.println("FRAME DISPOSE");
                         questionsInLine.remove(0);
                     }
                     showCategoryOptions(outPlayer2);
                     String chosenCategory2 = inPlayer2.readLine();
+                    outPlayer2.println("FRAME DISPOSE");
                     for (int j = 0; j < 3; j++) {
                         showQuestions(setQuestion(outPlayer2, chosenCategory2), outPlayer2);
                         if (checkResult(inPlayer2.readLine())) {
                             scorePlayer2++;
                         }
+                        outPlayer2.println("FRAME DISPOSE");
                         Thread.sleep(2000);
                     }
                     outPlayer2.println("FRAME DISPOSE");
@@ -101,6 +105,7 @@ public class Server extends Thread {
                         if (checkResult(inPlayer1.readLine())) {
                             scorePlayer1++;
                         }
+                        outPlayer1.println("FRAME DISPOSE");
                         Thread.sleep(2000);
                         questionsInLine.remove(0);
                     }

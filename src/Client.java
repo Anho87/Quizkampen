@@ -97,11 +97,11 @@ public class Client implements ActionListener {
             }
         }
         for (JButton button : answerButtonsList) {
+            if (button.getText().contains(correctAnswer)) {
+                button.setBackground(green);
+            }
             if (e.getSource() == button) {
                 if (button.getText().contains(correctAnswer)) {
-                    button.setBackground(green);
-                }
-                if ((button.getText().contains(correctAnswer))) {
                     outToServer.println("true");
                 }
                 else {
