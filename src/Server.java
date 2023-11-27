@@ -34,6 +34,7 @@ public class Server extends Thread {
     int scorePlayer1;
     int scorePlayer2;
     QuestionWithAnswers currentQuestion;
+    ArrayList <QuestionWithAnswers> questionsInLine = new ArrayList<>();
 
     boolean gameActive = false;
 
@@ -58,14 +59,45 @@ public class Server extends Thread {
             outPlayer1.println(player2UserName);
             outPlayer2.println(player1UserName);
             gameActive = true;
-            System.out.println("name collected "+player1UserName+" "+player2UserName+" "+gameActive);
             while (gameActive) {
-                showCategoryOptions(outPlayer1);
-                String chosenCategory = inPlayer1.readLine();
-                System.out.println(chosenCategory);
-                getQuestions(outPlayer1, chosenCategory);
-
-
+                for (int i = 0; i < 2; i++) {
+                    showCategoryOptions(outPlayer1);
+                    String chosenCategory = inPlayer1.readLine();
+                    for (int j = 0; j < 3; j++) {
+                        showQuestions(setQuestion(outPlayer1, chosenCategory), outPlayer1);
+                        if (checkResult(inPlayer1.readLine())) {
+                            scorePlayer1++;
+                        }
+                    }
+                    outPlayer1.println("FRAME DISPOSE");
+                    outPlayer1.println("WAIT");
+                    for (int j = 0; j < 3; j++) {
+                        showQuestions(questionsInLine.get(0), outPlayer2);
+                        if (checkResult(inPlayer2.readLine())) {
+                            scorePlayer2++;
+                        }
+                        questionsInLine.remove(0);
+                    }
+                    showCategoryOptions(outPlayer2);
+                    String chosenCategory2 = inPlayer2.readLine();
+                    for (int j = 0; j < 3; j++) {
+                        showQuestions(setQuestion(outPlayer2, chosenCategory2), outPlayer2);
+                        if (checkResult(inPlayer2.readLine())) {
+                            scorePlayer2++;
+                        }
+                    }
+                    outPlayer2.println("FRAME DISPOSE");
+                    outPlayer2.println("WAIT");
+                    for (int j = 0; j < 3; j++) {
+                        showQuestions(questionsInLine.get(0), outPlayer1);
+                        if (checkResult(inPlayer1.readLine())) {
+                            scorePlayer1++;
+                        }
+                        questionsInLine.remove(0);
+                    }
+                    outPlayer1.println("FRAME DISPOSE");
+                    outPlayer1.println("WAIT");
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,7 +106,6 @@ public class Server extends Thread {
     }
 
     private void showCategoryOptions(PrintWriter writer) {
-        System.out.println("first in showCatOpt, serverside");
         writer.println("FRAME DISPOSE");
         int randomInt1 = (int) (Math.random() * categories.size());
         int randomInt2 = (int) (Math.random() * categories.size());
@@ -89,16 +120,13 @@ public class Server extends Thread {
         Category cat2 = categories.get(randomInt2);
         Category cat3 = categories.get(randomInt3);
 
-        System.out.println("in showCatOpt, serverside");
-
         writer.println("CHOOSE_CATEGORY");
         writer.println(cat1.getCategoryName());
         writer.println(cat2.getCategoryName());
         writer.println(cat3.getCategoryName());
-
     }
 
-    private void getQuestions(PrintWriter writer, String chosenCategory) {
+    private QuestionWithAnswers setQuestion (PrintWriter writer, String chosenCategory) {
         writer.println("FRAME DISPOSE");
         Category actualCategory = empty_category;
         for (Category category : categories) {
@@ -108,9 +136,16 @@ public class Server extends Thread {
             }
         }
         int randomInt = (int) (Math.random() * actualCategory.allQuestions.size());
-        String question = actualCategory.allQuestions.get(randomInt).getQuestion();
-        String correctAnswer = actualCategory.allQuestions.get(randomInt).getCorrectAnswer();
-        ArrayList<String> inCorrectAnswers = actualCategory.allQuestions.get(randomInt).getIncorrectAnswers();
+        QuestionWithAnswers selectedQuestion = actualCategory.allQuestions.get(randomInt);
+        actualCategory.allQuestions.remove(randomInt);
+        questionsInLine.add(selectedQuestion);
+        return selectedQuestion;
+    }
+
+    private void showQuestions(QuestionWithAnswers qa, PrintWriter writer) {
+        String question = qa.getQuestion();
+        String correctAnswer = qa.getCorrectAnswer();
+        ArrayList<String> inCorrectAnswers = qa.getIncorrectAnswers();
         String inCorrectAnswersAsString = inCorrectAnswers.get(0) + ":" + inCorrectAnswers.get(1) + ":" + inCorrectAnswers.get(2);
         writer.println("GET_QUESTIONS");
         System.out.println(question);
@@ -119,7 +154,14 @@ public class Server extends Thread {
         writer.println(correctAnswer);
         System.out.println(inCorrectAnswersAsString);
         writer.println(inCorrectAnswersAsString);
-
+    }
+    public boolean checkResult (String s) {
+        if (s.equals("true")) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 }

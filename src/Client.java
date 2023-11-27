@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static java.lang.Integer.parseInt;
 
-public class Client implements ActionListener { 
+public class Client implements ActionListener {
     GuiClass guiClass = new GuiClass();
     String ip = "127.0.0.1";
     int port = 55555;
@@ -21,6 +21,7 @@ public class Client implements ActionListener {
     String thisPlayer;
     String opponentPlayer;
     String chosenCategory;
+    String correctAnswer;
 
     public Client() throws IOException {
         thisPlayer = guiClass.setUserName();
@@ -52,15 +53,16 @@ public class Client implements ActionListener {
         while (true) {
             fromServer = in.readLine();
             if (fromServer.equals("CHOOSE_CATEGORY")) {
-                String cat1 = in.readLine();String cat2 = in.readLine(); String cat3 = in.readLine();
-                guiClass.getCategories(cat1,cat2,cat3);
-                
-            }
-            else if (fromServer.equals("GET_QUESTIONS")) {
+                String cat1 = in.readLine();
+                String cat2 = in.readLine();
+                String cat3 = in.readLine();
+                guiClass.getCategories(cat1, cat2, cat3);
+
+            } else if (fromServer.equals("GET_QUESTIONS")) {
                 String question = in.readLine();
-                String correctAnswer = in.readLine();
+                correctAnswer = in.readLine();
                 String incorrectAnswers = in.readLine();
-                String [] incorrectAnswersAsArray = incorrectAnswers.split(":");
+                String[] incorrectAnswersAsArray = incorrectAnswers.split(":");
                 guiClass.getQuizWindow(question, correctAnswer, incorrectAnswersAsArray);
                 /*if (answeredCorrectly) {
                     outToServer.println("Rätt");
@@ -69,11 +71,12 @@ public class Client implements ActionListener {
                     outToServer.println("Fel");
                 }*/
 
-            } else if (fromServer.equals("WAIT")){
+            } else if (fromServer.equals("WAIT")) {
                 guiClass.waitingForPlayer();
             } else if (fromServer.equals("FRAME DISPOSE")) {
                 guiClass.waitingForPlayerFrame.dispose();
-                //guiClass.categoriesFrame.dispose();
+                guiClass.categoriesFrame.dispose();
+                guiClass.quizFrame.dispose();
             }
 
 
@@ -82,25 +85,27 @@ public class Client implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       /* if (e.getSource() == answerButtonsList) {
-            if (rättSvar.contains(jButton.getText())) {
-                
-            } else {
-                
-            }
-        }*/
         for (JButton jButton : categoryButtonsList) {
             if (e.getSource() == jButton) {
                 outToServer.println(jButton.getText());
                 guiClass.waitingForPlayer();
             }
         }
+        for (JButton button : answerButtonsList) {
+            if (e.getSource() == button) {
+                if ((button.getText().contains(correctAnswer))) {
+                    outToServer.println("true");
+                }
+                else {
+                    outToServer.println("false");
+                }
+                break;
+            }
+        }
     }
-    public static void main (String[] args) throws Exception {
+
+    public static void main(String[] args) throws Exception {
         Client client = new Client();
         client.game();
     }
-
-
-  
 }
