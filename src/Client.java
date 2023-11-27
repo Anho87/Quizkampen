@@ -71,9 +71,11 @@ public class Client implements ActionListener {
                 guiClass.waitingForPlayerFrame.dispose();
                 guiClass.categoriesFrame.dispose();
                 guiClass.quizFrame.dispose();
+            } else if (fromServer.equals("RESET BUTTONS")) {
+                for (JButton button : answerButtonsList) {
+                    button.setBackground(white);
+                }
             }
-
-
         }
     }
 
@@ -97,7 +99,6 @@ public class Client implements ActionListener {
                     outToServer.println("false");
                     button.setBackground(red);
                 }
-                break;
             }
 
 

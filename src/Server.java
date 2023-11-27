@@ -31,10 +31,7 @@ public class Server extends Thread {
     Settings settings = new Settings();
     
     int totalRounds = settings.getRounds();
-    //int questionsPerRound = settings.getQuestions();
-
-    int rounds = 3; //settings.getRounds();
-    int questionsPerRound = 3; //settings.getQuestions();
+    int questionsPerRound = settings.getQuestions();
 
     String chosenCategory;
     int answeredQuestionsThisRound = 0;
@@ -69,7 +66,7 @@ public class Server extends Thread {
             outPlayer2.println(player1UserName);
             gameActive = true;
             while (gameActive) {
-                for (int i = 0; i < rounds; i++) {
+                for (int i = 0; i < totalRounds; i++) {
                     if(i % 2 == 0){
                         outPlayer1.println("FRAME DISPOSE");
                         showCategoryOptions(outPlayer1);
@@ -80,6 +77,7 @@ public class Server extends Thread {
                             if (checkResult(inPlayer1.readLine())) {
                                 scorePlayer1++;
                             }
+                            Thread.sleep(2000);
                             outPlayer1.println("FRAME DISPOSE");
                         }
                         //outPlayer1.println("FRAME DISPOSE");
@@ -90,6 +88,7 @@ public class Server extends Thread {
                             if (checkResult(inPlayer2.readLine())) {
                                 scorePlayer2++;
                             }
+                            Thread.sleep(2000);
                             questionsInLine.remove(0);
                             outPlayer2.println("FRAME DISPOSE");
                         }
@@ -103,6 +102,7 @@ public class Server extends Thread {
                             if (checkResult(inPlayer2.readLine())) {
                                 scorePlayer2++;
                             }
+                            Thread.sleep(2000);
                             outPlayer2.println("FRAME DISPOSE");
                         }
                         //outPlayer2.println("FRAME DISPOSE");
@@ -113,6 +113,7 @@ public class Server extends Thread {
                             if (checkResult(inPlayer1.readLine())) {
                                 scorePlayer1++;
                             }
+                            Thread.sleep(2000);
                             questionsInLine.remove(0);
                             outPlayer1.println("FRAME DISPOSE");
                         }
@@ -126,6 +127,8 @@ public class Server extends Thread {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
@@ -166,6 +169,7 @@ public class Server extends Thread {
     }
 
     private void showQuestions(QuestionWithAnswers qa, PrintWriter writer) {
+        writer.println("RESET BUTTONS");
         String question = qa.getQuestion();
         String correctAnswer = qa.getCorrectAnswer();
         ArrayList<String> inCorrectAnswers = qa.getIncorrectAnswers();
