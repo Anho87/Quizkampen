@@ -7,8 +7,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import static java.awt.Color.green;
-import static java.awt.Color.red;
+import static java.awt.Color.*;
 import static java.lang.Integer.parseInt;
 
 public class Client implements ActionListener {
@@ -79,6 +78,10 @@ public class Client implements ActionListener {
                 guiClass.waitingForPlayerFrame.dispose();
                 guiClass.categoriesFrame.dispose();
                 guiClass.quizFrame.dispose();
+                for (JButton button : answerButtonsList) {
+                    button.setBackground(white);
+                }
+
             }
 
 
