@@ -13,7 +13,7 @@ import static java.lang.Integer.parseInt;
 public class Client implements ActionListener {
     GuiClass guiClass = new GuiClass();
     String ip = "127.0.0.1";
-    int port = 55555;
+    int port = 55355;
     ArrayList<JButton> answerButtonsList = new ArrayList<>();
     ArrayList<JButton> categoryButtonsList = new ArrayList<>();
     Socket sock = new Socket(ip, port);
@@ -78,9 +78,8 @@ public class Client implements ActionListener {
                 for (JButton button : answerButtonsList) {
                     button.setBackground(white);
                 }
+                clickableButtons();
             }
-
-
         }
     }
 
@@ -112,6 +111,8 @@ public class Client implements ActionListener {
                     guiClass.revalidate();
                     guiClass.repaint();
                 }
+                unclickableButtons();
+                break;
             }
 
 
