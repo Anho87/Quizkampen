@@ -87,28 +87,23 @@ public class Client implements ActionListener {
         for (JButton jButton : categoryButtonsList) {
             if (e.getSource() == jButton) {
                 outToServer.println(jButton.getText());
-                guiClass.waitingForPlayer();
-                guiClass.revalidate();
-                guiClass.repaint();
+                //guiClass.waitingForPlayer();
             }
         }
         for (JButton button : answerButtonsList) {
-            if (button.getText().contains(correctAnswer)) {
-                button.setBackground(green);
-                guiClass.revalidate();
-                guiClass.repaint();
-            }
             if (e.getSource() == button) {
                 if (button.getText().contains(correctAnswer)) {
                     outToServer.println("true");
-                    guiClass.revalidate();
-                    guiClass.repaint();
+                    button.setBackground(green);
                 }
                 else {
                     outToServer.println("false");
                     button.setBackground(red);
-                    guiClass.revalidate();
-                    guiClass.repaint();
+                    for (JButton b: answerButtonsList) {
+                        if (b.getText().contains(correctAnswer)){
+                            b.setBackground(green);
+                        }
+                    }
                 }
             }
 

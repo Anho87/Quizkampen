@@ -144,7 +144,6 @@ int opponentScore = 0;
         System.out.println("here should categoryFrame display itself");
         revalidate();
         repaint();
-        
     }
     public void remove(){
         getContentPane().removeAll();
@@ -355,6 +354,8 @@ int opponentScore = 0;
 
         JMenuBar menuBar = createMenuBar();
         waitingForPlayerFrame.setJMenuBar(menuBar);
+        revalidate();
+        repaint();
 
         //updateGUI();
        /* waitingForPlayerFrame.setSize(300, 500);
@@ -362,10 +363,6 @@ int opponentScore = 0;
         waitingForPlayerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         waitingForPlayerFrame.setResizable(false);
         waitingForPlayerFrame.setVisible(true);*/
-        revalidate();
-        repaint();
-
-
     }
 
     public void setup()  {
@@ -375,8 +372,6 @@ int opponentScore = 0;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
-        revalidate();
-        repaint();
     }
    public GuiClass(){
         setup();
