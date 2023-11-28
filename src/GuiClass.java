@@ -36,15 +36,14 @@ public class GuiClass extends JFrame {
     JPanel quizPanel = new JPanel();
     JPanel questionAndResultPanel = new JPanel();
     private int questionNr;
-    private String correctAnswer = "Terminator";
     private JLabel questionNumber = new JLabel("Fråga " + questionNr);
-    private JLabel question = new JLabel("I vilken film yttras orden 'I'll be back'?");
+    private JLabel question = new JLabel("Fråga");
     private JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
-     JButton answer1 = new JButton("Terminator");
-    JButton answer2 = new JButton("När Harry mötte Sally");
-     JButton answer3 = new JButton("Hitta Nemo");
-     JButton answer4 = new JButton("Gladiator");
+    JButton answer1 = new JButton("Svar 1");
+    JButton answer2 = new JButton("Svar 2");
+    JButton answer3 = new JButton("Svar 3");
+    JButton answer4 = new JButton("Svar 4");
     private ArrayList<JButton> answerButtons = new ArrayList<>();
 
     JFrame waitingForPlayerFrame = new JFrame(userName);
@@ -193,37 +192,8 @@ int opponentScore = 0;
         quizFrame.setResizable(false);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-   /* private void checkAnswer(String theCorrectAnswer) {
-        ActionListener answerListener = e -> {
-            JButton clickedButton = (JButton) e.getSource();
-            if (clickedButton.getText().equals(theCorrectAnswer)) {
-                clickedButton.setBackground(Color.GREEN);
-                result.setText("Du svarade rätt!");
-                return true;
-
-            } else {
-                clickedButton.setBackground(Color.RED);
-                result.setText("Du svarade fel.");
-                return false;
-            }
-            answer1.setEnabled(false);
-            answer2.setEnabled(false);
-            answer3.setEnabled(false);
-            answer4.setEnabled(false);
-        };
-    }*/
     public void setOpponentUserName (String opponentUserName) {
         this.opponentUserName = opponentUserName;
-    }
-
-    public GuiClass(){
-        //getStartWindow();
-        waitingForPlayer();
-
-    }
-    public static void main(String[] args) {
-        
-        GuiClass g = new GuiClass();
     }
 
     private void getChat() {
