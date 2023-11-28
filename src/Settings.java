@@ -9,13 +9,13 @@ public class Settings {
     public Settings(){
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("prop.properties"));
+            properties.load(new FileInputStream("src/prop.properties"));
         } catch (Exception e) {
             System.out.println("Filen kunde inte hittas");
             rounds = 2;
             questions = 2;
         }
-        rounds = Integer.parseInt(properties.getProperty("round", "2"));
+        rounds = Integer.parseInt(properties.getProperty("rounds", "2"));
         questions = Integer.parseInt(properties.getProperty("questions", "2"));
     }
 
