@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class GuiClass extends JFrame {
 
@@ -47,6 +46,7 @@ public class GuiClass extends JFrame {
     private ArrayList<JButton> answerButtons = new ArrayList<>();
 
     JFrame waitingForPlayerFrame = new JFrame(userName);
+    JPanel waitingForPlayerPanel = new JPanel(new BorderLayout());
     JPanel waitingForPlayer1Panel = new JPanel(new BorderLayout());
     JPanel waitingForPlayer2Panel = new JPanel(new BorderLayout());
     JPanel waitingForPlayerResultPanel = new JPanel(new BorderLayout());
@@ -113,7 +113,8 @@ int opponentScore = 0;
     }
 
     public void getCategories(String cat1, String cat2, String cat3){ 
-        categoriesFrame.add(categoriesPanel);
+        remove();
+        add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);
 
@@ -139,16 +140,23 @@ int opponentScore = 0;
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setResizable(false);
-        categoriesFrame.setVisible(true);
+        //categoriesFrame.setVisible(true);
         System.out.println("here should categoryFrame display itself");
-        categoriesFrame.revalidate();
-        categoriesFrame.repaint();
+        revalidate();
+        repaint();
         
+    }
+    public void remove(){
+        getContentPane().removeAll();
+        revalidate();
+        repaint();
     }
 
     public void getQuizWindow(String questionText, String correctAnswer, String [] inCorrectAnswers){
         question.setText(questionText);
-        quizFrame.add(quizPanel);
+        
+        remove();
+        add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
         quizPanel.add(questionNumber, BorderLayout.NORTH);
         quizPanel.add(questionAndResultPanel, BorderLayout.CENTER);
@@ -188,9 +196,11 @@ int opponentScore = 0;
         quizFrame.setLocationRelativeTo(null);
 
 
-        quizFrame.setVisible(true);
+        //quizFrame.setVisible(true);
         quizFrame.setResizable(false);
         quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        revalidate();
+        repaint();
     }
     public void setOpponentUserName (String opponentUserName) {
         this.opponentUserName = opponentUserName;
@@ -311,20 +321,22 @@ int opponentScore = 0;
         return menuBar;
     }
     public void waitingForPlayer() {
-
-        waitingForPlayerFrame.setTitle(userName);
-
-        waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
+        remove();
+        //waitingForPlayerFrame.setTitle(userName);
+        waitingForPlayerPanel.add(waitingForPlayer1Panel, BorderLayout.WEST);
+        waitingForPlayerPanel.add(waitingForPlayer2Panel, BorderLayout.EAST);
+        waitingForPlayerPanel.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
+        
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
         waitingForPlayer1Panel.setPreferredSize(new Dimension(150, 400));
         waitingForPlayer1TextArea.setText( userName + "\nAntal korrekta svar: " + playerScore);
 
-        waitingForPlayerFrame.add(waitingForPlayer2Panel, BorderLayout.EAST);
+        //add(waitingForPlayer2Panel, BorderLayout.EAST);
         waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
         waitingForPlayer2Panel.setPreferredSize(new Dimension(150, 400));
         waitingForPlayer2TextArea.setText(opponentUserName +"\nAntal korrekta svar: " + opponentScore );
 
-        waitingForPlayerFrame.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
+        //add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
         waitingForPlayerResultPanel.setPreferredSize(new Dimension(300, 50));
         waitingForPlayerResultPanel.setLayout(new GridLayout(1,2));
 
@@ -335,7 +347,7 @@ int opponentScore = 0;
         waitingForPlayerButton.setSize(50,30);
         waitingForPlayerButton.setEnabled(false);
 
-
+        add(waitingForPlayerPanel);
 
         waitingForPlayer1TextArea.setEditable(false);
         waitingForPlayer2TextArea.setEditable(false);
@@ -345,14 +357,31 @@ int opponentScore = 0;
         waitingForPlayerFrame.setJMenuBar(menuBar);
 
         //updateGUI();
-        waitingForPlayerFrame.setSize(300, 500);
+       /* waitingForPlayerFrame.setSize(300, 500);
         waitingForPlayerFrame.setLocationRelativeTo(null);
         waitingForPlayerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         waitingForPlayerFrame.setResizable(false);
-        waitingForPlayerFrame.setVisible(true);
+        waitingForPlayerFrame.setVisible(true);*/
+        revalidate();
+        repaint();
 
 
     }
+
+    public void setup()  {
+        setTitle("Quizkampen " + userName);
+        setSize(300, 500);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setVisible(true);
+        revalidate();
+        repaint();
+    }
+   public GuiClass(){
+        setup();
+   }
+
     public void updateGUI() {
         waitingForPlayer1TextArea.setText(userName + "\nAntal korrekta svar: " + Server.getPlayer1Points());
         waitingForPlayer2TextArea.setText(opponentUserName + "\nAntal korrekta svar: " + Server.getPlayer2Points());

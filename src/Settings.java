@@ -15,7 +15,7 @@ public class Settings {
             rounds = 2;
             questions = 2;
         }
-        rounds = Integer.parseInt(properties.getProperty("round", "2"));
+        rounds = Integer.parseInt(properties.getProperty("rounds", "2"));
         questions = Integer.parseInt(properties.getProperty("questions", "2"));
     }
 

@@ -58,7 +58,6 @@ public class Client implements ActionListener {
                 String cat2 = in.readLine();
                 String cat3 = in.readLine();
                 guiClass.getCategories(cat1, cat2, cat3);
-
             } else if (fromServer.equals("GET_QUESTIONS")) {
                 String question = in.readLine();
                 correctAnswer = in.readLine();
@@ -70,9 +69,11 @@ public class Client implements ActionListener {
                 guiClass.opponentScore = Integer.parseInt(in.readLine());
                 guiClass.waitingForPlayer();
             } else if (fromServer.equals("FRAME DISPOSE")) {
-                guiClass.waitingForPlayerFrame.dispose();
+                guiClass.revalidate();
+                guiClass.repaint();
+               /* guiClass.waitingForPlayerFrame.dispose();
                 guiClass.categoriesFrame.dispose();
-                guiClass.quizFrame.dispose();
+                guiClass.quizFrame.dispose();*/
             } else if (fromServer.equals("RESET BUTTONS")) {
                 for (JButton button : answerButtonsList) {
                     button.setBackground(white);
@@ -89,19 +90,27 @@ public class Client implements ActionListener {
             if (e.getSource() == jButton) {
                 outToServer.println(jButton.getText());
                 guiClass.waitingForPlayer();
+                guiClass.revalidate();
+                guiClass.repaint();
             }
         }
         for (JButton button : answerButtonsList) {
             if (button.getText().contains(correctAnswer)) {
                 button.setBackground(green);
+                guiClass.revalidate();
+                guiClass.repaint();
             }
             if (e.getSource() == button) {
                 if (button.getText().contains(correctAnswer)) {
                     outToServer.println("true");
+                    guiClass.revalidate();
+                    guiClass.repaint();
                 }
                 else {
                     outToServer.println("false");
                     button.setBackground(red);
+                    guiClass.revalidate();
+                    guiClass.repaint();
                 }
             }
 
