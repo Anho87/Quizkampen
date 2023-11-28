@@ -370,8 +370,6 @@ int opponentScore = 0;
         waitingForPlayer2TextArea.setEditable(false);
         waitingForPlayerResultTextArea.setEditable(false);
 
-        JMenuBar menuBar = createMenuBar();
-        waitingForPlayerFrame.setJMenuBar(menuBar);
         revalidate();
         repaint();
 
@@ -382,9 +380,10 @@ int opponentScore = 0;
         waitingForPlayerFrame.setResizable(false);
         waitingForPlayerFrame.setVisible(true);*/
     }
-
     public void setup()  {
         setTitle("Quizkampen " + userName);
+        JMenuBar menuBar = createMenuBar();
+        setJMenuBar(menuBar);
         setSize(300, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
