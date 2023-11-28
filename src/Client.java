@@ -13,7 +13,7 @@ import static java.lang.Integer.parseInt;
 public class Client implements ActionListener {
     GuiClass guiClass = new GuiClass();
     String ip = "127.0.0.1";
-    int port = 55555;
+    int port = 55355;
     ArrayList<JButton> answerButtonsList = new ArrayList<>();
     ArrayList<JButton> categoryButtonsList = new ArrayList<>();
     Socket sock = new Socket(ip, port);
@@ -42,6 +42,7 @@ public class Client implements ActionListener {
         guiClass.answer2.addActionListener(this);
         guiClass.answer3.addActionListener(this);
         guiClass.answer4.addActionListener(this);
+        guiClass.setup();
     }
 
     public void game() throws Exception {
@@ -78,6 +79,7 @@ public class Client implements ActionListener {
                 for (JButton button : answerButtonsList) {
                     button.setBackground(white);
                 }
+                clickableButtons();
             }
         }
     }
@@ -87,32 +89,40 @@ public class Client implements ActionListener {
         for (JButton jButton : categoryButtonsList) {
             if (e.getSource() == jButton) {
                 outToServer.println(jButton.getText());
-                guiClass.waitingForPlayer();
-                guiClass.revalidate();
-                guiClass.repaint();
+                //guiClass.waitingForPlayer();
             }
         }
         for (JButton button : answerButtonsList) {
-            if (button.getText().contains(correctAnswer)) {
-                button.setBackground(green);
-                guiClass.revalidate();
-                guiClass.repaint();
-            }
             if (e.getSource() == button) {
                 if (button.getText().contains(correctAnswer)) {
                     outToServer.println("true");
-                    guiClass.revalidate();
-                    guiClass.repaint();
+                    button.setBackground(green);
                 }
                 else {
                     outToServer.println("false");
                     button.setBackground(red);
-                    guiClass.revalidate();
-                    guiClass.repaint();
+                    for (JButton b: answerButtonsList) {
+                        if (b.getText().contains(correctAnswer)){
+                            b.setBackground(green);
+                        }
+                    }
                 }
+                unclickableButtons();
+                break;
             }
 
 
+        }
+    }
+
+    public void unclickableButtons(){
+        for (JButton button : answerButtonsList) {
+            button.setEnabled(false);
+        }
+    }
+    public void clickableButtons(){
+        for (JButton button : answerButtonsList) {
+            button.setEnabled(true);
         }
     }
 
