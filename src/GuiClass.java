@@ -275,7 +275,7 @@ int opponentScore = 0;
         closeChatItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chatFrame.dispose();
+                dispose();
             }
         });
 
@@ -371,9 +371,6 @@ int opponentScore = 0;
         waitingForPlayer2TextArea.setEditable(false);
         waitingForPlayerResultTextArea.setEditable(false);
 
-        JMenuBar menuBar = createMenuBar();
-        waitingForPlayerFrame.setJMenuBar(menuBar);
-
         //updateGUI();
        /* waitingForPlayerFrame.setSize(300, 500);
         waitingForPlayerFrame.setLocationRelativeTo(null);
@@ -385,9 +382,10 @@ int opponentScore = 0;
 
 
     }
-
     public void setup()  {
         setTitle("Quizkampen " + userName);
+        JMenuBar menuBar = createMenuBar();
+        setJMenuBar(menuBar);
         setSize(300, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

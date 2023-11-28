@@ -42,6 +42,7 @@ public class Client implements ActionListener {
         guiClass.answer2.addActionListener(this);
         guiClass.answer3.addActionListener(this);
         guiClass.answer4.addActionListener(this);
+        guiClass.setup();
     }
 
     public void game() throws Exception {
