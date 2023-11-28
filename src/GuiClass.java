@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class GuiClass extends JFrame {
 
      String userName;
-     String opponentUserName;
+     String opponentUserName = "Motståndare";
 
      JFrame startFrame = new JFrame("Quizkampen - " + userName);
      JPanel startPanel = new JPanel(new BorderLayout());
@@ -39,7 +39,7 @@ public class GuiClass extends JFrame {
     JPanel questionAndResultPanel = new JPanel();
     private int questionNr;
     private JLabel questionNumber = new JLabel("Fråga " + questionNr);
-    private JLabel question = new JLabel("Fråga");
+    private JLabel question = new JLabel("fråga",2);
     private JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
     JButton answer1 = new JButton("Svar 1");
@@ -69,6 +69,13 @@ public class GuiClass extends JFrame {
     JTextField chatInputField = new JTextField();
     JButton sendChatButton = new JButton("Send");
 
+    Dimension standardSize = new Dimension (500, 600);
+    Dimension waitingPanelSize = new Dimension(240, 600);
+    Dimension buttonSize = new Dimension(200, 100);
+    Font headerFont = new Font("Arial", Font.BOLD, 24);
+    Font standardFont = new Font("Arial", Font.PLAIN, 18);
+
+
 int playerScore = 0;
 int opponentScore = 0;
 
@@ -96,7 +103,7 @@ int opponentScore = 0;
         startButtonPanel.add(newGameButton);
         newGameButton.addActionListener(e -> getGameMenu());
 
-        startFrame.setSize(300, 500);
+        startFrame.setSize(standardSize);
         startFrame.setLocationRelativeTo(null);
         startFrame.setResizable(false);
         startFrame.setVisible(true);
@@ -110,7 +117,7 @@ int opponentScore = 0;
         gameMenuButtonPanel.add(playAgainstAFriendButton);
         //playAgainstAFriendButton.addActionListener(e -> getCategories());
 
-        gameMenuFrame.setSize(300, 500);
+        gameMenuFrame.setSize(standardSize);
         gameMenuFrame.setLocationRelativeTo(null);
         gameMenuFrame.setResizable(false);
         gameMenuFrame.setVisible(true);
@@ -121,10 +128,11 @@ int opponentScore = 0;
         remove();
         add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
-        categoriesPanel.add(categoriesButtonPanel, BorderLayout.SOUTH);
+        categoriesPanel.add(categoriesButtonPanel, BorderLayout.CENTER);
+        categoriesLabel.setFont(headerFont);
+        categoriesButtonPanel.setLayout(new GridLayout());
 
-        categoriesButtonPanel.setLayout(new BoxLayout(categoriesButtonPanel, BoxLayout.Y_AXIS));
-
+        categoriesButtonPanel.setBackground(Color.red);
         categoryButton1.setText(cat1);
         categoryButton2.setText(cat2);
         categoryButton3.setText(cat3);
@@ -141,7 +149,7 @@ int opponentScore = 0;
         categoryButton2.addActionListener(e -> result.set(cat2));
         categoryButton3.addActionListener(e -> result.set(cat3));*/
 
-        categoriesFrame.setSize(300, 500);
+        categoriesFrame.setSize(standardSize);
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setResizable(false);
@@ -157,9 +165,17 @@ int opponentScore = 0;
     }
 
     public void getQuizWindow(String questionText, String correctAnswer, String [] inCorrectAnswers){
+        remove();
+        /*if (questionText.length() > 40) {
+            String subQuestionText = questionText.substring(0, 35);
+            String subQuestionText2 = questionText.substring(35);
+            question.setText(subQuestionText);
+            question.setText(subQuestionText2);
+        } else {
+            question.setText(questionText);
+        }*/
         question.setText(questionText);
 
-        remove();
         add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
         quizPanel.add(questionNumber, BorderLayout.NORTH);
@@ -191,12 +207,13 @@ int opponentScore = 0;
         }
         for (JButton button : answerButtons) {
             answerPanel.add(button);
+            button.setPreferredSize(buttonSize);
         }
 
         JMenuBar menuBar = createMenuBar();
         quizFrame.setJMenuBar(menuBar);
 
-        quizFrame.setSize(300, 500);
+        quizFrame.setSize(standardSize);
         quizFrame.setLocationRelativeTo(null);
 
 
@@ -338,20 +355,20 @@ int opponentScore = 0;
 
         //waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
-        waitingForPlayer1Panel.setPreferredSize(new Dimension(149, 400));
-        waitingForPlayer1TextArea.setText( userName + "\n\nRound 1: " + playerScore + "\n\nRound 2: " + playerScore);
-        waitingForPlayer1Panel.add(new JLabel("\nCorrect answers: " + playerScore), BorderLayout.SOUTH);
+        waitingForPlayer1Panel.setPreferredSize(waitingPanelSize);
+        waitingForPlayer1TextArea.setText(userName + "\n\nSenaste omgången: " + playerScore + "\n\nTotalt: " + playerScore);
+        //waitingForPlayer1Panel.add(new JLabel("\nCorrect answers: " + playerScore), BorderLayout.SOUTH);
 
 
         //add(waitingForPlayer2Panel, BorderLayout.EAST);
         waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
-        waitingForPlayer2Panel.setPreferredSize(new Dimension(151, 400));
-        waitingForPlayer2TextArea.setText(opponentUserName + "\n\nRound 1: " + opponentScore + "\n\nRound 2: " + opponentScore);
-        waitingForPlayer2Panel.add(new JLabel("\nCorrect answers: " + opponentScore), BorderLayout.SOUTH);
+        waitingForPlayer2Panel.setPreferredSize(waitingPanelSize);
+        waitingForPlayer2TextArea.setText(opponentUserName + "\n\nSenaste omgången: " + opponentScore + "\n\nTotalt: " + opponentScore);
+        //waitingForPlayer2Panel.add(new JLabel("\nCorrect answers: " + opponentScore), BorderLayout.SOUTH);
 
 
         //add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
-        waitingForPlayerResultPanel.setPreferredSize(new Dimension(300, 50));
+        /*waitingForPlayerResultPanel.setPreferredSize(new Dimension(300, 50));
         waitingForPlayerResultPanel.setLayout(new GridLayout(1,2));
 
         waitingForPlayerResultPanel.add(waitingForPlayerResultTextArea);
@@ -359,10 +376,10 @@ int opponentScore = 0;
 
         waitingForPlayerResultPanel.add(waitingForPlayerButton);
         waitingForPlayerButton.setSize(50,30);
-        waitingForPlayerButton.setEnabled(false);
+        waitingForPlayerButton.setEnabled(false);*/
         waitingForPlayerPanel.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayerPanel.add(waitingForPlayer2Panel, BorderLayout.EAST);
-        waitingForPlayerPanel.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
+        //waitingForPlayerPanel.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
 
         add(waitingForPlayerPanel);
 
@@ -384,11 +401,14 @@ int opponentScore = 0;
         setTitle("Quizkampen " + userName);
         JMenuBar menuBar = createMenuBar();
         setJMenuBar(menuBar);
-        setSize(300, 500);
+        setSize(standardSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setVisible(true);
+        categoryButton1.setPreferredSize(buttonSize);
+        categoryButton2.setPreferredSize(buttonSize);
+        categoryButton3.setPreferredSize(buttonSize);
     }
    public GuiClass(){
         setup();
