@@ -1,3 +1,5 @@
+import com.sun.tools.javac.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,6 +8,10 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class GuiClass extends JFrame {
+    public static void main(String[] args) {
+        GuiClass g = new GuiClass();
+        g.waitingForPlayer();
+    }
 
      String userName;
      String opponentUserName;
@@ -83,6 +89,7 @@ int opponentScore = 0;
         startFrame.setTitle("Quizkampen - " + userName);
         gameMenuFrame.setTitle("Spelmeny - " + userName);
         categoriesFrame.setTitle("Kategorier - " + userName);
+        waitingForPlayerFrame.setTitle(userName);
     }
 
     public void getStartWindow(){
@@ -314,15 +321,24 @@ int opponentScore = 0;
 
         waitingForPlayerFrame.setTitle(userName);
 
+        Font nameFont = new Font(waitingForPlayer2TextArea.getFont().getFamily(), Font.PLAIN, 16);
+
+        waitingForPlayer1TextArea.setFont(nameFont);
+        waitingForPlayer2TextArea.setFont(nameFont);
+
         waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
-        waitingForPlayer1Panel.setPreferredSize(new Dimension(150, 400));
-        waitingForPlayer1TextArea.setText( userName + "\nAntal korrekta svar: " + playerScore);
+        waitingForPlayer1Panel.setPreferredSize(new Dimension(149, 400));
+        waitingForPlayer1TextArea.setText( userName + "\n\nRound 1: " + playerScore + "\n\nRound 2: " + playerScore);
+        waitingForPlayer1Panel.add(new JLabel("\nCorrect answers: " + playerScore), BorderLayout.SOUTH);
+
 
         waitingForPlayerFrame.add(waitingForPlayer2Panel, BorderLayout.EAST);
         waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
-        waitingForPlayer2Panel.setPreferredSize(new Dimension(150, 400));
-        waitingForPlayer2TextArea.setText(opponentUserName +"\nAntal korrekta svar: " + opponentScore );
+        waitingForPlayer2Panel.setPreferredSize(new Dimension(151, 400));
+        waitingForPlayer2TextArea.setText(opponentUserName + "\n\nRound 1: " + opponentScore + "\n\nRound 2: " + opponentScore);
+        waitingForPlayer2Panel.add(new JLabel("\nCorrect answers: " + opponentScore), BorderLayout.SOUTH);
+
 
         waitingForPlayerFrame.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
         waitingForPlayerResultPanel.setPreferredSize(new Dimension(300, 50));
@@ -344,7 +360,6 @@ int opponentScore = 0;
         JMenuBar menuBar = createMenuBar();
         waitingForPlayerFrame.setJMenuBar(menuBar);
 
-        //updateGUI();
         waitingForPlayerFrame.setSize(300, 500);
         waitingForPlayerFrame.setLocationRelativeTo(null);
         waitingForPlayerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -352,10 +367,5 @@ int opponentScore = 0;
         waitingForPlayerFrame.setVisible(true);
 
 
-    }
-    public void updateGUI() {
-        waitingForPlayer1TextArea.setText(userName + "\nAntal korrekta svar: " + Server.getPlayer1Points());
-        waitingForPlayer2TextArea.setText(opponentUserName + "\nAntal korrekta svar: " + Server.getPlayer2Points());
-        waitingForPlayerResultTextArea.setText(opponentUserName + " is Answering\nQuestions");
     }
 }
