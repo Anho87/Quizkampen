@@ -29,7 +29,7 @@ public class Server extends Thread {
 
 
     Settings settings = new Settings();
-
+    
     int totalRounds = settings.getRounds();
     int questionsPerRound = settings.getQuestions();
 
@@ -37,7 +37,10 @@ public class Server extends Thread {
     int answeredQuestionsThisRound = 0;
     int roundsPlayed = 0;
     int scorePlayer1;
+    int scorePlayer1Total;
+
     int scorePlayer2;
+    int scorePlayer2Total;
     QuestionWithAnswers currentQuestion;
     ArrayList<QuestionWithAnswers> questionsInLine = new ArrayList<>();
 
@@ -72,7 +75,7 @@ public class Server extends Thread {
             while (gameActive) {
                 for (int i = 0; i < totalRounds; i++) {
                     if (i % 2 == 0) {
-                        outPlayer1.println("RESET BUTTONS");
+
                         showCategoryOptions(outPlayer1);
                         String chosenCategory = inPlayer1.readLine();
                         for (int j = 1; j <= questionsPerRound; j++) {
@@ -82,10 +85,12 @@ public class Server extends Thread {
                             }
                             Thread.sleep(2000);
                         }
-                        //outPlayer1.println("FRAME DISPOSE");
+                        scorePlayer1Total += scorePlayer1;
                         outPlayer1.println("WAIT");
                         outPlayer1.println(scorePlayer1);
+                        outPlayer1.println(scorePlayer1Total);
                         outPlayer1.println(scorePlayer2);
+                        outPlayer1.println(scorePlayer2Total);
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer2);
                             if (checkResult(inPlayer2.readLine())) {
@@ -94,17 +99,22 @@ public class Server extends Thread {
                             Thread.sleep(2000);
                             questionsInLine.remove(0);
                         }
+                        scorePlayer2Total += scorePlayer2;
                         outPlayer1.println("WAIT");
                         outPlayer1.println(scorePlayer1);
+                        outPlayer1.println(scorePlayer1Total);
                         outPlayer1.println(scorePlayer2);
+                        outPlayer1.println(scorePlayer2Total);
                         outPlayer2.println("WAIT");
                         outPlayer2.println(scorePlayer2);
+                        outPlayer2.println(scorePlayer2Total);
                         outPlayer2.println(scorePlayer1);
+                        outPlayer2.println(scorePlayer1Total);
                         scorePlayer1 = 0;
                         scorePlayer2 = 0;
                         Thread.sleep(3000);
                     } else {
-                        outPlayer2.println("RESET BUTTONS");
+
                         showCategoryOptions(outPlayer2);
                         String chosenCategory2 = inPlayer2.readLine();
                         for (int j = 1; j <= questionsPerRound; j++) {
@@ -114,9 +124,12 @@ public class Server extends Thread {
                             }
                             Thread.sleep(2000);
                         }
+                        scorePlayer2Total += scorePlayer2;
                         outPlayer2.println("WAIT");
-                        outPlayer2.println(scorePlayer1);
                         outPlayer2.println(scorePlayer2);
+                        outPlayer2.println(scorePlayer2Total);
+                        outPlayer2.println(scorePlayer1);
+                        outPlayer2.println(scorePlayer1Total);
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer1);
                             if (checkResult(inPlayer1.readLine())) {
@@ -125,12 +138,17 @@ public class Server extends Thread {
                             Thread.sleep(2000);
                             questionsInLine.remove(0);
                         }
+                        scorePlayer1Total += scorePlayer1;
                         outPlayer2.println("WAIT");
                         outPlayer2.println(scorePlayer2);
+                        outPlayer2.println(scorePlayer2Total);
                         outPlayer2.println(scorePlayer1);
+                        outPlayer2.println(scorePlayer1Total);
                         outPlayer1.println("WAIT");
                         outPlayer1.println(scorePlayer1);
+                        outPlayer1.println(scorePlayer1Total);
                         outPlayer1.println(scorePlayer2);
+                        outPlayer1.println(scorePlayer2Total);
                         scorePlayer1 = 0;
                         scorePlayer2 = 0;
                         Thread.sleep(3000);
