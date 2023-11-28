@@ -29,17 +29,17 @@ public class Server extends Thread {
 
 
     Settings settings = new Settings();
-    
+
     int totalRounds = settings.getRounds();
     int questionsPerRound = settings.getQuestions();
 
     String chosenCategory;
     int answeredQuestionsThisRound = 0;
     int roundsPlayed = 0;
-     int scorePlayer1;
-     int scorePlayer2;
+    int scorePlayer1;
+    int scorePlayer2;
     QuestionWithAnswers currentQuestion;
-    ArrayList <QuestionWithAnswers> questionsInLine = new ArrayList<>();
+    ArrayList<QuestionWithAnswers> questionsInLine = new ArrayList<>();
 
     boolean gameActive = false;
 
@@ -54,8 +54,12 @@ public class Server extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        categories.add(category_kroppknopp);categories.add(category_djurnatur);categories.add(category_film);
-        categories.add(category_sport);categories.add(category_ilabbet);categories.add(category_bockerord);
+        categories.add(category_kroppknopp);
+        categories.add(category_djurnatur);
+        categories.add(category_film);
+        categories.add(category_sport);
+        categories.add(category_ilabbet);
+        categories.add(category_bockerord);
     }
 
     public void run() {
@@ -67,7 +71,7 @@ public class Server extends Thread {
             gameActive = true;
             while (gameActive) {
                 for (int i = 0; i < totalRounds; i++) {
-                    if(i % 2 == 0){
+                    if (i % 2 == 0) {
                         outPlayer1.println("RESET BUTTONS");
                         showCategoryOptions(outPlayer1);
                         String chosenCategory = inPlayer1.readLine();
@@ -99,7 +103,7 @@ public class Server extends Thread {
                         scorePlayer1 = 0;
                         scorePlayer2 = 0;
                         Thread.sleep(3000);
-                    }else{
+                    } else {
                         outPlayer2.println("RESET BUTTONS");
                         showCategoryOptions(outPlayer2);
                         String chosenCategory2 = inPlayer2.readLine();
@@ -164,7 +168,7 @@ public class Server extends Thread {
         writer.println(cat3.getCategoryName());
     }
 
-    private QuestionWithAnswers setQuestion (PrintWriter writer, String chosenCategory) {
+    private QuestionWithAnswers setQuestion(PrintWriter writer, String chosenCategory) {
         Category actualCategory = empty_category;
         for (Category category : categories) {
             if (category.getCategoryName().equals(chosenCategory)) {
@@ -193,12 +197,12 @@ public class Server extends Thread {
         System.out.println(inCorrectAnswersAsString);
         writer.println(inCorrectAnswersAsString);
     }
-    public boolean checkResult (String s) {
+
+    public boolean checkResult(String s) {
         if (s.equals("true")) {
 
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
