@@ -58,7 +58,6 @@ public class Client implements ActionListener {
                 String cat2 = in.readLine();
                 String cat3 = in.readLine();
                 guiClass.getCategories(cat1, cat2, cat3);
-
             } else if (fromServer.equals("GET_QUESTIONS")) {
                 String question = in.readLine();
                 correctAnswer = in.readLine();

@@ -140,7 +140,6 @@ int opponentScore = 0;
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setResizable(false);
         categoriesFrame.setVisible(true);
-        System.out.println("here should categoryFrame display itself");
         categoriesFrame.revalidate();
         categoriesFrame.repaint();
         
