@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="fix">
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="gjorde så man kan se score men det fungerar inte riktigt">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +120,7 @@
       <workItem from="1700213175465" duration="2000" />
       <workItem from="1700643479999" duration="19443000" />
       <workItem from="1700745174837" duration="569000" />
+      <workItem from="1701161973768" duration="2698000" />
     </task>
     <task id="LOCAL−00001" summary="gui methods">
       <option name="closed" value="true" />
@@ -211,14 +213,7 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1701113139693</updated>
     </task>
-    <task id="LOCAL−00014" summary="fix">
-      <option name="closed" value="true" />
-      <created>1701164346323</created>
-      <option name="number" value="LOCAL−00014" />
-      <option name="presentableId" value="LOCAL−00014" />
-      <updated>1701164346323</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +244,6 @@
     <MESSAGE value="ändrade så knapparna blir röda/gröna beroende på vilket svar som ges, mm" />
     <MESSAGE value="raderade gamla klasserna Game och GameActionListener" />
     <MESSAGE value="tog bort konstruktor och main-metod från GuiClass" />
-    <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="tog bort konstruktor och main-metod från GuiClass" />
   </component>
 </project>
