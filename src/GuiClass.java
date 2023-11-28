@@ -156,7 +156,6 @@ public class GuiClass extends JFrame {
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setResizable(false);
         //categoriesFrame.setVisible(true);
-        System.out.println("here should categoryFrame display itself");
         revalidate();
         repaint();
     }
