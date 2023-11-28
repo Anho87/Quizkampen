@@ -36,8 +36,8 @@ public class Server extends Thread {
     String chosenCategory;
     int answeredQuestionsThisRound = 0;
     int roundsPlayed = 0;
-    static int scorePlayer1;
-    static int scorePlayer2;
+     int scorePlayer1;
+     int scorePlayer2;
     QuestionWithAnswers currentQuestion;
     ArrayList <QuestionWithAnswers> questionsInLine = new ArrayList<>();
 
@@ -90,6 +90,15 @@ public class Server extends Thread {
                             Thread.sleep(2000);
                             questionsInLine.remove(0);
                         }
+                        outPlayer1.println("WAIT");
+                        outPlayer1.println(scorePlayer1);
+                        outPlayer1.println(scorePlayer2);
+                        outPlayer2.println("WAIT");
+                        outPlayer2.println(scorePlayer2);
+                        outPlayer2.println(scorePlayer1);
+                        scorePlayer1 = 0;
+                        scorePlayer2 = 0;
+                        Thread.sleep(3000);
                     }else{
                         outPlayer2.println("RESET BUTTONS");
                         showCategoryOptions(outPlayer2);
@@ -112,6 +121,15 @@ public class Server extends Thread {
                             Thread.sleep(2000);
                             questionsInLine.remove(0);
                         }
+                        outPlayer2.println("WAIT");
+                        outPlayer2.println(scorePlayer2);
+                        outPlayer2.println(scorePlayer1);
+                        outPlayer1.println("WAIT");
+                        outPlayer1.println(scorePlayer1);
+                        outPlayer1.println(scorePlayer2);
+                        scorePlayer1 = 0;
+                        scorePlayer2 = 0;
+                        Thread.sleep(3000);
                     }
                 }
                 outPlayer1.println("SHOW RESULT");
@@ -184,11 +202,11 @@ public class Server extends Thread {
             return false;
         }
     }
-    public static int getPlayer1Points(){
+    /*public static int getPlayer1Points(){
         return scorePlayer1;
-    }
-    public static int getPlayer2Points(){
+    }*/
+    /*public static int getPlayer2Points(){
         return scorePlayer2;
-    }
+    }*/
 
 }

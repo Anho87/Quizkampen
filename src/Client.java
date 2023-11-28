@@ -67,7 +67,11 @@ public class Client implements ActionListener {
                 guiClass.getQuizWindow(question, correctAnswer, incorrectAnswersAsArray);
             } else if (fromServer.equals("WAIT")) {
                 guiClass.playerScore = Integer.parseInt(in.readLine());
+                System.out.println(guiClass.playerScore);
+                guiClass.playerScoreTotal = guiClass.playerScoreTotal+ guiClass.playerScore;
                 guiClass.opponentScore = Integer.parseInt(in.readLine());
+                System.out.println(guiClass.opponentScore);
+                guiClass.opponentScoreTotal = guiClass.opponentScoreTotal + guiClass.opponentScore;
                 guiClass.waitingForPlayer();
             } else if (fromServer.equals("FRAME DISPOSE")) {
                 guiClass.revalidate();
