@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class GuiClass extends JFrame {
-    public static void main(String[] args) {
-        GuiClass g = new GuiClass();
-        g.waitingForPlayer();
-    }
 
      String userName;
      String opponentUserName;
@@ -89,6 +85,7 @@ int opponentScore = 0;
         startFrame.setTitle("Quizkampen - " + userName);
         gameMenuFrame.setTitle("Spelmeny - " + userName);
         categoriesFrame.setTitle("Kategorier - " + userName);
+        quizFrame.setTitle("Quiz " + userName);
         waitingForPlayerFrame.setTitle(userName);
     }
 
