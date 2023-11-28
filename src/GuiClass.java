@@ -328,9 +328,6 @@ int opponentScore = 0;
     public void waitingForPlayer() {
         remove();
         //waitingForPlayerFrame.setTitle(userName);
-        waitingForPlayerPanel.add(waitingForPlayer1Panel, BorderLayout.WEST);
-        waitingForPlayerPanel.add(waitingForPlayer2Panel, BorderLayout.EAST);
-        waitingForPlayerPanel.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
 
 
         waitingForPlayerFrame.setTitle(userName);
@@ -340,7 +337,7 @@ int opponentScore = 0;
         waitingForPlayer1TextArea.setFont(nameFont);
         waitingForPlayer2TextArea.setFont(nameFont);
 
-        waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
+        //waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
         waitingForPlayer1Panel.setPreferredSize(new Dimension(149, 400));
         waitingForPlayer1TextArea.setText( userName + "\n\nRound 1: " + playerScore + "\n\nRound 2: " + playerScore);
@@ -364,6 +361,9 @@ int opponentScore = 0;
         waitingForPlayerResultPanel.add(waitingForPlayerButton);
         waitingForPlayerButton.setSize(50,30);
         waitingForPlayerButton.setEnabled(false);
+        waitingForPlayerPanel.add(waitingForPlayer1Panel, BorderLayout.WEST);
+        waitingForPlayerPanel.add(waitingForPlayer2Panel, BorderLayout.EAST);
+        waitingForPlayerPanel.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
 
         add(waitingForPlayerPanel);
 
