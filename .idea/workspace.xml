@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="gjorde så man kan se score men det fungerar inte riktigt" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="gjorde så man kan se score men det fungerar inte riktigt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -240,6 +242,7 @@
     <MESSAGE value="ändrade så knapparna blir röda/gröna beroende på vilket svar som ges, mm" />
     <MESSAGE value="raderade gamla klasserna Game och GameActionListener" />
     <MESSAGE value="tog bort konstruktor och main-metod från GuiClass" />
-    <option name="LAST_COMMIT_MESSAGE" value="tog bort konstruktor och main-metod från GuiClass" />
+    <MESSAGE value="," />
+    <option name="LAST_COMMIT_MESSAGE" value="," />
   </component>
 </project>
