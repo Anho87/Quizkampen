@@ -68,23 +68,20 @@ public class Server extends Thread {
             while (gameActive) {
                 for (int i = 0; i < totalRounds; i++) {
                     if(i % 2 == 0){
-                        outPlayer1.println("FRAME DISPOSE");
+                        outPlayer1.println("RESET BUTTONS");
                         showCategoryOptions(outPlayer1);
                         String chosenCategory = inPlayer1.readLine();
-                        outPlayer1.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(setQuestion(outPlayer1, chosenCategory), outPlayer1);
                             if (checkResult(inPlayer1.readLine())) {
                                 scorePlayer1++;
                             }
                             Thread.sleep(2000);
-                            outPlayer1.println("FRAME DISPOSE");
                         }
                         //outPlayer1.println("FRAME DISPOSE");
                         outPlayer1.println("WAIT");
                         outPlayer1.println(scorePlayer1);
                         outPlayer1.println(scorePlayer2);
-                        outPlayer2.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer2);
                             if (checkResult(inPlayer2.readLine())) {
@@ -92,26 +89,21 @@ public class Server extends Thread {
                             }
                             Thread.sleep(2000);
                             questionsInLine.remove(0);
-                            outPlayer2.println("FRAME DISPOSE");
                         }
                     }else{
-                        outPlayer2.println("FRAME DISPOSE");
+                        outPlayer2.println("RESET BUTTONS");
                         showCategoryOptions(outPlayer2);
                         String chosenCategory2 = inPlayer2.readLine();
-                        outPlayer2.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(setQuestion(outPlayer2, chosenCategory2), outPlayer2);
                             if (checkResult(inPlayer2.readLine())) {
                                 scorePlayer2++;
                             }
                             Thread.sleep(2000);
-                            outPlayer2.println("FRAME DISPOSE");
                         }
-                        //outPlayer2.println("FRAME DISPOSE");
                         outPlayer2.println("WAIT");
                         outPlayer2.println(scorePlayer1);
                         outPlayer2.println(scorePlayer2);
-                        outPlayer1.println("FRAME DISPOSE");
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer1);
                             if (checkResult(inPlayer1.readLine())) {
@@ -119,12 +111,9 @@ public class Server extends Thread {
                             }
                             Thread.sleep(2000);
                             questionsInLine.remove(0);
-                            outPlayer1.println("FRAME DISPOSE");
                         }
                     }
                 }
-                outPlayer1.println("FRAME DISPOSE");
-                outPlayer2.println("FRAME DISPOSE");
                 outPlayer1.println("SHOW RESULT");
                 outPlayer2.println("SHOW RESULT");
                 gameActive = false;

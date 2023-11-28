@@ -4,7 +4,7 @@ import java.net.Socket;
 
 public class ServerListener {
     public ServerListener() {
-        try(ServerSocket listener = new ServerSocket(55555)){
+        try(ServerSocket listener = new ServerSocket(55355)){
             while(true){
                 Socket player1 = listener.accept();
                 Socket player2 = listener.accept();
