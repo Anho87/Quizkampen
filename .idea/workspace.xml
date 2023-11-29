@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="tog bort överflödig kod" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="la till kommentarer och tog bort oanvänd kod">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22,_10_21_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22__10_21__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,20 +42,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "developmentBranch",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;andreasBranch&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Client (4)">
     <configuration name="Client (4)" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
@@ -97,11 +101,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client (4)" />
         <item itemvalue="Application.ServerListener" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.GuiClass" />
         <item itemvalue="Application.Client (5)" />
+        <item itemvalue="Application.Client (4)" />
       </list>
     </recent_temporary>
   </component>
@@ -117,6 +121,9 @@
       <workItem from="1700643479999" duration="19443000" />
       <workItem from="1700745174837" duration="569000" />
       <workItem from="1701161973768" duration="2698000" />
+      <workItem from="1701274719813" duration="55000" />
+      <workItem from="1701275026249" duration="12000" />
+      <workItem from="1701275051722" duration="3000" />
     </task>
     <task id="LOCAL−00001" summary="gui methods">
       <option name="closed" value="true" />
@@ -244,21 +251,7 @@
       <option name="presentableId" value="LOCAL−00018" />
       <updated>1701259514734</updated>
     </task>
-    <task id="LOCAL−00019" summary="tog bort överflödig kod">
-      <option name="closed" value="true" />
-      <created>1701264249206</created>
-      <option name="number" value="LOCAL−00019" />
-      <option name="presentableId" value="LOCAL−00019" />
-      <updated>1701264249206</updated>
-    </task>
-    <task id="LOCAL−00020" summary="tog bort överflödig kod">
-      <option name="closed" value="true" />
-      <created>1701264287268</created>
-      <option name="number" value="LOCAL−00020" />
-      <option name="presentableId" value="LOCAL−00020" />
-      <updated>1701264287268</updated>
-    </task>
-    <option name="localTasksCounter" value="21" />
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +285,6 @@
     <MESSAGE value="fixade så att samma kategori inte kan dyka upp två gånger" />
     <MESSAGE value="raderade två labels som ej användes" />
     <MESSAGE value="xml" />
-    <MESSAGE value="tog bort överflödig kod" />
-    <option name="LAST_COMMIT_MESSAGE" value="tog bort överflödig kod" />
+    <option name="LAST_COMMIT_MESSAGE" value="xml" />
   </component>
 </project>
