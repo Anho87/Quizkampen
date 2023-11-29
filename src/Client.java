@@ -126,6 +126,7 @@ public class Client implements ActionListener {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                guiClass.result.setText("Tiden är ute!");
                 for (JButton button : answerButtonsList) {
                     if (button.getText().equals(correctAnswer)) {
                         button.setBackground(green);

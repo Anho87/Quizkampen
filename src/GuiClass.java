@@ -21,7 +21,7 @@ public class GuiClass extends JFrame {
     JPanel quizPanel = new JPanel();
     JPanel questionAndResultPanel = new JPanel();
     private JLabel question = new JLabel("fråga");
-    private JLabel result = new JLabel();
+    JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
     JButton answer1 = new JButton("Svar 1");
     JButton answer2 = new JButton("Svar 2");
@@ -158,6 +158,7 @@ public class GuiClass extends JFrame {
         question.setHorizontalAlignment(JLabel.CENTER);
         result.setHorizontalAlignment(JLabel.CENTER);
         result.setText("");
+        result.setFont(resultatFont);
 
         quizPanel.add(answerPanel, BorderLayout.SOUTH);
         answerPanel.setBackground(lightGreen);
