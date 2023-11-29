@@ -86,6 +86,10 @@ public class GuiClass extends JFrame {
             "\nLast round: " /* lastRoundOpponent */ +
             "\n\nAmount Of Correct Answers: ");
 
+    JPanel buttonPanel1 = new JPanel();
+    JPanel buttonPanel2 = new JPanel();
+    JPanel buttonPanel3 = new JPanel();
+
     int playerScore = 0;
     int playerScoreTotal = 0;
     int opponentScore = 0;
@@ -139,33 +143,45 @@ public class GuiClass extends JFrame {
     public void getCategories(String cat1, String cat2, String cat3) {
         remove();
         add(categoriesPanel);
+
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.CENTER);
+
+        categoriesButtonPanel.setLayout(new GridLayout(3,1,0,0));
         categoriesLabel.setFont(headerFont);
-        categoriesButtonPanel.setLayout(new GridLayout());
+        categoriesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        categoriesButtonPanel.setBackground(Color.red);
-        categoryButton1.setText(cat1);
-        categoryButton2.setText(cat2);
-        categoryButton3.setText(cat3);
-        categoriesButtonPanel.add(categoryButton1);
+        categoriesButtonPanel.add(buttonPanel1);
+        buttonPanel1.add(categoryButton1);
+        buttonPanel1.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         categoryButton1.setAlignmentX(Component.CENTER_ALIGNMENT);
-        categoriesButtonPanel.add(categoryButton2);
+        categoryButton1.setText(cat1);
+        categoryButton1.setMinimumSize(buttonSize);
+        categoryButton1.setMaximumSize(buttonSize);
+
+        categoriesButtonPanel.add(buttonPanel2);
+        buttonPanel2.add(categoryButton2);
+        buttonPanel2.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         categoryButton2.setAlignmentX(Component.CENTER_ALIGNMENT);
-        categoriesButtonPanel.add(categoryButton3);
+        categoryButton2.setText(cat2);
+        categoryButton2.setMinimumSize(buttonSize);
+        categoryButton2.setMaximumSize(buttonSize);
+
+        categoriesButtonPanel.add(buttonPanel3);
+        buttonPanel3.add(categoryButton3);
+        buttonPanel3.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
         categoryButton3.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        /*AtomicReference<String> result = new AtomicReference<>("");
-
-        categoryButton1.addActionListener(e -> result.set(cat1));
-        categoryButton2.addActionListener(e -> result.set(cat2));
-        categoryButton3.addActionListener(e -> result.set(cat3));*/
+        categoryButton3.setText(cat3);
+        categoryButton3.setMinimumSize(buttonSize);
+        categoryButton3.setMaximumSize(buttonSize);
 
         categoriesFrame.setSize(standardSize);
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setResizable(false);
+
         //categoriesFrame.setVisible(true);
+
         revalidate();
         repaint();
     }
