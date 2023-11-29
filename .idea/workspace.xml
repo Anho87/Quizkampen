@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="fixade så att samma kategori inte kan dyka upp två gånger">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
-    </list>
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="raderade två labels som ej användes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -233,7 +230,14 @@
       <option name="presentableId" value="LOCAL−00016" />
       <updated>1701257933809</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL−00017" summary="raderade två labels som ej användes">
+      <option name="closed" value="true" />
+      <created>1701258810399</created>
+      <option name="number" value="LOCAL−00017" />
+      <option name="presentableId" value="LOCAL−00017" />
+      <updated>1701258810399</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +270,7 @@
     <MESSAGE value="xml" />
     <MESSAGE value="formatterade kategori-valrutorna" />
     <MESSAGE value="fixade så att samma kategori inte kan dyka upp två gånger" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixade så att samma kategori inte kan dyka upp två gånger" />
+    <MESSAGE value="raderade två labels som ej användes" />
+    <option name="LAST_COMMIT_MESSAGE" value="raderade två labels som ej användes" />
   </component>
 </project>
