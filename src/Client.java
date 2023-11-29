@@ -126,6 +126,12 @@ public class Client implements ActionListener {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+                for (JButton button : answerButtonsList) {
+                    if (button.getText().equals(correctAnswer)) {
+                        button.setBackground(green);
+                        break;
+                    }
+                }
                 // Om tiden går ut räknas det som fel svar
                 outToServer.println("false");
                 unclickableButtons();
