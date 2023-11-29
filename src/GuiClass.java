@@ -77,7 +77,7 @@ public class GuiClass extends JFrame {
     JPanel buttonPanel3 = new JPanel();
 
     public String setUserName() {
-        userNameWindow.setLayout(new BorderLayout());;
+        userNameWindow.setLayout(new BorderLayout());
         userNameWindow.setPreferredSize(standardSize);
 
         userNamePanel.setBackground(lightGreen);
