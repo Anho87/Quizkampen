@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="visar texten tiden är ute + font för resultat i gui" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="visar texten tiden är ute + font för resultat i gui">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,12 +21,12 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="andreasBranch" />
+    <option name="BRANCH" value="feature/timer-for-questions" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/timer" />
+        <entry key="$PROJECT_DIR$" value="feature/timer-for-questions" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,14 +54,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Client (4)">
-    <configuration name="Client (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Client" />
-      <module name="Quizkampen" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="Quizkampen" />
@@ -81,6 +76,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Client" />
+      <module name="Quizkampen" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerListener" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ServerListener" />
       <module name="Quizkampen" />
@@ -89,7 +91,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Client (1)" />
+      <item itemvalue="Application.Client" />
       <item itemvalue="Application.Client (2)" />
       <item itemvalue="Application.Client (3)" />
       <item itemvalue="Application.Client (4)" />
@@ -97,11 +99,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Client" />
+        <item itemvalue="Application.ServerListener" />
         <item itemvalue="Application.Client (4)" />
         <item itemvalue="Application.Client (3)" />
-        <item itemvalue="Application.ServerListener" />
         <item itemvalue="Application.Client (2)" />
-        <item itemvalue="Application.Client (1)" />
       </list>
     </recent_temporary>
   </component>
