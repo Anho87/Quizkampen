@@ -36,7 +36,7 @@ public class GuiClass extends JFrame {
     JPanel questionAndResultPanel = new JPanel();
     private int questionNr;
     private JLabel questionNumber = new JLabel("Fråga " + questionNr);
-    private JLabel question = new JLabel("fråga", 2);
+    private JLabel question = new JLabel("fråga");
     private JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
     JButton answer1 = new JButton("Svar 1");
@@ -186,7 +186,8 @@ public class GuiClass extends JFrame {
         } else {
             question.setText(questionText);
         }*/
-        question.setText(questionText);
+        question.setText("<html><div style='text-align: center;'>" + questionText + "</div></html>");
+        question.setFont(headerFont);
 
         add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
@@ -380,14 +381,14 @@ public class GuiClass extends JFrame {
         //waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
         waitingForPlayer1Panel.setPreferredSize(waitingPanelSize);
-        waitingForPlayer1TextArea.setText(userName + "\n\nSenaste omgången: " + playerScore + "\n\nTotalt: " + playerScoreTotal);
+        waitingForPlayer1TextArea.setText("  " + userName + "\n\n  Senaste omgången: " + playerScore + "\n\n  Totalt: " + playerScoreTotal);
         //waitingForPlayer1Panel.add(new JLabel("\nCorrect answers: " + playerScore), BorderLayout.SOUTH);
 
 
         //add(waitingForPlayer2Panel, BorderLayout.EAST);
         waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
         waitingForPlayer2Panel.setPreferredSize(waitingPanelSize);
-        waitingForPlayer2TextArea.setText(opponentUserName + "\n\nSenaste omgången: " + opponentScore + "\n\nTotalt: " + opponentScoreTotal);
+        waitingForPlayer2TextArea.setText("  " + opponentUserName + "\n\n  Senaste omgången: " + opponentScore + "\n\n  Totalt: " + opponentScoreTotal);
         //waitingForPlayer2Panel.add(new JLabel("\nCorrect answers: " + opponentScore), BorderLayout.SOUTH);
 
 
