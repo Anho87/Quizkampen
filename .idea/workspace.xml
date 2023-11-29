@@ -7,7 +7,6 @@
     <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="gjorde så man kan se score men det fungerar inte riktigt">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,8 +102,8 @@
       <list>
         <item itemvalue="Application.Client (4)" />
         <item itemvalue="Application.ServerListener" />
-        <item itemvalue="Application.GuiClass" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.GuiClass" />
         <item itemvalue="Application.Client (5)" />
       </list>
     </recent_temporary>
