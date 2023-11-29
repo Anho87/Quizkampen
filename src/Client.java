@@ -67,19 +67,21 @@ public class Client implements ActionListener {
                 guiClass.getQuizWindow(question, correctAnswer, incorrectAnswersAsArray);
             } else if (fromServer.equals("WAIT")) {
                 guiClass.playerScore = Integer.parseInt(in.readLine());
+                
+                guiClass.playerScoreTotal = Integer.parseInt(in.readLine());
+                
                 guiClass.opponentScore = Integer.parseInt(in.readLine());
+                
+                guiClass.opponentScoreTotal = Integer.parseInt(in.readLine());
+                
                 guiClass.waitingForPlayer();
-            } else if (fromServer.equals("FRAME DISPOSE")) {
-                guiClass.revalidate();
-                guiClass.repaint();
-               /* guiClass.waitingForPlayerFrame.dispose();
-                guiClass.categoriesFrame.dispose();
-                guiClass.quizFrame.dispose();*/
             } else if (fromServer.equals("RESET BUTTONS")) {
                 for (JButton button : answerButtonsList) {
                     button.setBackground(white);
                 }
                 clickableButtons();
+            }else if(fromServer.equals("SHOW RESULT")){
+                guiClass.displayEndGameResults();
             }
         }
     }

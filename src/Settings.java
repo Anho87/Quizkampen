@@ -9,7 +9,7 @@ public class Settings {
     public Settings(){
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("prop.properties"));
+            properties.load(new FileInputStream("src/prop.properties"));
         } catch (Exception e) {
             System.out.println("Filen kunde inte hittas");
             rounds = 2;

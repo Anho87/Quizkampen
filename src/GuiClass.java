@@ -1,37 +1,34 @@
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class GuiClass extends JFrame {
 
-     String userName;
-     String opponentUserName = "Motståndare";
+    String userName;
+    String opponentUserName = "Motståndare";
 
-     JFrame startFrame = new JFrame("Quizkampen - " + userName);
-     JPanel startPanel = new JPanel(new BorderLayout());
-     JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));
-     JButton newGameButton = new JButton("Starta nytt spel");
-
-
-     JFrame gameMenuFrame = new JFrame("Spelmeny - " + userName);
-     JPanel gameMenuPanel = new JPanel(new BorderLayout());
-     JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));
-     JButton randomPlayerButton = new JButton("Slumpa spelare");
-     JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
+    JFrame startFrame = new JFrame("Quizkampen - " + userName);
+    JPanel startPanel = new JPanel(new BorderLayout());
+    JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));
+    JButton newGameButton = new JButton("Starta nytt spel");
 
 
-     JFrame categoriesFrame = new JFrame("Kategorier - " + userName);
-     JPanel categoriesPanel = new JPanel(new BorderLayout());
-     JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
-     JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
-     JButton categoryButton1 = new JButton("Kategori 1");
-     JButton categoryButton2 = new JButton("Kategori 2");
-     JButton categoryButton3 = new JButton("Kategori 3");
+    JFrame gameMenuFrame = new JFrame("Spelmeny - " + userName);
+    JPanel gameMenuPanel = new JPanel(new BorderLayout());
+    JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));
+    JButton randomPlayerButton = new JButton("Slumpa spelare");
+    JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
+
+
+    JFrame categoriesFrame = new JFrame("Kategorier - " + userName);
+    JPanel categoriesPanel = new JPanel(new BorderLayout());
+    JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
+    JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
+    JButton categoryButton1 = new JButton("Kategori 1");
+    JButton categoryButton2 = new JButton("Kategori 2");
+    JButton categoryButton3 = new JButton("Kategori 3");
 
 
     JFrame quizFrame = new JFrame("Quiz - " + userName);
@@ -39,7 +36,7 @@ public class GuiClass extends JFrame {
     JPanel questionAndResultPanel = new JPanel();
     private int questionNr;
     private JLabel questionNumber = new JLabel("Fråga " + questionNr);
-    private JLabel question = new JLabel("fråga",2);
+    private JLabel question = new JLabel("fråga", 2);
     private JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
     JButton answer1 = new JButton("Svar 1");
@@ -69,17 +66,31 @@ public class GuiClass extends JFrame {
     JTextField chatInputField = new JTextField();
     JButton sendChatButton = new JButton("Send");
 
-    Dimension standardSize = new Dimension (500, 600);
+    Dimension standardSize = new Dimension(500, 600);
     Dimension waitingPanelSize = new Dimension(240, 600);
     Dimension buttonSize = new Dimension(200, 100);
     Font headerFont = new Font("Arial", Font.BOLD, 24);
     Font standardFont = new Font("Arial", Font.PLAIN, 18);
+    JPanel endingOfGamePanel1 = new JPanel();
+    JPanel endingOfGamePanel2 = new JPanel();
+    JPanel endingOfGamePanel3 = new JPanel();
 
+    JTextArea endingOfGameTextArea = new JTextArea();
+    JTextArea endingOfGameTextArea2 = new JTextArea();
+    JTextArea endingOfGameTextArea3 = new JTextArea();
+    JLabel playerEndGameResultsText = new JLabel("                  "+userName + "'s Results\n" +
+            "\nLast round: " /* lastRoundPlayer */ +
+            "\n\nAmount Of Correct Answers: ");
 
-int playerScore = 0;
-int opponentScore = 0;
+    JLabel opponentEndGameResultsText = new JLabel("         "+opponentUserName + "'s Results\n" +
+            "\nLast round: " /* lastRoundOpponent */ +
+            "\n\nAmount Of Correct Answers: ");
 
-
+    int playerScore = 0;
+    int playerScoreTotal = 0;
+    int opponentScore = 0;
+    int opponentScoreTotal = 0;
+    
 
     public String setUserName() {
         userName = JOptionPane.showInputDialog(null, "Ange ditt användarnamn: ");
@@ -89,6 +100,7 @@ int opponentScore = 0;
         updateFrameTitles();
         return userName;
     }
+
     private void updateFrameTitles() {
         startFrame.setTitle("Quizkampen - " + userName);
         gameMenuFrame.setTitle("Spelmeny - " + userName);
@@ -97,7 +109,7 @@ int opponentScore = 0;
         waitingForPlayerFrame.setTitle(userName);
     }
 
-    public void getStartWindow(){
+    public void getStartWindow() {
         startFrame.add(startPanel);
         startPanel.add(startButtonPanel, BorderLayout.SOUTH);
         startButtonPanel.add(newGameButton);
@@ -124,7 +136,7 @@ int opponentScore = 0;
         gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    public void getCategories(String cat1, String cat2, String cat3){ 
+    public void getCategories(String cat1, String cat2, String cat3) {
         remove();
         add(categoriesPanel);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
@@ -154,17 +166,17 @@ int opponentScore = 0;
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setResizable(false);
         //categoriesFrame.setVisible(true);
-        System.out.println("here should categoryFrame display itself");
         revalidate();
         repaint();
     }
-    public void remove(){
+
+    public void remove() {
         getContentPane().removeAll();
         revalidate();
         repaint();
     }
 
-    public void getQuizWindow(String questionText, String correctAnswer, String [] inCorrectAnswers){
+    public void getQuizWindow(String questionText, String correctAnswer, String[] inCorrectAnswers) {
         remove();
         /*if (questionText.length() > 40) {
             String subQuestionText = questionText.substring(0, 35);
@@ -193,14 +205,16 @@ int opponentScore = 0;
         quizPanel.add(answerPanel, BorderLayout.SOUTH);
 
         answerPanel.setLayout(new GridLayout(2, 2, 10, 10));
-        answerButtons.add(answer1);answerButtons.add(answer2);answerButtons.add(answer3);answerButtons.add(answer4);
+        answerButtons.add(answer1);
+        answerButtons.add(answer2);
+        answerButtons.add(answer3);
+        answerButtons.add(answer4);
         int randomInt1 = (int) (Math.random() * 4);
         int j = 0;
         for (int i = 0; i < 4; i++) {
             if (i == randomInt1) {
                 answerButtons.get(i).setText(correctAnswer);
-            }
-            else {
+            } else {
                 answerButtons.get(i).setText(inCorrectAnswers[j]);
                 j++;
             }
@@ -223,7 +237,8 @@ int opponentScore = 0;
         revalidate();
         repaint();
     }
-    public void setOpponentUserName (String opponentUserName) {
+
+    public void setOpponentUserName(String opponentUserName) {
         this.opponentUserName = opponentUserName;
     }
 
@@ -257,6 +272,7 @@ int opponentScore = 0;
         chatFrame.setResizable(false);
         chatFrame.setVisible(true);
     }
+
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
@@ -341,12 +357,20 @@ int opponentScore = 0;
 
         return menuBar;
     }
+
     public void waitingForPlayer() {
         remove();
         //waitingForPlayerFrame.setTitle(userName);
 
 
         waitingForPlayerFrame.setTitle(userName);
+
+        waitingForPlayer2TextArea.setOpaque(false);
+        waitingForPlayer2TextArea.setBackground(new Color(0, 0, 0, 0));
+
+        waitingForPlayer1TextArea.setOpaque(false);
+        waitingForPlayer1TextArea.setBackground(new Color(0, 0, 0, 0));
+
 
         Font nameFont = new Font(waitingForPlayer2TextArea.getFont().getFamily(), Font.PLAIN, 16);
 
@@ -356,14 +380,14 @@ int opponentScore = 0;
         //waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
         waitingForPlayer1Panel.setPreferredSize(waitingPanelSize);
-        waitingForPlayer1TextArea.setText(userName + "\n\nSenaste omgången: " + playerScore + "\n\nTotalt: " + playerScore);
+        waitingForPlayer1TextArea.setText(userName + "\n\nSenaste omgången: " + playerScore + "\n\nTotalt: " + playerScoreTotal);
         //waitingForPlayer1Panel.add(new JLabel("\nCorrect answers: " + playerScore), BorderLayout.SOUTH);
 
 
         //add(waitingForPlayer2Panel, BorderLayout.EAST);
         waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
         waitingForPlayer2Panel.setPreferredSize(waitingPanelSize);
-        waitingForPlayer2TextArea.setText(opponentUserName + "\n\nSenaste omgången: " + opponentScore + "\n\nTotalt: " + opponentScore);
+        waitingForPlayer2TextArea.setText(opponentUserName + "\n\nSenaste omgången: " + opponentScore + "\n\nTotalt: " + opponentScoreTotal);
         //waitingForPlayer2Panel.add(new JLabel("\nCorrect answers: " + opponentScore), BorderLayout.SOUTH);
 
 
@@ -397,7 +421,8 @@ int opponentScore = 0;
         waitingForPlayerFrame.setResizable(false);
         waitingForPlayerFrame.setVisible(true);*/
     }
-    public void setup()  {
+
+    public void setup() {
         setTitle("Quizkampen " + userName);
         JMenuBar menuBar = createMenuBar();
         setJMenuBar(menuBar);
@@ -410,13 +435,61 @@ int opponentScore = 0;
         categoryButton2.setPreferredSize(buttonSize);
         categoryButton3.setPreferredSize(buttonSize);
     }
-   public GuiClass(){
-        setup();
-   }
 
-    public void updateGUI() {
-        waitingForPlayer1TextArea.setText(userName + "\nAntal korrekta svar: " + Server.getPlayer1Points());
-        waitingForPlayer2TextArea.setText(opponentUserName + "\nAntal korrekta svar: " + Server.getPlayer2Points());
-        waitingForPlayerResultTextArea.setText(opponentUserName + " is Answering\nQuestions");
+    public GuiClass() {
+        setup();
+    }
+    
+
+    public void displayEndGameResults() {
+        remove();
+        
+        add(endingOfGamePanel1, BorderLayout.SOUTH);
+        add(endingOfGamePanel2, BorderLayout.WEST);
+        add(endingOfGamePanel3, BorderLayout.EAST);
+
+        endingOfGameTextArea.setOpaque(false);
+        endingOfGameTextArea.setBackground(new Color(0, 0, 0, 0));
+
+        endingOfGameTextArea2.setOpaque(false);
+        endingOfGameTextArea2.setBackground(new Color(0, 0, 0, 0));
+
+        endingOfGameTextArea3.setOpaque(false);
+        endingOfGameTextArea3.setBackground(new Color(0, 0, 0, 0));
+
+        endingOfGamePanel1.setBackground(new Color(255, 204, 204));
+        endingOfGamePanel2.setBackground(new Color(255, 204, 204));
+        endingOfGamePanel3.setBackground(new Color(255, 204, 204));
+
+        endingOfGameTextArea2.setFont(new Font("Impact", Font.BOLD, 20));
+        endingOfGameTextArea2.setText(playerEndGameResultsText.getText() + + playerScoreTotal);
+
+        endingOfGameTextArea3.setFont(new Font("Impact", Font.BOLD, 20));
+        endingOfGameTextArea3.setText(opponentEndGameResultsText.getText() + + opponentScoreTotal);
+
+
+        endingOfGameTextArea.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
+        if (playerScoreTotal > opponentScoreTotal) {
+            endingOfGameTextArea.setText("Congratulations You Won!!");
+        } else if (playerScoreTotal < opponentScoreTotal) {
+            endingOfGameTextArea.setText("You Lost!");
+        } else {
+            endingOfGameTextArea.setText("It's a Draw!");
+        }
+
+        endingOfGamePanel3.add(endingOfGameTextArea3);
+        endingOfGamePanel2.add(endingOfGameTextArea2);
+        endingOfGamePanel1.add(endingOfGameTextArea);
+
+        endingOfGamePanel1.setPreferredSize(new Dimension(endingOfGamePanel1.getWidth(), 100));
+        endingOfGamePanel2.setPreferredSize(new Dimension(250, endingOfGamePanel2.getHeight()));
+        endingOfGamePanel3.setPreferredSize(new Dimension(250, endingOfGamePanel3.getHeight()));
+
+        endingOfGameTextArea3.setEditable(false);
+        endingOfGameTextArea2.setEditable(false);
+        endingOfGameTextArea.setEditable(false);
+
+        revalidate();
+        repaint();
     }
 }
