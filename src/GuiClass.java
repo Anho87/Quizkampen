@@ -31,6 +31,7 @@ public class GuiClass extends JFrame {
     JButton categoryButton1 = new JButton("Kategori 1");
     JButton categoryButton2 = new JButton("Kategori 2");
     JButton categoryButton3 = new JButton("Kategori 3");
+    ArrayList<JButton> categoryButtons = new ArrayList<>();
 
 
     JFrame quizFrame = new JFrame("Quiz - " + userName);
@@ -77,6 +78,12 @@ public class GuiClass extends JFrame {
     Font standardFont = new Font("Arial", Font.PLAIN, 18);
     Color lightGreen = new Color (204, 255, 229);
     Color lightBlue = new Color(204, 255, 255);
+    Color djurNaturColor = new Color(178, 255, 102);
+    Color bockerOrdColor = new Color(204, 153, 255);
+    Color iLabbetColor = new Color(255, 178, 102);
+    Color kroppKnoppColor = new Color(255, 255, 153);
+    Color filmColor = new Color(255, 153, 204);
+    Color sportColor = new Color(192, 192, 192);
     LineBorder thinLineBorder = new LineBorder(Color.BLACK, 2);
     JPanel endingOfGamePanel1 = new JPanel();
     JPanel endingOfGamePanel2 = new JPanel();
@@ -173,7 +180,7 @@ public class GuiClass extends JFrame {
     public void getCategories(String cat1, String cat2, String cat3) {
         remove();
         add(categoriesPanel);
-
+        categoriesPanel.setBackground(lightGreen);
         categoriesPanel.add(categoriesLabel, BorderLayout.NORTH);
         categoriesPanel.add(categoriesButtonPanel, BorderLayout.CENTER);
 
@@ -182,28 +189,45 @@ public class GuiClass extends JFrame {
         categoriesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         categoriesButtonPanel.add(buttonPanel1);
+        categoriesButtonPanel.setBackground(lightGreen);
+        buttonPanel1.setBackground(lightGreen);
         buttonPanel1.add(categoryButton1);
         buttonPanel1.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        categoryButton1.setAlignmentX(Component.CENTER_ALIGNMENT);
         categoryButton1.setText(cat1);
-        categoryButton1.setMinimumSize(buttonSize);
-        categoryButton1.setMaximumSize(buttonSize);
 
         categoriesButtonPanel.add(buttonPanel2);
         buttonPanel2.add(categoryButton2);
+        buttonPanel2.setBackground(lightGreen);
         buttonPanel2.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        categoryButton2.setAlignmentX(Component.CENTER_ALIGNMENT);
         categoryButton2.setText(cat2);
-        categoryButton2.setMinimumSize(buttonSize);
-        categoryButton2.setMaximumSize(buttonSize);
 
         categoriesButtonPanel.add(buttonPanel3);
         buttonPanel3.add(categoryButton3);
+        buttonPanel3.setBackground(lightGreen);
         buttonPanel3.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        categoryButton3.setAlignmentX(Component.CENTER_ALIGNMENT);
         categoryButton3.setText(cat3);
-        categoryButton3.setMinimumSize(buttonSize);
-        categoryButton3.setMaximumSize(buttonSize);
+
+        for (JButton button : categoryButtons) {
+            button.setAlignmentX(Component.CENTER_ALIGNMENT);
+            button.setMinimumSize(buttonSize);
+            button.setMaximumSize(buttonSize);
+            button.setFont(standardFont);
+            button.setBorder(thinLineBorder);
+
+            if (button.getText().contains("Djur & natur")) {
+                button.setBackground(djurNaturColor);
+            } else if (button.getText().contains("I labbet")) {
+                button.setBackground(iLabbetColor);
+            } else if (button.getText().contains("Sport")) {
+                button.setBackground(sportColor);
+            }  else if (button.getText().contains("Kropp & knopp")) {
+            button.setBackground(kroppKnoppColor);
+            } else if (button.getText().contains("Film")) {
+                button.setBackground(filmColor);
+            } else if (button.getText().contains("Böcker & ord")) {
+                button.setBackground(bockerOrdColor);
+            }
+        }
 
         /*categoriesFrame.setSize(standardSize);
         categoriesFrame.setLocationRelativeTo(null);
@@ -211,6 +235,8 @@ public class GuiClass extends JFrame {
         categoriesFrame.setResizable(false);
 
         //categoriesFrame.setVisible(true);*/
+
+        //categoriesFrame.setVisible(true);
 
         revalidate();
         repaint();
@@ -456,6 +482,10 @@ public class GuiClass extends JFrame {
         categoryButton1.setPreferredSize(buttonSize);
         categoryButton2.setPreferredSize(buttonSize);
         categoryButton3.setPreferredSize(buttonSize);
+        categoryButtons.add(categoryButton1);
+        categoryButtons.add(categoryButton2);
+        categoryButtons.add(categoryButton3);
+
     }
 
     public GuiClass() {
