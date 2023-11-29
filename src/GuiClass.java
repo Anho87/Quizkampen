@@ -484,6 +484,11 @@ public class GuiClass extends JFrame {
         add(endingOfGamePanel2, BorderLayout.WEST);
         add(endingOfGamePanel3, BorderLayout.EAST);
 
+        endingOfGamePanel1.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        endingOfGamePanel2.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+        endingOfGamePanel3.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+
+
         endingOfGameTextArea.setOpaque(false);
         endingOfGameTextArea.setBackground(new Color(0, 0, 0, 0));
 
