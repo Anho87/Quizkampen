@@ -70,6 +70,7 @@ public class Client implements ActionListener {
                 String incorrectAnswers = in.readLine();
                 String[] incorrectAnswersAsArray = incorrectAnswers.split(":");
                 guiClass.getQuizWindow(question, correctAnswer, incorrectAnswersAsArray);
+                startTimer();
             } else if (fromServer.equals("WAIT")) {
                 //Poängen läses in från servern och resultat fönstret öppnas
                 guiClass.playerScore = Integer.parseInt(in.readLine());
@@ -98,7 +99,7 @@ public class Client implements ActionListener {
                 outToServer.println(jButton.getText());
             }
         }
-        
+        timer.cancel();
         for (JButton button : answerButtonsList) {
             if (e.getSource() == button) {
                 if (button.getText().contains(correctAnswer)) {
@@ -119,6 +120,19 @@ public class Client implements ActionListener {
             }
         }
     }
+
+    private void startTimer() {
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                // Om tiden går ut räknas det som fel svar
+                outToServer.println("false");
+                unclickableButtons();
+            }
+        }, timeLimit);
+    }
+
     //Svars knapparna sätts så att man inte kan trycka på dem efter man svarat på en fråga
     public void unclickableButtons(){
         for (JButton button : answerButtonsList) {
