@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="formatterade kategori-valrutorna">
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="xml">
+      <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +225,28 @@
       <option name="presentableId" value="LOCAL−00015" />
       <updated>1701257781742</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL−00016" summary="fixade så att samma kategori inte kan dyka upp två gånger">
+      <option name="closed" value="true" />
+      <created>1701257933809</created>
+      <option name="number" value="LOCAL−00016" />
+      <option name="presentableId" value="LOCAL−00016" />
+      <updated>1701257933809</updated>
+    </task>
+    <task id="LOCAL−00017" summary="raderade två labels som ej användes">
+      <option name="closed" value="true" />
+      <created>1701258810399</created>
+      <option name="number" value="LOCAL−00017" />
+      <option name="presentableId" value="LOCAL−00017" />
+      <updated>1701258810399</updated>
+    </task>
+    <task id="LOCAL−00018" summary="xml">
+      <option name="closed" value="true" />
+      <created>1701259514734</created>
+      <option name="number" value="LOCAL−00018" />
+      <option name="presentableId" value="LOCAL−00018" />
+      <updated>1701259514734</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,8 +276,10 @@
     <MESSAGE value="ändrade så knapparna blir röda/gröna beroende på vilket svar som ges, mm" />
     <MESSAGE value="raderade gamla klasserna Game och GameActionListener" />
     <MESSAGE value="tog bort konstruktor och main-metod från GuiClass" />
-    <MESSAGE value="xml" />
     <MESSAGE value="formatterade kategori-valrutorna" />
-    <option name="LAST_COMMIT_MESSAGE" value="formatterade kategori-valrutorna" />
+    <MESSAGE value="fixade så att samma kategori inte kan dyka upp två gånger" />
+    <MESSAGE value="raderade två labels som ej användes" />
+    <MESSAGE value="xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="xml" />
   </component>
 </project>
