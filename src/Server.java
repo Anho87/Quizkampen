@@ -29,7 +29,7 @@ public class Server extends Thread {
 
 
     Settings settings = new Settings();
-    
+
     int totalRounds = settings.getRounds();
     int questionsPerRound = settings.getQuestions();
 
@@ -75,7 +75,6 @@ public class Server extends Thread {
             while (gameActive) {
                 for (int i = 0; i < totalRounds; i++) {
                     if (i % 2 == 0) {
-
                         showCategoryOptions(outPlayer1);
                         String chosenCategory = inPlayer1.readLine();
                         for (int j = 1; j <= questionsPerRound; j++) {
@@ -86,11 +85,7 @@ public class Server extends Thread {
                             Thread.sleep(2000);
                         }
                         scorePlayer1Total += scorePlayer1;
-                        outPlayer1.println("WAIT");
-                        outPlayer1.println(scorePlayer1);
-                        outPlayer1.println(scorePlayer1Total);
-                        outPlayer1.println(scorePlayer2);
-                        outPlayer1.println(scorePlayer2Total);
+                        waitForOpponent(1);
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer2);
                             if (checkResult(inPlayer2.readLine())) {
@@ -100,21 +95,12 @@ public class Server extends Thread {
                             questionsInLine.remove(0);
                         }
                         scorePlayer2Total += scorePlayer2;
-                        outPlayer1.println("WAIT");
-                        outPlayer1.println(scorePlayer1);
-                        outPlayer1.println(scorePlayer1Total);
-                        outPlayer1.println(scorePlayer2);
-                        outPlayer1.println(scorePlayer2Total);
-                        outPlayer2.println("WAIT");
-                        outPlayer2.println(scorePlayer2);
-                        outPlayer2.println(scorePlayer2Total);
-                        outPlayer2.println(scorePlayer1);
-                        outPlayer2.println(scorePlayer1Total);
+                        waitForOpponent(1);
+                        waitForOpponent(2);
                         scorePlayer1 = 0;
                         scorePlayer2 = 0;
                         Thread.sleep(3000);
                     } else {
-
                         showCategoryOptions(outPlayer2);
                         String chosenCategory2 = inPlayer2.readLine();
                         for (int j = 1; j <= questionsPerRound; j++) {
@@ -125,11 +111,7 @@ public class Server extends Thread {
                             Thread.sleep(2000);
                         }
                         scorePlayer2Total += scorePlayer2;
-                        outPlayer2.println("WAIT");
-                        outPlayer2.println(scorePlayer2);
-                        outPlayer2.println(scorePlayer2Total);
-                        outPlayer2.println(scorePlayer1);
-                        outPlayer2.println(scorePlayer1Total);
+                        waitForOpponent(2);
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer1);
                             if (checkResult(inPlayer1.readLine())) {
@@ -139,16 +121,8 @@ public class Server extends Thread {
                             questionsInLine.remove(0);
                         }
                         scorePlayer1Total += scorePlayer1;
-                        outPlayer2.println("WAIT");
-                        outPlayer2.println(scorePlayer2);
-                        outPlayer2.println(scorePlayer2Total);
-                        outPlayer2.println(scorePlayer1);
-                        outPlayer2.println(scorePlayer1Total);
-                        outPlayer1.println("WAIT");
-                        outPlayer1.println(scorePlayer1);
-                        outPlayer1.println(scorePlayer1Total);
-                        outPlayer1.println(scorePlayer2);
-                        outPlayer1.println(scorePlayer2Total);
+                        waitForOpponent(2);
+                        waitForOpponent(1);
                         scorePlayer1 = 0;
                         scorePlayer2 = 0;
                         Thread.sleep(3000);
@@ -163,6 +137,22 @@ public class Server extends Thread {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void waitForOpponent(int player) {
+        if (player == 1) {
+            outPlayer1.println("WAIT");
+            outPlayer1.println(scorePlayer1);
+            outPlayer1.println(scorePlayer1Total);
+            outPlayer1.println(scorePlayer2);
+            outPlayer1.println(scorePlayer2Total);
+        } else if (player == 2) {
+            outPlayer2.println("WAIT");
+            outPlayer2.println(scorePlayer2);
+            outPlayer2.println(scorePlayer2Total);
+            outPlayer2.println(scorePlayer1);
+            outPlayer2.println(scorePlayer1Total);
         }
     }
 
@@ -215,17 +205,10 @@ public class Server extends Thread {
 
     public boolean checkResult(String s) {
         if (s.equals("true")) {
-
             return true;
         } else {
             return false;
         }
     }
-    /*public static int getPlayer1Points(){
-        return scorePlayer1;
-    }*/
-    /*public static int getPlayer2Points(){
-        return scorePlayer2;
-    }*/
-
+    
 }
