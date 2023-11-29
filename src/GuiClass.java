@@ -1,9 +1,6 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GuiClass extends JFrame {
@@ -11,20 +8,6 @@ public class GuiClass extends JFrame {
     String userName;
     String opponentUserName = "Motståndare";
 
-    JFrame startFrame = new JFrame("Quizkampen - " + userName);
-    JPanel startPanel = new JPanel(new BorderLayout());
-    JPanel startButtonPanel = new JPanel(new GridLayout(1, 1));
-    JButton newGameButton = new JButton("Starta nytt spel");
-
-
-    JFrame gameMenuFrame = new JFrame("Spelmeny - " + userName);
-    JPanel gameMenuPanel = new JPanel(new BorderLayout());
-    JPanel gameMenuButtonPanel = new JPanel(new GridLayout(1, 2));
-    JButton randomPlayerButton = new JButton("Slumpa spelare");
-    JButton playAgainstAFriendButton = new JButton("Spela mot en vän");
-
-
-    JFrame categoriesFrame = new JFrame("Kategorier - " + userName);
     JPanel categoriesPanel = new JPanel(new BorderLayout());
     JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
     JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
@@ -34,11 +17,8 @@ public class GuiClass extends JFrame {
     ArrayList<JButton> categoryButtons = new ArrayList<>();
 
 
-    JFrame quizFrame = new JFrame("Quiz - " + userName);
     JPanel quizPanel = new JPanel();
     JPanel questionAndResultPanel = new JPanel();
-    private int questionNr;
-    private JLabel questionNumber = new JLabel("Fråga " + questionNr);
     private JLabel question = new JLabel("fråga");
     private JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
@@ -48,27 +28,12 @@ public class GuiClass extends JFrame {
     JButton answer4 = new JButton("Svar 4");
     private ArrayList<JButton> answerButtons = new ArrayList<>();
 
-    JFrame waitingForPlayerFrame = new JFrame(userName);
     JPanel waitingForPlayerPanel = new JPanel(new BorderLayout());
     JPanel waitingForPlayer1Panel = new JPanel(new BorderLayout());
     JPanel waitingForPlayer2Panel = new JPanel(new BorderLayout());
-    JPanel waitingForPlayerResultPanel = new JPanel(new BorderLayout());
     JTextArea waitingForPlayerResultTextArea = new JTextArea();
     JTextArea waitingForPlayer1TextArea = new JTextArea();
     JTextArea waitingForPlayer2TextArea = new JTextArea();
-    JButton waitingForPlayerButton = new JButton("Din Tur");
-    JMenuBar menuBar = new JMenuBar();
-    JMenu chatMenu = new JMenu("Chat");
-    JMenu changeColorMenu = new JMenu("Change color");
-    JMenu quitMenu = new JMenu("Quit");
-    JFrame chatFrame = new JFrame("Chat - " + userName);
-    JPanel chatPanel = new JPanel(new BorderLayout());
-    JPanel inputPanel = new JPanel(new BorderLayout());
-    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-    JTextArea chatTextArea = new JTextArea();
-    JTextField chatInputField = new JTextField();
-    JButton sendChatButton = new JButton("Send");
-
 
     //Layout-variabler
     Dimension standardSize = new Dimension(500, 600);
@@ -99,25 +64,6 @@ public class GuiClass extends JFrame {
     JTextArea endingOfGameTextArea2 = new JTextArea();
     JTextArea endingOfGameTextArea3 = new JTextArea();
 
-    /*
-    public String setUserName() {
-        userName = JOptionPane.showInputDialog(null, "Ange ditt användarnamn: ");
-        if (userName == null || userName.trim().isEmpty()) {
-            userName = "Okänd Användare";
-        }
-        updateFrameTitles();
-        return userName;
-    }
-
-    JLabel playerEndGameResultsText = new JLabel("                  "+userName + "'s Results\n" +
-            "\nLast round: " + playerScore +
-            "\n\nAmount Of Correct Answers: ");
-
-    JLabel opponentEndGameResultsText = new JLabel("         "+opponentUserName + "'s Results\n" +
-            "\nLast round: " + opponentScore +
-            "\n\nAmount Of Correct Answers: ");
-
-     */
     JLabel opponentEndGameResultsText = new JLabel();
     JLabel playerEndGameResultsText = new JLabel();
     JPanel buttonPanel1 = new JPanel();
@@ -130,54 +76,8 @@ public class GuiClass extends JFrame {
         if (userName == null || userName.trim().isEmpty()) {
             userName = "Okänd Användare";
         }
-        /*
-        playerEndGameResultsText = new JLabel( "'s Results\n" +
-                "\nLast round: " + playerScore +
-                "\n\nAmount Of Correct Answers: ");
-
-        opponentEndGameResultsText = new JLabel("'s Results\n" +
-                "\nLast round: " + opponentScore +
-                "\n\nAmount Of Correct Answers: ");
-
-         */
-        //updateFrameTitles();
         return userName;
     }
-
- /*   private void updateFrameTitles() {
-        startFrame.setTitle("Quizkampen - " + userName);
-        gameMenuFrame.setTitle("Spelmeny - " + userName);
-        categoriesFrame.setTitle("Kategorier - " + userName);
-        quizFrame.setTitle("Quiz " + userName);
-        waitingForPlayerFrame.setTitle(userName);
-    }*/
-
-  /*  public void getStartWindow() {
-        startFrame.add(startPanel);
-        startPanel.add(startButtonPanel, BorderLayout.SOUTH);
-        startButtonPanel.add(newGameButton);
-        newGameButton.addActionListener(e -> getGameMenu());
-
-        startFrame.setSize(standardSize);
-        startFrame.setLocationRelativeTo(null);
-        startFrame.setResizable(false);
-        startFrame.setVisible(true);
-        startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }*/
-
-  /*  public void getGameMenu() {
-        gameMenuFrame.add(gameMenuPanel);
-        gameMenuPanel.add(gameMenuButtonPanel, BorderLayout.SOUTH);
-        gameMenuButtonPanel.add(randomPlayerButton);
-        gameMenuButtonPanel.add(playAgainstAFriendButton);
-        //playAgainstAFriendButton.addActionListener(e -> getCategories());
-
-        gameMenuFrame.setSize(standardSize);
-        gameMenuFrame.setLocationRelativeTo(null);
-        gameMenuFrame.setResizable(false);
-        gameMenuFrame.setVisible(true);
-        gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }*/
 
     public void getCategories(String cat1, String cat2, String cat3) {
         remove();
@@ -230,16 +130,6 @@ public class GuiClass extends JFrame {
                 button.setBackground(bockerOrdColor);
             }
         }
-
-        /*categoriesFrame.setSize(standardSize);
-        categoriesFrame.setLocationRelativeTo(null);
-        categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        categoriesFrame.setResizable(false);
-
-        //categoriesFrame.setVisible(true);*/
-
-        //categoriesFrame.setVisible(true);
-
         revalidate();
         repaint();
     }
@@ -292,17 +182,6 @@ public class GuiClass extends JFrame {
             answerPanel.add(button);
             button.setPreferredSize(buttonSize);
         }
-
-      /*  JMenuBar menuBar = createMenuBar();
-        quizFrame.setJMenuBar(menuBar);
-
-        quizFrame.setSize(standardSize);
-        quizFrame.setLocationRelativeTo(null);
-
-
-        quizFrame.setVisible(true);
-        quizFrame.setResizable(false);
-        quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
         revalidate();
         repaint();
     }
@@ -311,126 +190,8 @@ public class GuiClass extends JFrame {
         this.opponentUserName = opponentUserName;
     }
 
- /*   private void getChat() {
-        chatTextArea.setEditable(false);
-
-        JScrollPane chatScrollPane = new JScrollPane(chatTextArea);
-        chatScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-        buttonPanel.add(sendChatButton);
-
-        inputPanel.add(chatInputField, BorderLayout.CENTER);
-        inputPanel.add(buttonPanel, BorderLayout.EAST);
-
-        chatPanel.setLayout(new BorderLayout());
-        chatPanel.add(chatScrollPane, BorderLayout.CENTER);
-        chatPanel.add(inputPanel, BorderLayout.SOUTH);
-
-        sendChatButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //sendMessage();
-            }
-        });
-
-        sendChatButton.setPreferredSize(new Dimension(80, 35));
-
-        chatFrame.add(chatPanel);
-        chatFrame.setSize(250, 250);
-        chatFrame.setLocationRelativeTo(null);
-        chatFrame.setResizable(false);
-        chatFrame.setVisible(true);
-    }*/
-
-   /* private JMenuBar createMenuBar() {
-        JMenuBar menuBar = new JMenuBar();
-
-        JMenu chatMenu = new JMenu("Chat");
-        JMenu changeColorMenu = new JMenu("Change color");
-        JMenu quitMenu = new JMenu("Quit");
-
-
-        JMenuItem changeBodyColorItem = new JMenuItem("Change body color");
-        JMenuItem changeTextColorItem = new JMenuItem("Change text color");
-
-        changeColorMenu.add(changeBodyColorItem);
-        changeColorMenu.add(changeTextColorItem);
-
-        JMenuItem closeChatItem = new JMenuItem("Close");
-        JMenuItem openChatItem = new JMenuItem("Open");
-
-        chatMenu.add(closeChatItem);
-        chatMenu.add(openChatItem);
-
-        JMenuItem exitGameItem = new JMenuItem("Exit Game");
-
-        quitMenu.add(exitGameItem);
-
-        openChatItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getChat();
-            }
-        });
-
-        closeChatItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                chatFrame.dispose();
-            }
-        });
-
-        changeBodyColorItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JColorChooser colorChooser = new JColorChooser();
-                Color color = JColorChooser.showDialog(null, "Choose a color", Color.black);
-
-                questionAndResultPanel.setBackground(color);
-                //answerPanel.setBackground(color);
-                quizPanel.setBackground(color);
-
-
-            }
-        });
-
-        changeTextColorItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JColorChooser colorChooser = new JColorChooser();
-                Color color = JColorChooser.showDialog(null, "Choose a color", Color.black);
-                question.setForeground(color);
-                answer1.setForeground(color);
-                answer2.setForeground(color);
-                answer3.setForeground(color);
-                answer4.setForeground(color);
-                questionNumber.setForeground(color);
-                questionAndResultPanel.setForeground(color);
-                result.setForeground(color);
-
-
-            }
-        });
-
-        exitGameItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getStartWindow();
-                quizFrame.dispose();
-            }
-        });
-
-        menuBar.add(chatMenu);
-        menuBar.add(changeColorMenu);
-        menuBar.add(quitMenu);
-
-        return menuBar;
-    }*/
-
     public void waitingForPlayer() {
         remove();
-        
-
         waitingForPlayer2TextArea.setOpaque(false);
         waitingForPlayer2TextArea.setBackground(new Color(0, 0, 0, 0));
 
