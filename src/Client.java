@@ -5,6 +5,9 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import static java.awt.Color.*;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 
 public class Client implements ActionListener {
@@ -19,6 +22,8 @@ public class Client implements ActionListener {
     String thisPlayer;
     String opponentPlayer;
     String correctAnswer;
+    Timer timer = new Timer();
+    int timeLimit = 5000;
     
     //Spelaren får välja namn och actionlisteners och listor skapas
     public Client() throws IOException {
