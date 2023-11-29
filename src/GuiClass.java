@@ -236,8 +236,6 @@ public class GuiClass extends JFrame {
 
     public void setup() {
         setTitle("Quizkampen " + userName);
-        //JMenuBar menuBar = createMenuBar();
-        //setJMenuBar(menuBar);
         setSize(standardSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -3,6 +3,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServerListener {
+    
+    //Tar emot 2 sockets och skapar ett nytt server objekt och startar sedan tråden i servern.
     public ServerListener() {
         try(ServerSocket listener = new ServerSocket(55355)){
             while(true){

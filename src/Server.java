@@ -32,20 +32,15 @@ public class Server extends Thread {
 
     int totalRounds = settings.getRounds();
     int questionsPerRound = settings.getQuestions();
-
-    String chosenCategory;
-    int answeredQuestionsThisRound = 0;
-    int roundsPlayed = 0;
     int scorePlayer1;
     int scorePlayer1Total;
-
     int scorePlayer2;
     int scorePlayer2Total;
-    QuestionWithAnswers currentQuestion;
     ArrayList<QuestionWithAnswers> questionsInLine = new ArrayList<>();
 
     boolean gameActive = false;
 
+    //In och utströmmar skapas för vardera spelare och lägger till kategorier i categori listan.
     public Server(Socket player1, Socket player2) throws IOException {
         player1Socket = player1;
         player2Socket = player2;
@@ -67,14 +62,17 @@ public class Server extends Thread {
 
     public void run() {
         try {
+            //Tar emot namn och skickar ut motståndarnas namn till spelaren
             String player1UserName = inPlayer1.readLine();
             String player2UserName = inPlayer2.readLine();
             outPlayer1.println(player2UserName);
             outPlayer2.println(player1UserName);
             gameActive = true;
+            //Spel loopen startas
             while (gameActive) {
                 for (int i = 0; i < totalRounds; i++) {
                     if (i % 2 == 0) {
+                        //Spelare 1 får välja kategorier och svara på frågor först.
                         showCategoryOptions(outPlayer1);
                         String chosenCategory = inPlayer1.readLine();
                         for (int j = 1; j <= questionsPerRound; j++) {
@@ -86,6 +84,7 @@ public class Server extends Thread {
                         }
                         scorePlayer1Total += scorePlayer1;
                         waitForOpponent(1);
+                        //Spelare 2 får svara på frågorna
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer2);
                             if (checkResult(inPlayer2.readLine())) {
@@ -94,6 +93,7 @@ public class Server extends Thread {
                             Thread.sleep(2000);
                             questionsInLine.remove(0);
                         }
+                        //Båda spelarna får se den senaste rundans resultat
                         scorePlayer2Total += scorePlayer2;
                         waitForOpponent(1);
                         waitForOpponent(2);
@@ -101,6 +101,7 @@ public class Server extends Thread {
                         scorePlayer2 = 0;
                         Thread.sleep(3000);
                     } else {
+                        //Spelare 2 får välja kategorier och svara på frågor först.
                         showCategoryOptions(outPlayer2);
                         String chosenCategory2 = inPlayer2.readLine();
                         for (int j = 1; j <= questionsPerRound; j++) {
@@ -112,6 +113,7 @@ public class Server extends Thread {
                         }
                         scorePlayer2Total += scorePlayer2;
                         waitForOpponent(2);
+                        //Spelare 1 får svara på frågorna
                         for (int j = 1; j <= questionsPerRound; j++) {
                             showQuestions(questionsInLine.get(0), outPlayer1);
                             if (checkResult(inPlayer1.readLine())) {
@@ -120,6 +122,7 @@ public class Server extends Thread {
                             Thread.sleep(2000);
                             questionsInLine.remove(0);
                         }
+                        //Båda spelarna får se den senaste rundans resultat
                         scorePlayer1Total += scorePlayer1;
                         waitForOpponent(2);
                         waitForOpponent(1);
@@ -128,8 +131,10 @@ public class Server extends Thread {
                         Thread.sleep(3000);
                     }
                 }
+                //Alla rundor har körts och spelarna får se resultatet
                 outPlayer1.println("SHOW RESULT");
                 outPlayer2.println("SHOW RESULT");
+                //Spel loopen avslutas
                 gameActive = false;
             }
         } catch (IOException e) {
@@ -139,7 +144,8 @@ public class Server extends Thread {
             throw new RuntimeException(e);
         }
     }
-
+    //Metoden där man skickar spelaren till poäng fönstret där dom väntar på att motståndaren ska spela klart.
+    //Spelarnas poäng och totala poäng skickas till klienterna.
     public void waitForOpponent(int player) {
         if (player == 1) {
             outPlayer1.println("WAIT");
@@ -156,6 +162,7 @@ public class Server extends Thread {
         }
     }
 
+    //Kategorierna slumpas och skrivs ut till den aktiva spelarens klient.
     private void showCategoryOptions(PrintWriter writer) {
         int randomInt1 = (int) (Math.random() * categories.size());
         int randomInt2 = (int) (Math.random() * categories.size());
@@ -175,7 +182,8 @@ public class Server extends Thread {
         writer.println(cat2.getCategoryName());
         writer.println(cat3.getCategoryName());
     }
-
+    
+    //Frågorna slumpas beroende på vilken kategori som valts
     private QuestionWithAnswers setQuestion(String chosenCategory) {
         Category actualCategory = empty_category;
         for (Category category : categories) {
@@ -190,7 +198,7 @@ public class Server extends Thread {
         questionsInLine.add(selectedQuestion);
         return selectedQuestion;
     }
-
+    //Frågorna skickas ut till den aktiva spelarens klient
     private void showQuestions(QuestionWithAnswers qa, PrintWriter writer) {
         writer.println("RESET BUTTONS");
         String question = qa.getQuestion();
@@ -202,7 +210,7 @@ public class Server extends Thread {
         writer.println(correctAnswer);
         writer.println(inCorrectAnswersAsString);
     }
-
+    //Kollar om man svarat rätt på frågan
     public boolean checkResult(String s) {
         if (s.equals("true")) {
             return true;
@@ -210,5 +218,4 @@ public class Server extends Thread {
             return false;
         }
     }
-    
 }
