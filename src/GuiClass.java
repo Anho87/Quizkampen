@@ -57,10 +57,6 @@ public class GuiClass extends JFrame {
     Color drawColor = new Color(255, 255, 153);
     LineBorder thinLineBorder = new LineBorder(Color.BLACK, 2);
 
-
-    JPanel endingOfGamePanel1 = new JPanel();
-    JPanel endingOfGamePanel2 = new JPanel();
-    JPanel endingOfGamePanel3 = new JPanel();
     int playerScore = 0;
     int playerScoreTotal = 0;
     int opponentScore = 0;
@@ -68,11 +64,6 @@ public class GuiClass extends JFrame {
 
     JLabel endingOfGameTextArea = new JLabel();
     JPanel endingOfGamePanel = new JPanel();
-    JTextArea endingOfGameTextArea2 = new JTextArea();
-    JTextArea endingOfGameTextArea3 = new JTextArea();
-
-    JLabel opponentEndGameResultsText = new JLabel();
-    JLabel playerEndGameResultsText = new JLabel();
     JPanel buttonPanel1 = new JPanel();
     JPanel buttonPanel2 = new JPanel();
     JPanel buttonPanel3 = new JPanel();
