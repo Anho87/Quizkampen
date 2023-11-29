@@ -42,8 +42,6 @@ public class GuiClass extends JFrame {
     private JLabel question = new JLabel("fråga");
     private JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
-    JLabel userNameLabel = new JLabel();
-    JLabel opponentUserNameLabel = new JLabel();
     JButton answer1 = new JButton("Svar 1");
     JButton answer2 = new JButton("Svar 2");
     JButton answer3 = new JButton("Svar 3");
@@ -71,6 +69,8 @@ public class GuiClass extends JFrame {
     JTextField chatInputField = new JTextField();
     JButton sendChatButton = new JButton("Send");
 
+
+    //Layout-variabler
     Dimension standardSize = new Dimension(500, 600);
     Dimension waitingPanelSize = new Dimension(245, 600);
     Dimension buttonSize = new Dimension(200, 100);
@@ -85,6 +85,8 @@ public class GuiClass extends JFrame {
     Color filmColor = new Color(255, 153, 204);
     Color sportColor = new Color(192, 192, 192);
     LineBorder thinLineBorder = new LineBorder(Color.BLACK, 2);
+
+
     JPanel endingOfGamePanel1 = new JPanel();
     JPanel endingOfGamePanel2 = new JPanel();
     JPanel endingOfGamePanel3 = new JPanel();
