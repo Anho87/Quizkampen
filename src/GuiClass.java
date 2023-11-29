@@ -74,33 +74,52 @@ public class GuiClass extends JFrame {
     JPanel endingOfGamePanel1 = new JPanel();
     JPanel endingOfGamePanel2 = new JPanel();
     JPanel endingOfGamePanel3 = new JPanel();
-
-    JTextArea endingOfGameTextArea = new JTextArea();
-    JTextArea endingOfGameTextArea2 = new JTextArea();
-    JTextArea endingOfGameTextArea3 = new JTextArea();
-    JLabel playerEndGameResultsText = new JLabel("                  "+userName + "'s Results\n" +
-            "\nLast round: " /* lastRoundPlayer */ +
-            "\n\nAmount Of Correct Answers: ");
-
-    JLabel opponentEndGameResultsText = new JLabel("         "+opponentUserName + "'s Results\n" +
-            "\nLast round: " /* lastRoundOpponent */ +
-            "\n\nAmount Of Correct Answers: ");
-
-    JPanel buttonPanel1 = new JPanel();
-    JPanel buttonPanel2 = new JPanel();
-    JPanel buttonPanel3 = new JPanel();
-
     int playerScore = 0;
     int playerScoreTotal = 0;
     int opponentScore = 0;
     int opponentScoreTotal = 0;
-    
+
+    JTextArea endingOfGameTextArea = new JTextArea();
+    JTextArea endingOfGameTextArea2 = new JTextArea();
+    JTextArea endingOfGameTextArea3 = new JTextArea();
+
+    /*
+    public String setUserName() {
+        userName = JOptionPane.showInputDialog(null, "Ange ditt användarnamn: ");
+        if (userName == null || userName.trim().isEmpty()) {
+            userName = "Okänd Användare";
+        }
+        updateFrameTitles();
+        return userName;
+    }
+
+    JLabel playerEndGameResultsText = new JLabel("                  "+userName + "'s Results\n" +
+            "\nLast round: " + playerScore +
+            "\n\nAmount Of Correct Answers: ");
+
+    JLabel opponentEndGameResultsText = new JLabel("         "+opponentUserName + "'s Results\n" +
+            "\nLast round: " + opponentScore +
+            "\n\nAmount Of Correct Answers: ");
+
+     */
+    JLabel opponentEndGameResultsText = new JLabel();
+    JLabel playerEndGameResultsText = new JLabel();
+    JPanel buttonPanel1 = new JPanel();
+    JPanel buttonPanel2 = new JPanel();
+    JPanel buttonPanel3 = new JPanel();
+
 
     public String setUserName() {
         userName = JOptionPane.showInputDialog(null, "Ange ditt användarnamn: ");
         if (userName == null || userName.trim().isEmpty()) {
             userName = "Okänd Användare";
         }
+        playerEndGameResultsText = new JLabel( "'s Results\n" +
+                "\nLast round: " + playerScore +
+                "\n\nAmount Of Correct Answers: ");
+        opponentEndGameResultsText = new JLabel("'s Results\n" +
+                "\nLast round: " + opponentScore +
+                "\n\nAmount Of Correct Answers: ");
         updateFrameTitles();
         return userName;
     }
@@ -207,7 +226,7 @@ public class GuiClass extends JFrame {
 
         add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
-        
+
         quizPanel.add(questionAndResultPanel, BorderLayout.CENTER);
 
         questionAndResultPanel.setLayout(new BorderLayout());
@@ -479,10 +498,10 @@ public class GuiClass extends JFrame {
         endingOfGamePanel3.setBackground(new Color(255, 204, 204));
 
         endingOfGameTextArea2.setFont(new Font("Impact", Font.BOLD, 20));
-        endingOfGameTextArea2.setText(playerEndGameResultsText.getText() + + playerScoreTotal);
+        endingOfGameTextArea2.setText("                  " + userName + playerEndGameResultsText.getText() + + playerScoreTotal);
 
         endingOfGameTextArea3.setFont(new Font("Impact", Font.BOLD, 20));
-        endingOfGameTextArea3.setText(opponentEndGameResultsText.getText() + + opponentScoreTotal);
+        endingOfGameTextArea3.setText("         " + opponentUserName + opponentEndGameResultsText.getText() + + opponentScoreTotal);
 
 
         endingOfGameTextArea.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
