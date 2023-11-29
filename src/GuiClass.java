@@ -281,74 +281,10 @@ public class GuiClass extends JFrame {
     public GuiClass() {
         setup();
     }
-    
 
     public void displayEndGameResults() {
         remove();
         hasFinished = true;
         waitingForPlayer();
-        /*add(endingOfGamePanel1, BorderLayout.SOUTH);
-        add(endingOfGamePanel2, BorderLayout.WEST);
-        add(endingOfGamePanel3, BorderLayout.EAST);
-
-        endingOfGamePanel1.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        endingOfGamePanel2.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
-        endingOfGamePanel3.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
-
-
-        endingOfGameTextArea.setOpaque(false);
-        endingOfGameTextArea.setBackground(new Color(0, 0, 0, 0));
-
-        endingOfGameTextArea2.setOpaque(false);
-        endingOfGameTextArea2.setBackground(new Color(0, 0, 0, 0));
-
-        endingOfGameTextArea3.setOpaque(false);
-        endingOfGameTextArea3.setBackground(new Color(0, 0, 0, 0));
-
-        endingOfGamePanel1.setBackground(new Color(255, 204, 204));
-        endingOfGamePanel2.setBackground(lightGreen);
-        endingOfGamePanel3.setBackground(lightBlue);
-        endingOfGamePanel1.setBorder(thinLineBorder);
-        endingOfGamePanel2.setBorder(thinLineBorder);
-        endingOfGamePanel3.setBorder(thinLineBorder);
-
-        playerEndGameResultsText = new JLabel( "'s Results\n" +
-                "\nLast round: " + playerScore +
-                "\n\nAmount Of Correct Answers: ");
-
-        opponentEndGameResultsText = new JLabel("'s Results\n" +
-                "\nLast round: " + opponentScore +
-                "\n\nAmount Of Correct Answers: ");
-
-        endingOfGameTextArea2.setFont(resultatFont);
-        endingOfGameTextArea2.setText("                  " + userName + playerEndGameResultsText.getText() +  playerScoreTotal);
-
-        endingOfGameTextArea3.setFont(resultatFont);
-        endingOfGameTextArea3.setText("         " + opponentUserName + opponentEndGameResultsText.getText() +  opponentScoreTotal);
-
-
-        endingOfGameTextArea.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
-        if (playerScoreTotal > opponentScoreTotal) {
-            endingOfGameTextArea.setText("Congratulations You Won!!");
-        } else if (playerScoreTotal < opponentScoreTotal) {
-            endingOfGameTextArea.setText("You Lost!");
-        } else {
-            endingOfGameTextArea.setText("It's a Draw!");
-        }
-
-        endingOfGamePanel3.add(endingOfGameTextArea3);
-        endingOfGamePanel2.add(endingOfGameTextArea2);
-        endingOfGamePanel1.add(endingOfGameTextArea);
-
-        endingOfGamePanel1.setPreferredSize(new Dimension(endingOfGamePanel1.getWidth(), 100));
-        endingOfGamePanel2.setPreferredSize(new Dimension(250, endingOfGamePanel2.getHeight()));
-        endingOfGamePanel3.setPreferredSize(new Dimension(250, endingOfGamePanel3.getHeight()));
-
-        endingOfGameTextArea3.setEditable(false);
-        endingOfGameTextArea2.setEditable(false);
-        endingOfGameTextArea.setEditable(false);
-
-        revalidate();
-        repaint();*/
     }
 }
