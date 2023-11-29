@@ -78,7 +78,7 @@ public class Server extends Thread {
                         showCategoryOptions(outPlayer1);
                         String chosenCategory = inPlayer1.readLine();
                         for (int j = 1; j <= questionsPerRound; j++) {
-                            showQuestions(setQuestion(outPlayer1, chosenCategory), outPlayer1);
+                            showQuestions(setQuestion(chosenCategory), outPlayer1);
                             if (checkResult(inPlayer1.readLine())) {
                                 scorePlayer1++;
                             }
@@ -104,7 +104,7 @@ public class Server extends Thread {
                         showCategoryOptions(outPlayer2);
                         String chosenCategory2 = inPlayer2.readLine();
                         for (int j = 1; j <= questionsPerRound; j++) {
-                            showQuestions(setQuestion(outPlayer2, chosenCategory2), outPlayer2);
+                            showQuestions(setQuestion(chosenCategory2), outPlayer2);
                             if (checkResult(inPlayer2.readLine())) {
                                 scorePlayer2++;
                             }
@@ -176,7 +176,7 @@ public class Server extends Thread {
         writer.println(cat3.getCategoryName());
     }
 
-    private QuestionWithAnswers setQuestion(PrintWriter writer, String chosenCategory) {
+    private QuestionWithAnswers setQuestion(String chosenCategory) {
         Category actualCategory = empty_category;
         for (Category category : categories) {
             if (category.getCategoryName().equals(chosenCategory)) {
