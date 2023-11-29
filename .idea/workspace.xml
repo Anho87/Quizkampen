@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="ersatte JOoptionpane med ny metod">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="rensade lite, ändrade färg">
       <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -278,7 +277,14 @@
       <option name="presentableId" value="LOCAL−00022" />
       <updated>1701293396610</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL−00023" summary="rensade lite, ändrade färg">
+      <option name="closed" value="true" />
+      <created>1701294340644</created>
+      <option name="number" value="LOCAL−00023" />
+      <option name="presentableId" value="LOCAL−00023" />
+      <updated>1701294340644</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +321,8 @@
     <MESSAGE value="gjorde rätt knapp grön när tiden gått ut" />
     <MESSAGE value="visar texten tiden är ute + font för resultat i gui" />
     <MESSAGE value="ersatte JOoptionpane med ny metod" />
-    <option name="LAST_COMMIT_MESSAGE" value="ersatte JOoptionpane med ny metod" />
+    <MESSAGE value="rensade lite, ändrade färg" />
+    <option name="LAST_COMMIT_MESSAGE" value="rensade lite, ändrade färg" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Quizkampen$Client__4_.ic" NAME="Client (4) Coverage Results" MODIFIED="1701242874616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

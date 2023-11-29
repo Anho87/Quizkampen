@@ -79,7 +79,6 @@ public class GuiClass extends JFrame {
     public String setUserName() {
         userNameWindow.setLayout(new BorderLayout());;
         userNameWindow.setPreferredSize(standardSize);
-        userNameWindow.setResizable(false);
 
         userNamePanel.setBackground(lightGreen);
         userNamePanel.setLayout(new BoxLayout(userNamePanel, BoxLayout.Y_AXIS));
@@ -87,11 +86,10 @@ public class GuiClass extends JFrame {
         namePromtLabel.setFont(standardFont);
         namePromtLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        userNameField.setPreferredSize(namePromtSize);
         userNameField.setMaximumSize(namePromtSize);
+        userNameField.setMinimumSize(namePromtSize);
         userNameField.setBorder(thinLineBorder);
 
-        confirmButton.setPreferredSize(namePromtSize);
         confirmButton.setMinimumSize(namePromtSize);
         confirmButton.setMaximumSize(namePromtSize);
         confirmButton.setFont(standardFont);
