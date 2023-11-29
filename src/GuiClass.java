@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GuiClass extends JFrame {
@@ -9,6 +11,12 @@ public class GuiClass extends JFrame {
     String opponentUserName = "Motståndare";
     boolean hasFinished = false;
 
+    JDialog userNameWindow = new JDialog(this, "Välkommen till Quizkampen!", true);
+    JPanel userNamePanel = new JPanel();
+    JLabel namePromtLabel = new JLabel("Ange användarnamn");
+    JButton confirmButton = new JButton("OK");
+    JTextField userNameField = new JTextField();
+
     JPanel categoriesPanel = new JPanel(new BorderLayout());
     JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
     JLabel categoriesLabel = new JLabel("Kategorier", SwingConstants.CENTER);
@@ -16,7 +24,6 @@ public class GuiClass extends JFrame {
     JButton categoryButton2 = new JButton("Kategori 2");
     JButton categoryButton3 = new JButton("Kategori 3");
     ArrayList<JButton> categoryButtons = new ArrayList<>();
-
 
     JPanel quizPanel = new JPanel();
     JPanel questionAndResultPanel = new JPanel();
@@ -40,6 +47,7 @@ public class GuiClass extends JFrame {
     Dimension standardSize = new Dimension(500, 600);
     Dimension waitingPanelSize = new Dimension(245, 600);
     Dimension buttonSize = new Dimension(200, 100);
+    Dimension namePromtSize = new Dimension(200, 50);
     Font headerFont = new Font("Arial", Font.BOLD, 24);
     Font standardFont = new Font("Arial", Font.PLAIN, 18);
     Font resultatFont = new Font("Arial", Font.PLAIN, 16);
@@ -68,14 +76,55 @@ public class GuiClass extends JFrame {
     JPanel buttonPanel2 = new JPanel();
     JPanel buttonPanel3 = new JPanel();
 
-
     public String setUserName() {
-        userName = JOptionPane.showInputDialog(null, "Ange ditt användarnamn: ");
-        if (userName == null || userName.trim().isEmpty()) {
-            userName = "Okänd Användare";
-        }
+        userNameWindow.setLayout(new BorderLayout());;
+        userNameWindow.setPreferredSize(standardSize);
+        userNameWindow.setResizable(false);
+
+        userNamePanel.setBackground(lightGreen);
+        userNamePanel.setLayout(new BoxLayout(userNamePanel, BoxLayout.Y_AXIS));
+
+        namePromtLabel.setFont(standardFont);
+        namePromtLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        userNameField.setPreferredSize(namePromtSize);
+        userNameField.setMaximumSize(namePromtSize);
+        userNameField.setBorder(thinLineBorder);
+
+        confirmButton.setPreferredSize(namePromtSize);
+        confirmButton.setMinimumSize(namePromtSize);
+        confirmButton.setMaximumSize(namePromtSize);
+        confirmButton.setFont(standardFont);
+        confirmButton.setBackground(lightBlue);
+        confirmButton.setBorder(thinLineBorder);
+        confirmButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        confirmButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (userNameField.getText().trim().isEmpty()) {
+                    userName = "Okänd Användare";
+                } else {
+                    userName = userNameField.getText().trim();
+                }
+                userNameWindow.dispose();
+            }
+        });
+
+        userNamePanel.add(namePromtLabel);
+        userNamePanel.add(Box.createRigidArea(new Dimension(0, 5)));
+        userNamePanel.add(userNameField);
+        userNamePanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        userNamePanel.add(confirmButton);
+        userNameWindow.add(userNamePanel);
+        userNameWindow.pack();
+        userNameWindow.setLocationRelativeTo(this);
+        userNameWindow.setVisible(true);
+        setTitle("Quizkampen " + userName);
+
         return userName;
     }
+
 
     public void getCategories(String cat1, String cat2, String cat3) {
         remove();
