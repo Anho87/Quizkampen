@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="uppdaterade fileinputstream i settings">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-21,_20_00_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-21,_22_10_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-11-22_09_12_[Changes]1/shelved.patch" beforeDir="false" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="gjorde så man kan se score men det fungerar inte riktigt">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-21__20_00__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-21__22_10__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "developmentBranch",
+    "git-widget-placeholder": "andreasBranch",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -105,8 +106,8 @@
       <list>
         <item itemvalue="Application.Client (4)" />
         <item itemvalue="Application.ServerListener" />
-        <item itemvalue="Application.Server" />
         <item itemvalue="Application.GuiClass" />
+        <item itemvalue="Application.Server" />
         <item itemvalue="Application.Client (5)" />
       </list>
     </recent_temporary>
@@ -215,28 +216,7 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1701113139693</updated>
     </task>
-    <task id="LOCAL−00014" summary="fixar så att score fungerar korrekt">
-      <option name="closed" value="true" />
-      <created>1701176739772</created>
-      <option name="number" value="LOCAL−00014" />
-      <option name="presentableId" value="LOCAL−00014" />
-      <updated>1701176739772</updated>
-    </task>
-    <task id="LOCAL−00015" summary="tog bort souts">
-      <option name="closed" value="true" />
-      <created>1701179529440</created>
-      <option name="number" value="LOCAL−00015" />
-      <option name="presentableId" value="LOCAL−00015" />
-      <updated>1701179529440</updated>
-    </task>
-    <task id="LOCAL−00016" summary="uppdaterade fileinputstream i settings">
-      <option name="closed" value="true" />
-      <created>1701179593738</created>
-      <option name="number" value="LOCAL−00016" />
-      <option name="presentableId" value="LOCAL−00016" />
-      <updated>1701179593738</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,9 +247,6 @@
     <MESSAGE value="ändrade så knapparna blir röda/gröna beroende på vilket svar som ges, mm" />
     <MESSAGE value="raderade gamla klasserna Game och GameActionListener" />
     <MESSAGE value="tog bort konstruktor och main-metod från GuiClass" />
-    <MESSAGE value="fixar så att score fungerar korrekt" />
-    <MESSAGE value="tog bort souts" />
-    <MESSAGE value="uppdaterade fileinputstream i settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="uppdaterade fileinputstream i settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="tog bort konstruktor och main-metod från GuiClass" />
   </component>
 </project>
