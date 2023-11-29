@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="gjorde så man kan se score men det fungerar inte riktigt">
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="uppdaterade fileinputstream i settings">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-21,_20_00_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-21,_22_10_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-11-22_09_17_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-11-22_09_12_[Changes]1/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prop.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/prop.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +222,21 @@
       <option name="presentableId" value="LOCAL−00014" />
       <updated>1701176739772</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL−00015" summary="tog bort souts">
+      <option name="closed" value="true" />
+      <created>1701179529440</created>
+      <option name="number" value="LOCAL−00015" />
+      <option name="presentableId" value="LOCAL−00015" />
+      <updated>1701179529440</updated>
+    </task>
+    <task id="LOCAL−00016" summary="uppdaterade fileinputstream i settings">
+      <option name="closed" value="true" />
+      <created>1701179593738</created>
+      <option name="number" value="LOCAL−00016" />
+      <option name="presentableId" value="LOCAL−00016" />
+      <updated>1701179593738</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +268,8 @@
     <MESSAGE value="raderade gamla klasserna Game och GameActionListener" />
     <MESSAGE value="tog bort konstruktor och main-metod från GuiClass" />
     <MESSAGE value="fixar så att score fungerar korrekt" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixar så att score fungerar korrekt" />
+    <MESSAGE value="tog bort souts" />
+    <MESSAGE value="uppdaterade fileinputstream i settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="uppdaterade fileinputstream i settings" />
   </component>
 </project>
