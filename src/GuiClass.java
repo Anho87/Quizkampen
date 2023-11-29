@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -39,6 +41,8 @@ public class GuiClass extends JFrame {
     private JLabel question = new JLabel("fråga");
     private JLabel result = new JLabel();
     private JPanel answerPanel = new JPanel();
+    JLabel userNameLabel = new JLabel();
+    JLabel opponentUserNameLabel = new JLabel();
     JButton answer1 = new JButton("Svar 1");
     JButton answer2 = new JButton("Svar 2");
     JButton answer3 = new JButton("Svar 3");
@@ -67,10 +71,13 @@ public class GuiClass extends JFrame {
     JButton sendChatButton = new JButton("Send");
 
     Dimension standardSize = new Dimension(500, 600);
-    Dimension waitingPanelSize = new Dimension(240, 600);
+    Dimension waitingPanelSize = new Dimension(245, 600);
     Dimension buttonSize = new Dimension(200, 100);
     Font headerFont = new Font("Arial", Font.BOLD, 24);
     Font standardFont = new Font("Arial", Font.PLAIN, 18);
+    Color lightGreen = new Color (204, 255, 229);
+    Color lightBlue = new Color(204, 255, 255);
+    LineBorder thinLineBorder = new LineBorder(Color.BLACK, 2);
     JPanel endingOfGamePanel1 = new JPanel();
     JPanel endingOfGamePanel2 = new JPanel();
     JPanel endingOfGamePanel3 = new JPanel();
@@ -193,6 +200,8 @@ public class GuiClass extends JFrame {
         quizPanel.setLayout(new BorderLayout());
         quizPanel.add(questionNumber, BorderLayout.NORTH);
         quizPanel.add(questionAndResultPanel, BorderLayout.CENTER);
+        quizPanel.setBackground(lightGreen);
+        questionAndResultPanel.setBackground(lightGreen);
 
         questionAndResultPanel.setLayout(new BorderLayout());
         questionAndResultPanel.add(question, BorderLayout.NORTH);
@@ -204,7 +213,7 @@ public class GuiClass extends JFrame {
         result.setText("");
 
         quizPanel.add(answerPanel, BorderLayout.SOUTH);
-
+        answerPanel.setBackground(lightGreen);
         answerPanel.setLayout(new GridLayout(2, 2, 10, 10));
         answerButtons.add(answer1);
         answerButtons.add(answer2);
@@ -373,12 +382,15 @@ public class GuiClass extends JFrame {
         waitingForPlayer1TextArea.setBackground(new Color(0, 0, 0, 0));
 
 
-        Font nameFont = new Font(waitingForPlayer2TextArea.getFont().getFamily(), Font.PLAIN, 16);
+        //Font nameFont = new Font(waitingForPlayer2TextArea.getFont().getFamily(), Font.PLAIN, 16);
 
-        waitingForPlayer1TextArea.setFont(nameFont);
-        waitingForPlayer2TextArea.setFont(nameFont);
+        waitingForPlayer1TextArea.setFont(standardFont);
+        waitingForPlayer1TextArea.setPreferredSize(new Dimension(245, 100));
+        waitingForPlayer2TextArea.setFont(standardFont);
 
         //waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
+        waitingForPlayer1Panel.setBackground(lightGreen);
+        waitingForPlayer1Panel.setBorder(thinLineBorder);
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
         waitingForPlayer1Panel.setPreferredSize(waitingPanelSize);
         waitingForPlayer1TextArea.setText("  " + userName + "\n\n  Senaste omgången: " + playerScore + "\n\n  Totalt: " + playerScoreTotal);
@@ -386,8 +398,11 @@ public class GuiClass extends JFrame {
 
 
         //add(waitingForPlayer2Panel, BorderLayout.EAST);
+        waitingForPlayer2Panel.setBackground(lightBlue);
+        waitingForPlayer2Panel.setBorder(thinLineBorder);
         waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
         waitingForPlayer2Panel.setPreferredSize(waitingPanelSize);
+
         waitingForPlayer2TextArea.setText("  " + opponentUserName + "\n\n  Senaste omgången: " + opponentScore + "\n\n  Totalt: " + opponentScoreTotal);
         //waitingForPlayer2Panel.add(new JLabel("\nCorrect answers: " + opponentScore), BorderLayout.SOUTH);
 
