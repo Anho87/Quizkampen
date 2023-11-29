@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="visar texten tiden är ute + font för resultat i gui">
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="ersatte JOoptionpane med ny metod">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
     </list>
@@ -271,7 +271,14 @@
       <option name="presentableId" value="LOCAL−00021" />
       <updated>1701285496098</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL−00022" summary="ersatte JOoptionpane med ny metod">
+      <option name="closed" value="true" />
+      <created>1701293396610</created>
+      <option name="number" value="LOCAL−00022" />
+      <option name="presentableId" value="LOCAL−00022" />
+      <updated>1701293396610</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,7 +314,8 @@
     <MESSAGE value="xml" />
     <MESSAGE value="gjorde rätt knapp grön när tiden gått ut" />
     <MESSAGE value="visar texten tiden är ute + font för resultat i gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="visar texten tiden är ute + font för resultat i gui" />
+    <MESSAGE value="ersatte JOoptionpane med ny metod" />
+    <option name="LAST_COMMIT_MESSAGE" value="ersatte JOoptionpane med ny metod" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Quizkampen$Client__4_.ic" NAME="Client (4) Coverage Results" MODIFIED="1701242874616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
