@@ -87,9 +87,9 @@ public class GuiClass extends JFrame {
             "\n\nAmount Of Correct Answers: ");
 
     int playerScore = 0;
-    int playerScoreTotal = 2;
+    int playerScoreTotal = 0;
     int opponentScore = 0;
-    int opponentScoreTotal = 1;
+    int opponentScoreTotal = 0;
     
 
     public String setUserName() {
@@ -439,11 +439,11 @@ public class GuiClass extends JFrame {
     public GuiClass() {
         setup();
     }
-
+    
 
     public void displayEndGameResults() {
         remove();
-
+        
         add(endingOfGamePanel1, BorderLayout.SOUTH);
         add(endingOfGamePanel2, BorderLayout.WEST);
         add(endingOfGamePanel3, BorderLayout.EAST);

@@ -75,21 +75,13 @@ public class Client implements ActionListener {
                 guiClass.opponentScoreTotal = Integer.parseInt(in.readLine());
                 
                 guiClass.waitingForPlayer();
-                
-            
-                
-                
-                
-                
-                
-                
             } else if (fromServer.equals("RESET BUTTONS")) {
                 for (JButton button : answerButtonsList) {
                     button.setBackground(white);
                 }
                 clickableButtons();
             }else if(fromServer.equals("SHOW RESULT")){
-                
+                guiClass.displayEndGameResults();
             }
         }
     }
