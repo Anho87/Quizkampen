@@ -76,6 +76,7 @@ public class GuiClass extends JFrame {
     Dimension buttonSize = new Dimension(200, 100);
     Font headerFont = new Font("Arial", Font.BOLD, 24);
     Font standardFont = new Font("Arial", Font.PLAIN, 18);
+    Font resultatFont = new Font("Arial", Font.PLAIN, 16);
     Color lightGreen = new Color (204, 255, 229);
     Color lightBlue = new Color(204, 255, 255);
     Color djurNaturColor = new Color(178, 255, 102);
@@ -529,10 +530,10 @@ public class GuiClass extends JFrame {
                 "\nLast round: " + opponentScore +
                 "\n\nAmount Of Correct Answers: ");
 
-        endingOfGameTextArea2.setFont(new Font("Impact", Font.BOLD, 16));
+        endingOfGameTextArea2.setFont(resultatFont);
         endingOfGameTextArea2.setText("                  " + userName + playerEndGameResultsText.getText() +  playerScoreTotal);
 
-        endingOfGameTextArea3.setFont(new Font("Impact", Font.BOLD, 16));
+        endingOfGameTextArea3.setFont(resultatFont);
         endingOfGameTextArea3.setText("         " + opponentUserName + opponentEndGameResultsText.getText() +  opponentScoreTotal);
 
 
