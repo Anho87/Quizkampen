@@ -533,8 +533,8 @@ public class GuiClass extends JFrame {
         add(endingOfGamePanel3, BorderLayout.EAST);
 
         endingOfGamePanel1.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-        endingOfGamePanel2.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-        endingOfGamePanel3.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        endingOfGamePanel2.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+        endingOfGamePanel3.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 
 
         endingOfGameTextArea.setOpaque(false);
@@ -558,10 +558,10 @@ public class GuiClass extends JFrame {
                 "\nLast round: " + opponentScore +
                 "\n\nAmount Of Correct Answers: ");
 
-        endingOfGameTextArea2.setFont(new Font("Impact", Font.BOLD, 20));
+        endingOfGameTextArea2.setFont(new Font("Impact", Font.BOLD, 16));
         endingOfGameTextArea2.setText("                  " + userName + playerEndGameResultsText.getText() +  playerScoreTotal);
 
-        endingOfGameTextArea3.setFont(new Font("Impact", Font.BOLD, 20));
+        endingOfGameTextArea3.setFont(new Font("Impact", Font.BOLD, 16));
         endingOfGameTextArea3.setText("         " + opponentUserName + opponentEndGameResultsText.getText() +  opponentScoreTotal);
 
 
