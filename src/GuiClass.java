@@ -190,7 +190,7 @@ public class GuiClass extends JFrame {
 
         add(quizPanel);
         quizPanel.setLayout(new BorderLayout());
-        quizPanel.add(questionNumber, BorderLayout.NORTH);
+        
         quizPanel.add(questionAndResultPanel, BorderLayout.CENTER);
 
         questionAndResultPanel.setLayout(new BorderLayout());
