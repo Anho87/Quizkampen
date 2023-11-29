@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="gjorde så man kan se score men det fungerar inte riktigt">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="formatterade kategori-valrutorna">
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +211,21 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1701113139693</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL−00014" summary="xml">
+      <option name="closed" value="true" />
+      <created>1701255849804</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1701255849804</updated>
+    </task>
+    <task id="LOCAL−00015" summary="formatterade kategori-valrutorna">
+      <option name="closed" value="true" />
+      <created>1701257781741</created>
+      <option name="number" value="LOCAL−00015" />
+      <option name="presentableId" value="LOCAL−00015" />
+      <updated>1701257781742</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +248,6 @@
     <MESSAGE value=".." />
     <MESSAGE value="ogjorde misstag" />
     <MESSAGE value="ogjorde misstag2" />
-    <MESSAGE value="xml" />
     <MESSAGE value="added properties file" />
     <MESSAGE value="adding a settings class" />
     <MESSAGE value="for loops" />
@@ -243,6 +255,8 @@
     <MESSAGE value="ändrade så knapparna blir röda/gröna beroende på vilket svar som ges, mm" />
     <MESSAGE value="raderade gamla klasserna Game och GameActionListener" />
     <MESSAGE value="tog bort konstruktor och main-metod från GuiClass" />
-    <option name="LAST_COMMIT_MESSAGE" value="tog bort konstruktor och main-metod från GuiClass" />
+    <MESSAGE value="xml" />
+    <MESSAGE value="formatterade kategori-valrutorna" />
+    <option name="LAST_COMMIT_MESSAGE" value="formatterade kategori-valrutorna" />
   </component>
 </project>
