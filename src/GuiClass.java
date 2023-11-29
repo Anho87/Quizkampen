@@ -7,6 +7,7 @@ public class GuiClass extends JFrame {
 
     String userName;
     String opponentUserName = "Motståndare";
+    boolean hasFinished = false;
 
     JPanel categoriesPanel = new JPanel(new BorderLayout());
     JPanel categoriesButtonPanel = new JPanel(new GridLayout(3, 1));
@@ -42,6 +43,7 @@ public class GuiClass extends JFrame {
     Font headerFont = new Font("Arial", Font.BOLD, 24);
     Font standardFont = new Font("Arial", Font.PLAIN, 18);
     Font resultatFont = new Font("Arial", Font.PLAIN, 16);
+    Font largeFont = new Font("Arial", Font.BOLD, 45);
     Color lightGreen = new Color (204, 255, 229);
     Color lightBlue = new Color(204, 255, 255);
     Color djurNaturColor = new Color(178, 255, 102);
@@ -50,6 +52,9 @@ public class GuiClass extends JFrame {
     Color kroppKnoppColor = new Color(255, 255, 153);
     Color filmColor = new Color(255, 153, 204);
     Color sportColor = new Color(192, 192, 192);
+    Color winnerColor = new Color(128, 255, 0);
+    Color loserColor = new Color(255, 102, 102);
+    Color drawColor = new Color(255, 255, 153);
     LineBorder thinLineBorder = new LineBorder(Color.BLACK, 2);
 
 
@@ -61,7 +66,8 @@ public class GuiClass extends JFrame {
     int opponentScore = 0;
     int opponentScoreTotal = 0;
 
-    JTextArea endingOfGameTextArea = new JTextArea();
+    JLabel endingOfGameTextArea = new JLabel();
+    JPanel endingOfGamePanel = new JPanel();
     JTextArea endingOfGameTextArea2 = new JTextArea();
     JTextArea endingOfGameTextArea3 = new JTextArea();
 
@@ -220,7 +226,29 @@ public class GuiClass extends JFrame {
   
         waitingForPlayerPanel.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayerPanel.add(waitingForPlayer2Panel, BorderLayout.EAST);
-        
+
+        if (hasFinished) {
+            endingOfGameTextArea.setFont(largeFont);
+            endingOfGameTextArea.setOpaque(false);
+            endingOfGameTextArea.setBackground(new Color(0, 0, 0, 0));
+            if (playerScoreTotal > opponentScoreTotal) {
+                endingOfGameTextArea.setText("Du vann!!");
+                endingOfGamePanel.setBackground(winnerColor);
+            } else if (playerScoreTotal < opponentScoreTotal) {
+                endingOfGameTextArea.setText(("Du förlorade!"));
+                endingOfGamePanel.setBackground(loserColor);
+            } else {
+                endingOfGameTextArea.setText("Det blev oavgjort!");
+                endingOfGamePanel.setBackground(drawColor);
+            }
+            endingOfGamePanel.setPreferredSize(new Dimension (500, 70));
+            endingOfGamePanel.setBorder(thinLineBorder);
+            endingOfGamePanel.add(endingOfGameTextArea);
+            waitingForPlayerPanel.add(endingOfGamePanel, BorderLayout.SOUTH);
+
+            waitingForPlayer2TextArea.setText("  Resultat för " + opponentUserName + "\n\n  Sista omgången: " + opponentScore + "\n\n  Totalt: " + opponentScoreTotal);
+            waitingForPlayer1TextArea.setText("  Resultat för " + userName + "\n\n  Sista omgången: " + playerScore + "\n\n  Totalt: " + playerScoreTotal);
+        }
 
         add(waitingForPlayerPanel);
 
@@ -259,8 +287,9 @@ public class GuiClass extends JFrame {
 
     public void displayEndGameResults() {
         remove();
-        
-        add(endingOfGamePanel1, BorderLayout.SOUTH);
+        hasFinished = true;
+        waitingForPlayer();
+        /*add(endingOfGamePanel1, BorderLayout.SOUTH);
         add(endingOfGamePanel2, BorderLayout.WEST);
         add(endingOfGamePanel3, BorderLayout.EAST);
 
@@ -322,6 +351,6 @@ public class GuiClass extends JFrame {
         endingOfGameTextArea.setEditable(false);
 
         revalidate();
-        repaint();
+        repaint();*/
     }
 }

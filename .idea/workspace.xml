@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d467bdaa-28b2-48b5-90ae-c22479a2b845" name="Changes" comment="xml">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GuiClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prop.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/prop.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +249,21 @@
       <option name="presentableId" value="LOCAL−00018" />
       <updated>1701259514734</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL−00019" summary="raderade all oanvänd kod">
+      <option name="closed" value="true" />
+      <created>1701259985089</created>
+      <option name="number" value="LOCAL−00019" />
+      <option name="presentableId" value="LOCAL−00019" />
+      <updated>1701259985089</updated>
+    </task>
+    <task id="LOCAL−00020" summary="xml">
+      <option name="closed" value="true" />
+      <created>1701260083756</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1701260083756</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +296,7 @@
     <MESSAGE value="formatterade kategori-valrutorna" />
     <MESSAGE value="fixade så att samma kategori inte kan dyka upp två gånger" />
     <MESSAGE value="raderade två labels som ej användes" />
+    <MESSAGE value="raderade all oanvänd kod" />
     <MESSAGE value="xml" />
     <option name="LAST_COMMIT_MESSAGE" value="xml" />
   </component>
