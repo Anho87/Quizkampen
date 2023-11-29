@@ -140,19 +140,19 @@ public class GuiClass extends JFrame {
                 "\n\nAmount Of Correct Answers: ");
 
          */
-        updateFrameTitles();
+        //updateFrameTitles();
         return userName;
     }
 
-    private void updateFrameTitles() {
+ /*   private void updateFrameTitles() {
         startFrame.setTitle("Quizkampen - " + userName);
         gameMenuFrame.setTitle("Spelmeny - " + userName);
         categoriesFrame.setTitle("Kategorier - " + userName);
         quizFrame.setTitle("Quiz " + userName);
         waitingForPlayerFrame.setTitle(userName);
-    }
+    }*/
 
-    public void getStartWindow() {
+  /*  public void getStartWindow() {
         startFrame.add(startPanel);
         startPanel.add(startButtonPanel, BorderLayout.SOUTH);
         startButtonPanel.add(newGameButton);
@@ -163,9 +163,9 @@ public class GuiClass extends JFrame {
         startFrame.setResizable(false);
         startFrame.setVisible(true);
         startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+    }*/
 
-    public void getGameMenu() {
+  /*  public void getGameMenu() {
         gameMenuFrame.add(gameMenuPanel);
         gameMenuPanel.add(gameMenuButtonPanel, BorderLayout.SOUTH);
         gameMenuButtonPanel.add(randomPlayerButton);
@@ -177,7 +177,7 @@ public class GuiClass extends JFrame {
         gameMenuFrame.setResizable(false);
         gameMenuFrame.setVisible(true);
         gameMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+    }*/
 
     public void getCategories(String cat1, String cat2, String cat3) {
         remove();
@@ -231,11 +231,12 @@ public class GuiClass extends JFrame {
             }
         }
 
-        categoriesFrame.setSize(standardSize);
+        /*categoriesFrame.setSize(standardSize);
         categoriesFrame.setLocationRelativeTo(null);
         categoriesFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         categoriesFrame.setResizable(false);
 
+        //categoriesFrame.setVisible(true);*/
 
         //categoriesFrame.setVisible(true);
 
@@ -251,14 +252,6 @@ public class GuiClass extends JFrame {
 
     public void getQuizWindow(String questionText, String correctAnswer, String[] inCorrectAnswers) {
         remove();
-        /*if (questionText.length() > 40) {
-            String subQuestionText = questionText.substring(0, 35);
-            String subQuestionText2 = questionText.substring(35);
-            question.setText(subQuestionText);
-            question.setText(subQuestionText2);
-        } else {
-            question.setText(questionText);
-        }*/
         question.setText("<html><div style='text-align: center;'>" + questionText + "</div></html>");
         question.setFont(headerFont);
 
@@ -300,16 +293,16 @@ public class GuiClass extends JFrame {
             button.setPreferredSize(buttonSize);
         }
 
-        JMenuBar menuBar = createMenuBar();
+      /*  JMenuBar menuBar = createMenuBar();
         quizFrame.setJMenuBar(menuBar);
 
         quizFrame.setSize(standardSize);
         quizFrame.setLocationRelativeTo(null);
 
 
-        //quizFrame.setVisible(true);
+        quizFrame.setVisible(true);
         quizFrame.setResizable(false);
-        quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        quizFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
         revalidate();
         repaint();
     }
@@ -318,7 +311,7 @@ public class GuiClass extends JFrame {
         this.opponentUserName = opponentUserName;
     }
 
-    private void getChat() {
+ /*   private void getChat() {
         chatTextArea.setEditable(false);
 
         JScrollPane chatScrollPane = new JScrollPane(chatTextArea);
@@ -347,9 +340,9 @@ public class GuiClass extends JFrame {
         chatFrame.setLocationRelativeTo(null);
         chatFrame.setResizable(false);
         chatFrame.setVisible(true);
-    }
+    }*/
 
-    private JMenuBar createMenuBar() {
+   /* private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
 
         JMenu chatMenu = new JMenu("Chat");
@@ -432,14 +425,11 @@ public class GuiClass extends JFrame {
         menuBar.add(quitMenu);
 
         return menuBar;
-    }
+    }*/
 
     public void waitingForPlayer() {
         remove();
-        //waitingForPlayerFrame.setTitle(userName);
-
-
-        waitingForPlayerFrame.setTitle(userName);
+        
 
         waitingForPlayer2TextArea.setOpaque(false);
         waitingForPlayer2TextArea.setBackground(new Color(0, 0, 0, 0));
@@ -447,45 +437,28 @@ public class GuiClass extends JFrame {
         waitingForPlayer1TextArea.setOpaque(false);
         waitingForPlayer1TextArea.setBackground(new Color(0, 0, 0, 0));
 
-
-        //Font nameFont = new Font(waitingForPlayer2TextArea.getFont().getFamily(), Font.PLAIN, 16);
+        
 
         waitingForPlayer1TextArea.setFont(standardFont);
         waitingForPlayer1TextArea.setPreferredSize(new Dimension(245, 100));
         waitingForPlayer2TextArea.setFont(standardFont);
 
-        //waitingForPlayerFrame.add(waitingForPlayer1Panel, BorderLayout.WEST);
+        
         waitingForPlayer1Panel.setBackground(lightGreen);
         waitingForPlayer1Panel.setBorder(thinLineBorder);
         waitingForPlayer1Panel.add(waitingForPlayer1TextArea);
         waitingForPlayer1Panel.setPreferredSize(waitingPanelSize);
         waitingForPlayer1TextArea.setText("  " + userName + "\n\n  Senaste omgången: " + playerScore + "\n\n  Totalt: " + playerScoreTotal);
-        //waitingForPlayer1Panel.add(new JLabel("\nCorrect answers: " + playerScore), BorderLayout.SOUTH);
-
-
-        //add(waitingForPlayer2Panel, BorderLayout.EAST);
         waitingForPlayer2Panel.setBackground(lightBlue);
         waitingForPlayer2Panel.setBorder(thinLineBorder);
         waitingForPlayer2Panel.add(waitingForPlayer2TextArea);
         waitingForPlayer2Panel.setPreferredSize(waitingPanelSize);
 
         waitingForPlayer2TextArea.setText("  " + opponentUserName + "\n\n  Senaste omgången: " + opponentScore + "\n\n  Totalt: " + opponentScoreTotal);
-        //waitingForPlayer2Panel.add(new JLabel("\nCorrect answers: " + opponentScore), BorderLayout.SOUTH);
-
-
-        //add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
-        /*waitingForPlayerResultPanel.setPreferredSize(new Dimension(300, 50));
-        waitingForPlayerResultPanel.setLayout(new GridLayout(1,2));
-
-        waitingForPlayerResultPanel.add(waitingForPlayerResultTextArea);
-        waitingForPlayerResultTextArea.setText(opponentUserName + " is Answering\nQuestions");
-
-        waitingForPlayerResultPanel.add(waitingForPlayerButton);
-        waitingForPlayerButton.setSize(50,30);
-        waitingForPlayerButton.setEnabled(false);*/
+  
         waitingForPlayerPanel.add(waitingForPlayer1Panel, BorderLayout.WEST);
         waitingForPlayerPanel.add(waitingForPlayer2Panel, BorderLayout.EAST);
-        //waitingForPlayerPanel.add(waitingForPlayerResultPanel, BorderLayout.SOUTH);
+        
 
         add(waitingForPlayerPanel);
 
@@ -495,19 +468,14 @@ public class GuiClass extends JFrame {
 
         revalidate();
         repaint();
-
-        //updateGUI();
-       /* waitingForPlayerFrame.setSize(300, 500);
-        waitingForPlayerFrame.setLocationRelativeTo(null);
-        waitingForPlayerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        waitingForPlayerFrame.setResizable(false);
-        waitingForPlayerFrame.setVisible(true);*/
+        
+     
     }
 
     public void setup() {
         setTitle("Quizkampen " + userName);
-        JMenuBar menuBar = createMenuBar();
-        setJMenuBar(menuBar);
+        //JMenuBar menuBar = createMenuBar();
+        //setJMenuBar(menuBar);
         setSize(standardSize);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -549,8 +517,11 @@ public class GuiClass extends JFrame {
         endingOfGameTextArea3.setBackground(new Color(0, 0, 0, 0));
 
         endingOfGamePanel1.setBackground(new Color(255, 204, 204));
-        endingOfGamePanel2.setBackground(new Color(255, 204, 204));
-        endingOfGamePanel3.setBackground(new Color(255, 204, 204));
+        endingOfGamePanel2.setBackground(lightGreen);
+        endingOfGamePanel3.setBackground(lightBlue);
+        endingOfGamePanel1.setBorder(thinLineBorder);
+        endingOfGamePanel2.setBorder(thinLineBorder);
+        endingOfGamePanel3.setBorder(thinLineBorder);
 
         playerEndGameResultsText = new JLabel( "'s Results\n" +
                 "\nLast round: " + playerScore +
