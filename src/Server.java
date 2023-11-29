@@ -169,11 +169,11 @@ public class Server extends Thread {
     private void showCategoryOptions(PrintWriter writer) {
         int randomInt1 = (int) (Math.random() * categories.size());
         int randomInt2 = (int) (Math.random() * categories.size());
-        if (randomInt1 == randomInt2) {
+        while (randomInt1 == randomInt2) {
             randomInt2 = (int) (Math.random() * categories.size());
         }
         int randomInt3 = (int) (Math.random() * categories.size());
-        if (randomInt3 == randomInt1 || randomInt3 == randomInt2) {
+        while (randomInt3 == randomInt1 || randomInt3 == randomInt2) {
             randomInt3 = (int) (Math.random() * categories.size());
         }
         Category cat1 = categories.get(randomInt1);
