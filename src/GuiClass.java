@@ -1,11 +1,8 @@
-import com.sun.tools.javac.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class GuiClass extends JFrame {
 
@@ -74,12 +71,25 @@ public class GuiClass extends JFrame {
     Dimension buttonSize = new Dimension(200, 100);
     Font headerFont = new Font("Arial", Font.BOLD, 24);
     Font standardFont = new Font("Arial", Font.PLAIN, 18);
+    JPanel endingOfGamePanel1 = new JPanel();
+    JPanel endingOfGamePanel2 = new JPanel();
+    JPanel endingOfGamePanel3 = new JPanel();
 
+    JTextArea endingOfGameTextArea = new JTextArea();
+    JTextArea endingOfGameTextArea2 = new JTextArea();
+    JTextArea endingOfGameTextArea3 = new JTextArea();
+    JLabel playerEndGameResultsText = new JLabel("                  "+userName + "'s Results\n" +
+            "\nLast round: " /* lastRoundPlayer */ +
+            "\n\nAmount Of Correct Answers: ");
+
+    JLabel opponentEndGameResultsText = new JLabel("         "+opponentUserName + "'s Results\n" +
+            "\nLast round: " /* lastRoundOpponent */ +
+            "\n\nAmount Of Correct Answers: ");
 
     int playerScore = 0;
-    int playerScoreTotal = 0;
+    int playerScoreTotal = 2;
     int opponentScore = 0;
-    int opponentScoreTotal = 0;
+    int opponentScoreTotal = 1;
     
 
     public String setUserName() {
@@ -355,6 +365,13 @@ public class GuiClass extends JFrame {
 
         waitingForPlayerFrame.setTitle(userName);
 
+        waitingForPlayer2TextArea.setOpaque(false);
+        waitingForPlayer2TextArea.setBackground(new Color(0, 0, 0, 0));
+
+        waitingForPlayer1TextArea.setOpaque(false);
+        waitingForPlayer1TextArea.setBackground(new Color(0, 0, 0, 0));
+
+
         Font nameFont = new Font(waitingForPlayer2TextArea.getFont().getFamily(), Font.PLAIN, 16);
 
         waitingForPlayer1TextArea.setFont(nameFont);
@@ -423,9 +440,56 @@ public class GuiClass extends JFrame {
         setup();
     }
 
-    /*public void updateGUI() {
-        waitingForPlayer1TextArea.setText(userName + "\nAntal korrekta svar: " + Server.getPlayer1Points());
-        waitingForPlayer2TextArea.setText(opponentUserName + "\nAntal korrekta svar: " + Server.getPlayer2Points());
-        waitingForPlayerResultTextArea.setText(opponentUserName + " is Answering\nQuestions");
-    }*/
+
+    public void displayEndGameResults() {
+        remove();
+
+        add(endingOfGamePanel1, BorderLayout.SOUTH);
+        add(endingOfGamePanel2, BorderLayout.WEST);
+        add(endingOfGamePanel3, BorderLayout.EAST);
+
+        endingOfGameTextArea.setOpaque(false);
+        endingOfGameTextArea.setBackground(new Color(0, 0, 0, 0));
+
+        endingOfGameTextArea2.setOpaque(false);
+        endingOfGameTextArea2.setBackground(new Color(0, 0, 0, 0));
+
+        endingOfGameTextArea3.setOpaque(false);
+        endingOfGameTextArea3.setBackground(new Color(0, 0, 0, 0));
+
+        endingOfGamePanel1.setBackground(new Color(255, 204, 204));
+        endingOfGamePanel2.setBackground(new Color(255, 204, 204));
+        endingOfGamePanel3.setBackground(new Color(255, 204, 204));
+
+        endingOfGameTextArea2.setFont(new Font("Impact", Font.BOLD, 20));
+        endingOfGameTextArea2.setText(playerEndGameResultsText.getText() + + playerScoreTotal);
+
+        endingOfGameTextArea3.setFont(new Font("Impact", Font.BOLD, 20));
+        endingOfGameTextArea3.setText(opponentEndGameResultsText.getText() + + opponentScoreTotal);
+
+
+        endingOfGameTextArea.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
+        if (playerScoreTotal > opponentScoreTotal) {
+            endingOfGameTextArea.setText("Congratulations You Won!!");
+        } else if (playerScoreTotal < opponentScoreTotal) {
+            endingOfGameTextArea.setText("You Lost!");
+        } else {
+            endingOfGameTextArea.setText("It's a Draw!");
+        }
+
+        endingOfGamePanel3.add(endingOfGameTextArea3);
+        endingOfGamePanel2.add(endingOfGameTextArea2);
+        endingOfGamePanel1.add(endingOfGameTextArea);
+
+        endingOfGamePanel1.setPreferredSize(new Dimension(endingOfGamePanel1.getWidth(), 100));
+        endingOfGamePanel2.setPreferredSize(new Dimension(250, endingOfGamePanel2.getHeight()));
+        endingOfGamePanel3.setPreferredSize(new Dimension(250, endingOfGamePanel3.getHeight()));
+
+        endingOfGameTextArea3.setEditable(false);
+        endingOfGameTextArea2.setEditable(false);
+        endingOfGameTextArea.setEditable(false);
+
+        revalidate();
+        repaint();
+    }
 }
