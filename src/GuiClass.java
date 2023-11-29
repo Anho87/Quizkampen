@@ -114,12 +114,16 @@ public class GuiClass extends JFrame {
         if (userName == null || userName.trim().isEmpty()) {
             userName = "Okänd Användare";
         }
+        /*
         playerEndGameResultsText = new JLabel( "'s Results\n" +
                 "\nLast round: " + playerScore +
                 "\n\nAmount Of Correct Answers: ");
+
         opponentEndGameResultsText = new JLabel("'s Results\n" +
                 "\nLast round: " + opponentScore +
                 "\n\nAmount Of Correct Answers: ");
+
+         */
         updateFrameTitles();
         return userName;
     }
@@ -502,11 +506,19 @@ public class GuiClass extends JFrame {
         endingOfGamePanel2.setBackground(new Color(255, 204, 204));
         endingOfGamePanel3.setBackground(new Color(255, 204, 204));
 
+        playerEndGameResultsText = new JLabel( "'s Results\n" +
+                "\nLast round: " + playerScore +
+                "\n\nAmount Of Correct Answers: ");
+
+        opponentEndGameResultsText = new JLabel("'s Results\n" +
+                "\nLast round: " + opponentScore +
+                "\n\nAmount Of Correct Answers: ");
+
         endingOfGameTextArea2.setFont(new Font("Impact", Font.BOLD, 20));
-        endingOfGameTextArea2.setText("                  " + userName + playerEndGameResultsText.getText() + + playerScoreTotal);
+        endingOfGameTextArea2.setText("                  " + userName + playerEndGameResultsText.getText() +  playerScoreTotal);
 
         endingOfGameTextArea3.setFont(new Font("Impact", Font.BOLD, 20));
-        endingOfGameTextArea3.setText("         " + opponentUserName + opponentEndGameResultsText.getText() + + opponentScoreTotal);
+        endingOfGameTextArea3.setText("         " + opponentUserName + opponentEndGameResultsText.getText() +  opponentScoreTotal);
 
 
         endingOfGameTextArea.setFont(new Font("Comic Sans MS", Font.BOLD, 35));
